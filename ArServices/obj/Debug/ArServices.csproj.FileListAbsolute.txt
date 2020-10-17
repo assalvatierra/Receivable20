@@ -1,0 +1,11 @@
+D:\Projects\Receivable20\ArServices\bin\Debug\ArServices.dll
+D:\Projects\Receivable20\ArServices\bin\Debug\ArServices.pdb
+D:\Projects\Receivable20\ArServices\bin\Debug\ArDBLayer.dll
+D:\Projects\Receivable20\ArServices\bin\Debug\ArInterfaces.dll
+D:\Projects\Receivable20\ArServices\bin\Debug\ArDBLayer.pdb
+D:\Projects\Receivable20\ArServices\bin\Debug\ArInterfaces.pdb
+D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.csprojAssemblyReference.cache
+D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.csproj.CoreCompileInputs.cache
+D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.csproj.CopyComplete
+D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.dll
+D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.pdb
