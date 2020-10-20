@@ -180,3 +180,7 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CoreCom
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CopyComplete
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.SqlServer.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.xml
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.SqlServer.xml

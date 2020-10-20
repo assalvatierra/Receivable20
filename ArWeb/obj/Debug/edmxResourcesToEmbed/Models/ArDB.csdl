@@ -5,17 +5,12 @@
     <EntitySet Name="ArTransPosts" EntityType="ArDB.ArTransPost" />
     <EntitySet Name="ArPayments" EntityType="ArDB.ArPayment" />
     <EntitySet Name="ArTransStatus" EntityType="ArDB.ArTransStatus" />
-    <EntitySet Name="ArTransTypes" EntityType="ArDB.ArTransType" />
     <AssociationSet Name="ArTransactionArTransPost" Association="ArDB.ArTransactionArTransPost">
       <End Role="ArTransaction" EntitySet="ArTransactions" />
       <End Role="ArTransPost" EntitySet="ArTransPosts" />
     </AssociationSet>
     <AssociationSet Name="ArTransStatusArTransaction" Association="ArDB.ArTransStatusArTransaction">
       <End Role="ArTransStatus" EntitySet="ArTransStatus" />
-      <End Role="ArTransaction" EntitySet="ArTransactions" />
-    </AssociationSet>
-    <AssociationSet Name="ArTransTypeArTransaction" Association="ArDB.ArTransTypeArTransaction">
-      <End Role="ArTransType" EntitySet="ArTransTypes" />
       <End Role="ArTransaction" EntitySet="ArTransactions" />
     </AssociationSet>
     <EntitySet Name="ArAccounts" EntityType="ArDB.ArAccount" />
@@ -74,8 +69,6 @@
     <NavigationProperty Name="ArTransPosts" Relationship="ArDB.ArTransactionArTransPost" FromRole="ArTransaction" ToRole="ArTransPost" />
     <NavigationProperty Name="ArTransStatu" Relationship="ArDB.ArTransStatusArTransaction" FromRole="ArTransaction" ToRole="ArTransStatus" />
     <Property Name="ArTransStatusId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="ArTransType" Relationship="ArDB.ArTransTypeArTransaction" FromRole="ArTransaction" ToRole="ArTransType" />
-    <Property Name="ArTransTypeId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ArAccount" Relationship="ArDB.ArAccountArTransaction" FromRole="ArTransaction" ToRole="ArAccount" />
     <Property Name="ArAccountId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ArActions" Relationship="ArDB.ArTransactionArAction" FromRole="ArTransaction" ToRole="ArAction" />
@@ -115,14 +108,6 @@
     <Property Name="Status" Type="String" Nullable="false" />
     <NavigationProperty Name="ArTransactions" Relationship="ArDB.ArTransStatusArTransaction" FromRole="ArTransStatus" ToRole="ArTransaction" />
   </EntityType>
-  <EntityType Name="ArTransType">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Type" Type="String" Nullable="false" />
-    <NavigationProperty Name="ArTransactions" Relationship="ArDB.ArTransTypeArTransaction" FromRole="ArTransType" ToRole="ArTransaction" />
-  </EntityType>
   <Association Name="ArTransactionArTransPost">
     <End Type="ArDB.ArTransaction" Role="ArTransaction" Multiplicity="1" />
     <End Type="ArDB.ArTransPost" Role="ArTransPost" Multiplicity="*" />
@@ -144,18 +129,6 @@
       </Principal>
       <Dependent Role="ArTransaction">
         <PropertyRef Name="ArTransStatusId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ArTransTypeArTransaction">
-    <End Type="ArDB.ArTransType" Role="ArTransType" Multiplicity="1" />
-    <End Type="ArDB.ArTransaction" Role="ArTransaction" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ArTransType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ArTransaction">
-        <PropertyRef Name="ArTransTypeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
