@@ -9,3 +9,14 @@ D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.csproj.CoreCompileInput
 D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.csproj.CopyComplete
 D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.dll
 D:\Projects\Receivable20\ArServices\obj\Debug\ArServices.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArServices.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArServices.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArDBLayer.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArInterfaces.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArDBLayer.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArInterfaces.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csprojAssemblyReference.cache
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.CopyComplete
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.pdb

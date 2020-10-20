@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="54ce9716767e4fdbb0cbe03c62e6a539" Name="Diagram1" ZoomLevel="74" >
+        <EntityTypeShape EntityType="ArDB.ArTransaction" Width="1.5" PointX="7.25" PointY="1.625" />
+        <EntityTypeShape EntityType="ArDB.ArTransPost" Width="1.5" PointX="4.625" PointY="1.875" />
+        <EntityTypeShape EntityType="ArDB.ArPayment" Width="1.5" PointX="12.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArDB.ArTransStatus" Width="1.5" PointX="10.125" PointY="5.875" />
+        <AssociationConnector Association="ArDB.ArTransactionArTransPost" />
+        <AssociationConnector Association="ArDB.ArTransStatusArTransaction" />
+        <EntityTypeShape EntityType="ArDB.ArAccount" Width="1.5" PointX="2" PointY="3.75" />
+        <EntityTypeShape EntityType="ArDB.ArAccStatus" Width="1.5" PointX="1" PointY="1.125" />
+        <AssociationConnector Association="ArDB.ArAccountArTransaction" />
+        <AssociationConnector Association="ArDB.ArAccStatusArAccount" />
+        <EntityTypeShape EntityType="ArDB.ArAction" Width="1.5" PointX="7" PointY="7.75" />
+        <EntityTypeShape EntityType="ArDB.ArActionItem" Width="1.5" PointX="4.25" PointY="7.875" />
+        <AssociationConnector Association="ArDB.ArTransactionArAction" />
+        <AssociationConnector Association="ArDB.ArActionItemArAction" />
+        <AssociationConnector Association="ArDB.ArAccountArPayment" />
+        <EntityTypeShape EntityType="ArDB.ArTransPayment" Width="1.5" PointX="10" PointY="2.125" />
+        <AssociationConnector Association="ArDB.ArTransactionArTransPayment" />
+        <AssociationConnector Association="ArDB.ArPaymentArTransPayment" />
+        <EntityTypeShape EntityType="ArDB.ArPaymentType" Width="1.5" PointX="15.375" PointY="1" />
+        <AssociationConnector Association="ArDB.ArPaymentTypeArPayment" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
