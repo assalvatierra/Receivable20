@@ -1,6 +1,5 @@
 D:\Projects\Receivable20\ArInterfaces\bin\Debug\ArInterfaces.dll
 D:\Projects\Receivable20\ArInterfaces\bin\Debug\ArInterfaces.pdb
-D:\Projects\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csprojAssemblyReference.cache
 D:\Projects\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CoreCompileInputs.cache
 D:\Projects\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.dll
 D:\Projects\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.pdb
