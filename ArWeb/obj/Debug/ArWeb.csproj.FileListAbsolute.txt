@@ -164,7 +164,6 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.WebPages.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\WebGrease.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArDBLayer.pdb
-C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArDBLayer.dll.config
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArInterfaces.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArServices.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.xml
@@ -187,3 +186,6 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CoreCom
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CopyComplete
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArModels.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArModels.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArModels.dll.config

@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -63,91 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Models\ArAccount.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArAccStatus.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArAction.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArActionItem.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArDB.Context.cs">
-      <DependentUpon>ArDB.Context.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Models\ArDB.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Models\ArDB.Designer.cs">
-      <DependentUpon>ArDB.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Models\ArPayment.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArPaymentType.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArTransaction.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArTransPayment.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArTransPost.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArTransStatus.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
+    <Compile Include="AccountDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ArInterfaces\ArInterfaces.csproj">
-      <Project>{8d86ba9c-d048-4484-a858-b3623587bceb}</Project>
-      <Name>ArInterfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\ArDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ArDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Data\ARDB-2020.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ARDB-2020_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>ARDB-2020.mdf</DependentUpon>
-    </Content>
-    <Content Include="Models\ArDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ArDB.edmx</DependentUpon>
-      <LastGenOutput>ArDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ArDB.edmx.sql" />
-    <Content Include="Models\ArDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ArDB.edmx</DependentUpon>
-      <LastGenOutput>ArDB.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ArDBSql\Initial.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Models\ArDB.edmx.diagram">
-      <DependentUpon>ArDB.edmx</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -162,11 +79,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <ProjectReference Include="..\ArInterfaces\ArInterfaces.csproj">
+      <Project>{8d86ba9c-d048-4484-a858-b3623587bceb}</Project>
+      <Name>ArInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ArModels\ArModels.csproj">
+      <Project>{4b968b7d-9789-48b5-b8be-d5ed78c36ff7}</Project>
+      <Name>ArModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

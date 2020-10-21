@@ -17,7 +17,6 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArDBLayer.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArInterfaces.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\EntityFramework.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArDBLayer.pdb
-C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArDBLayer.dll.config
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArInterfaces.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\EntityFramework.xml
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csprojAssemblyReference.cache
@@ -25,3 +24,6 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.cspr
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.CopyComplete
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArModels.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArModels.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArModels.dll.config
