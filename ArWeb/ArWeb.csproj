@@ -145,58 +145,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ArAccount.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArAccStatus.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArAction.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArActionItem.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ArDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ArDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArPayment.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArPaymentType.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArTransaction.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArTransPayment.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArTransPost.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArTransStatus.cs">
-      <DependentUpon>ArDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ARDB-2020.mdf" />
-    <Content Include="App_Data\ARDB-2020_log.ldf">
-      <DependentUpon>ARDB-2020.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -205,27 +156,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ArDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ArDB.Context.cs</LastGenOutput>
-      <DependentUpon>ArDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\ArDB.edmx.sql" />
-    <Content Include="Models\ArDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ArDB.cs</LastGenOutput>
-      <DependentUpon>ArDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\ArDBSql\Initial.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ArDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ArDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ArDB.edmx.diagram">
-      <DependentUpon>ArDB.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -281,6 +213,10 @@
       <Project>{70d3d823-762f-42b8-9d38-e5b7bf24b351}</Project>
       <Name>ArServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

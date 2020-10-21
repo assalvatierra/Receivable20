@@ -89,6 +89,8 @@ D:\Projects\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CoreCompileInputs.cache
 D:\Projects\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CopyComplete
 D:\Projects\Receivable20\ArWeb\obj\Debug\ArWeb.dll
 D:\Projects\Receivable20\ArWeb\obj\Debug\ArWeb.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\App_Data\ARDB-2020.mdf
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\App_Data\ARDB-2020_log.ldf
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArWeb.dll.config
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArWeb.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArWeb.pdb
@@ -145,6 +147,8 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\Antlr3.Runtime.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArDBLayer.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArInterfaces.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArServices.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.SqlServer.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\Newtonsoft.Json.dll
@@ -160,8 +164,11 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.WebPages.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\WebGrease.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArDBLayer.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArDBLayer.dll.config
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArInterfaces.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArServices.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.xml
+C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.SqlServer.xml
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.Helpers.xml
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.Mvc.xml
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.Optimization.xml
@@ -180,7 +187,3 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CoreCom
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CopyComplete
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.pdb
-C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.dll
-C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.SqlServer.dll
-C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.xml
-C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\EntityFramework.SqlServer.xml

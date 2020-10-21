@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +46,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +64,51 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Models\ArAccount.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArAccStatus.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArAction.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArActionItem.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArDB.Context.cs">
+      <DependentUpon>ArDB.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\ArDB.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\ArDB.Designer.cs">
+      <DependentUpon>ArDB.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\ArPayment.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArPaymentType.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArTransaction.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArTransPayment.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArTransPost.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArTransStatus.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +116,57 @@
       <Project>{8d86ba9c-d048-4484-a858-b3623587bceb}</Project>
       <Name>ArInterfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\ArDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ArDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ARDB-2020.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ARDB-2020_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ARDB-2020.mdf</DependentUpon>
+    </Content>
+    <Content Include="Models\ArDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArDB.edmx</DependentUpon>
+      <LastGenOutput>ArDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ArDB.edmx.sql" />
+    <Content Include="Models\ArDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArDB.edmx</DependentUpon>
+      <LastGenOutput>ArDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ArDBSql\Initial.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ArDB.edmx.diagram">
+      <DependentUpon>ArDB.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

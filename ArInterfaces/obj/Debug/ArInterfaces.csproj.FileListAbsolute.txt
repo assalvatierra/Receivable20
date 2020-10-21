@@ -5,7 +5,6 @@ D:\Projects\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.dll
 D:\Projects\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\ArInterfaces.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\ArInterfaces.pdb
-C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csprojAssemblyReference.cache
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CoreCompileInputs.cache
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.pdb

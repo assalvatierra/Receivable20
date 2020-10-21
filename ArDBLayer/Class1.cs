@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArDBLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,12 @@ namespace ArDBLayer
 {
     public class Class1
     {
+        private ArDBContainer ArDB = new ArDBContainer();
+
+        public void Init()
+        {
+         
+        }
+
     }
 }
