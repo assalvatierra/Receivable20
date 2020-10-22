@@ -8,15 +8,19 @@
 </div>
 
 <div class="row">
-    
+
+    <div class="col-md-4">
+        <h2>Recievables Transactions </h2>
+        <p> Add, remove, and update transactions.</p>
+        <p>
+            @Html.ActionLink("Go to List", "Index", "ArTransactions", null, new { @class = "btn btn-default" })
+        </p>
+    </div>
     <div class="col-md-4">
         <h2>Accounts </h2>
         <p> Add, remove, and update customer accounts.</p>
         <p>
-
-            @Html.ActionLink("Go to List", "Index", "ArAccounts", null, new { @class ="btn btn-default" })
-
-        
+            @Html.ActionLink("Go to List", "Index", "ArAccounts", null, new { @class = "btn btn-default" })
         </p>
     </div>
 </div>

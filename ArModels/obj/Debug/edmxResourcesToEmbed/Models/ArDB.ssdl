@@ -58,13 +58,13 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="InvoiceId" Type="int" Nullable="false" />
-    <Property Name="DtInvoice" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DtInvoice" Type="datetime" Nullable="false" />
     <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="DtEncoded" Type="datetime" Nullable="false" />
     <Property Name="DtDue" Type="datetime" Nullable="false" />
     <Property Name="Amount" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Interval" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IsRepeating" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsRepeating" Type="bit" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArTransStatusId" Type="int" Nullable="false" />
     <Property Name="ArAccountId" Type="int" Nullable="false" />

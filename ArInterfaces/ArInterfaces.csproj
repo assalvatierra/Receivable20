@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="iAccountMgr.cs" />
     <Compile Include="iAccountDb.cs" />
+    <Compile Include="iTransactionDb.cs" />
+    <Compile Include="iTransactionMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

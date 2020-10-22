@@ -11,15 +11,21 @@ namespace ArServices
     public class ReceivableFactory
     {
         iAccountMgr accountMgr;
+        iTransactionMgr transactionMgr;
 
         public ReceivableFactory()
         {
             this.accountMgr = new AccountMgr();
+            this.transactionMgr = new TransactionMgr();
         }
 
         public iAccountMgr AccountMgr
         {
             get { return this.accountMgr; }
+        }
+        public iTransactionMgr TransactionMgr
+        {
+            get { return this.transactionMgr; }
         }
     }
 }

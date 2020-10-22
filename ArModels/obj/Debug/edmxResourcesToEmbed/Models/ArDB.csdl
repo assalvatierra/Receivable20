@@ -58,13 +58,13 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="InvoiceId" Type="Int32" Nullable="false" />
-    <Property Name="DtInvoice" Type="String" Nullable="false" />
+    <Property Name="DtInvoice" Type="DateTime" Nullable="false" />
     <Property Name="Description" Type="String" Nullable="false" MaxLength="80" />
     <Property Name="DtEncoded" Type="DateTime" Nullable="false" />
     <Property Name="DtDue" Type="DateTime" Nullable="false" />
     <Property Name="Amount" Type="String" Nullable="false" />
     <Property Name="Interval" Type="String" Nullable="false" />
-    <Property Name="IsRepeating" Type="String" Nullable="false" />
+    <Property Name="IsRepeating" Type="Boolean" Nullable="false" />
     <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
     <NavigationProperty Name="ArTransPosts" Relationship="ArDB.ArTransactionArTransPost" FromRole="ArTransaction" ToRole="ArTransPost" />
     <NavigationProperty Name="ArTransStatu" Relationship="ArDB.ArTransStatusArTransaction" FromRole="ArTransaction" ToRole="ArTransStatus" />

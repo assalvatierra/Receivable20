@@ -142,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ArAccountsController.cs" />
+    <Compile Include="Controllers\ArTransactionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,13 +158,21 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\daterangepicker.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DateRangePicker\bower.json" />
+    <Content Include="Scripts\DateRangePicker\package.json" />
+    <Content Include="Content\daterangepicker.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
+    <Content Include="Scripts\DateRangePicker\moment.js" />
+    <Content Include="Scripts\DateRangePicker\moment.min.js" />
+    <Content Include="Scripts\DateRangePicker\package.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -174,6 +183,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Transactions\Transaction.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -193,6 +203,11 @@
     <Content Include="Views\ArAccounts\Create.cshtml" />
     <Content Include="Views\ArAccounts\Edit.cshtml" />
     <Content Include="Views\ArAccounts\Delete.cshtml" />
+    <Content Include="Views\ArTransactions\Create.cshtml" />
+    <Content Include="Views\ArTransactions\Delete.cshtml" />
+    <Content Include="Views\ArTransactions\Details.cshtml" />
+    <Content Include="Views\ArTransactions\Edit.cshtml" />
+    <Content Include="Views\ArTransactions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

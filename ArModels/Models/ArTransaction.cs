@@ -24,13 +24,13 @@ namespace ArModels.Models
     
         public int Id { get; set; }
         public int InvoiceId { get; set; }
-        public string DtInvoice { get; set; }
+        public System.DateTime DtInvoice { get; set; }
         public string Description { get; set; }
         public System.DateTime DtEncoded { get; set; }
         public System.DateTime DtDue { get; set; }
         public string Amount { get; set; }
         public string Interval { get; set; }
-        public string IsRepeating { get; set; }
+        public bool IsRepeating { get; set; }
         public string Remarks { get; set; }
         public int ArTransStatusId { get; set; }
         public int ArAccountId { get; set; }
