@@ -104,7 +104,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
-    <Property Name="Landline" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Landline" Type="nvarchar" Nullable="true" MaxLength="40" />
     <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Company" Type="nvarchar" Nullable="true" MaxLength="80" />

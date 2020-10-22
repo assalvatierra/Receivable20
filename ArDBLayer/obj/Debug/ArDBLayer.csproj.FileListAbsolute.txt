@@ -7,8 +7,6 @@ D:\Projects\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.csproj.CoreCompileInputs.
 D:\Projects\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.csproj.CopyComplete
 D:\Projects\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.dll
 D:\Projects\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.pdb
-C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Debug\App_Data\ARDB-2020.mdf
-C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Debug\App_Data\ARDB-2020_log.ldf
 C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Debug\ArDBLayer.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Debug\ArDBLayer.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Debug\ArInterfaces.dll

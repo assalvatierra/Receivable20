@@ -89,8 +89,6 @@ D:\Projects\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CoreCompileInputs.cache
 D:\Projects\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CopyComplete
 D:\Projects\Receivable20\ArWeb\obj\Debug\ArWeb.dll
 D:\Projects\Receivable20\ArWeb\obj\Debug\ArWeb.pdb
-C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\App_Data\ARDB-2020.mdf
-C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\App_Data\ARDB-2020_log.ldf
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArWeb.dll.config
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArWeb.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArWeb.pdb

@@ -14,5 +14,6 @@ namespace ArInterfaces
         bool RemoveAccount(ArAccount account);
         ArAccount GetAccountById(int id);
         List<ArAccount> GetArAccounts();
+        IEnumerable<ArAccStatus> GetArAccStatus();
     }
 }

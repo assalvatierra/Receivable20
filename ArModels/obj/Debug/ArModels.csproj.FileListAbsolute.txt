@@ -1,6 +1,4 @@
 C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.CoreCompileInputs.cache
-C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Debug\App_Data\ARDB-2020.mdf
-C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Debug\App_Data\ARDB-2020_log.ldf
 C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Debug\ArModels.dll.config
 C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Debug\ArModels.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Debug\ArModels.pdb

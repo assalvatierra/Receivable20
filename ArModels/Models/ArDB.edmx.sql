@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/21/2020 10:03:09
--- Generated from EDMX file: C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\Models\ArDB.edmx
+-- Date Created: 10/22/2020 14:56:39
+-- Generated from EDMX file: C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -137,7 +137,7 @@ GO
 CREATE TABLE [dbo].[ArAccounts] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(80)  NOT NULL,
-    [Landline] nvarchar(40)  NOT NULL,
+    [Landline] nvarchar(40)  NULL,
     [Email] nvarchar(80)  NOT NULL,
     [Mobile] nvarchar(40)  NOT NULL,
     [Company] nvarchar(80)  NULL,

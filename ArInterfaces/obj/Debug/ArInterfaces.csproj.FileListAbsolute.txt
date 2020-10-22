@@ -8,8 +8,6 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\ArInterfaces.
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CoreCompileInputs.cache
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.pdb
-C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\App_Data\ARDB-2020.mdf
-C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\App_Data\ARDB-2020_log.ldf
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\ArModels.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\EntityFramework.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\ArModels.pdb

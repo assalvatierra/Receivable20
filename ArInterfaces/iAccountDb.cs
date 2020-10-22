@@ -17,5 +17,6 @@ namespace ArInterfaces
         bool EditAccount(ArAccount account);
         bool RemoveAccount(ArAccount account);
         ArAccount GetAccountById(int id);
+        IQueryable<ArAccStatus> GetAccStatus();
     }
 }

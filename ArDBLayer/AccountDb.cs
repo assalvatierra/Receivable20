@@ -50,12 +50,14 @@ namespace ArDBLayer
                 if (account != null)
                 {
                     db.Entry(account).State = EntityState.Modified;
+                    db.SaveChanges();
                     return true;
                 }
                 return false;
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return false;
             }
         }
@@ -78,6 +80,7 @@ namespace ArDBLayer
                 if (account != null)
                 {
                     db.ArAccounts.Remove(account);
+                    db.SaveChanges();
                     return true;
                 }
                 return true;
@@ -92,6 +95,18 @@ namespace ArDBLayer
             try
             {
                 return db.ArAccounts.Find(id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IQueryable<ArAccStatus> GetAccStatus()
+        {
+            try
+            {
+                return db.ArAccStatus;
             }
             catch
             {

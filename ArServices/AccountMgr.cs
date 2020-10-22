@@ -61,8 +61,9 @@ namespace ArServices
             {
                 return db.GetAccounts().ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return null;
             }
         }
@@ -78,5 +79,19 @@ namespace ArServices
                 return false;
             }
         }
+
+
+        public IEnumerable<ArAccStatus> GetArAccStatus()
+        {
+            try
+            {
+                return db.GetAccStatus().ToList();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }

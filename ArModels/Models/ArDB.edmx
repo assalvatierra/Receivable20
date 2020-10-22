@@ -109,7 +109,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
-    <Property Name="Landline" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="Landline" Type="nvarchar" Nullable="true" MaxLength="40" />
     <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Company" Type="nvarchar" Nullable="true" MaxLength="80" />
@@ -421,7 +421,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
-          <Property Name="Landline" Type="String" Nullable="false" MaxLength="40" />
+          <Property Name="Landline" Type="String" Nullable="true" MaxLength="40" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="80" />
           <Property Name="Mobile" Type="String" Nullable="false" MaxLength="40" />
           <NavigationProperty Name="ArTransactions" Relationship="ArDB.ArAccountArTransaction" FromRole="ArAccount" ToRole="ArTransaction" />
