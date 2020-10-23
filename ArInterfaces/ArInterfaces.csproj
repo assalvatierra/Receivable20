@@ -53,6 +53,8 @@
     <Compile Include="iTransactionMgr.cs" />
     <Compile Include="iTransPaymentDb.cs" />
     <Compile Include="iTransPaymentMgr.cs" />
+    <Compile Include="iTransPostDb.cs" />
+    <Compile Include="iTransPostMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
