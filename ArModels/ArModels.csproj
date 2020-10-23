@@ -126,6 +126,8 @@
       <LastGenOutput>ArDB.cs</LastGenOutput>
     </Content>
     <Content Include="Models\ArDBSql\Initial.sql" />
+    <Content Include="Models\ArDBSql\Rpt.AR.Summary.byCompany.sql" />
+    <Content Include="Models\ArDBSql\Rpt.AR.List.byCompany.sql" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\ArDB.edmx">

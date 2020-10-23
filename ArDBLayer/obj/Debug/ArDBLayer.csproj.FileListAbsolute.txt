@@ -23,3 +23,10 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Debug\ArModels.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Debug\ArModels.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Debug\ArModels.dll.config
+D:\Projects\Receivable20\ArDBLayer\bin\Debug\ArModels.dll
+D:\Projects\Receivable20\ArDBLayer\bin\Debug\EntityFramework.dll
+D:\Projects\Receivable20\ArDBLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\Receivable20\ArDBLayer\bin\Debug\ArModels.pdb
+D:\Projects\Receivable20\ArDBLayer\bin\Debug\ArModels.dll.config
+D:\Projects\Receivable20\ArDBLayer\bin\Debug\EntityFramework.xml
+D:\Projects\Receivable20\ArDBLayer\bin\Debug\EntityFramework.SqlServer.xml
