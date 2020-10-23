@@ -142,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ArAccountsController.cs" />
+    <Compile Include="Controllers\ArPaymentsController.cs" />
     <Compile Include="Controllers\ArTransactionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,6 +184,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Payments\Payments.js" />
     <Content Include="Scripts\Transactions\Transaction.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -208,6 +210,11 @@
     <Content Include="Views\ArTransactions\Details.cshtml" />
     <Content Include="Views\ArTransactions\Edit.cshtml" />
     <Content Include="Views\ArTransactions\Index.cshtml" />
+    <Content Include="Views\ArPayments\Create.cshtml" />
+    <Content Include="Views\ArPayments\Delete.cshtml" />
+    <Content Include="Views\ArPayments\Details.cshtml" />
+    <Content Include="Views\ArPayments\Edit.cshtml" />
+    <Content Include="Views\ArPayments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

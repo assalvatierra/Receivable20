@@ -1,25 +1,43 @@
-﻿using ArModels.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ArModels;
 using ArInterfaces;
-using System.Data.Entity;
+using ArModels.Models;
 
 namespace ArDBLayer
 {
-    public class AccountDb : iAccountDb
+    public class PaymentDb : iPaymentDb
     {
         private ArDBContainer db;
 
-        public AccountDb()
+        public PaymentDb()
         {
             this.db = new ArDBContainer();
         }
-        public AccountDb(ArDBContainer arDB)
+        public PaymentDb(ArDBContainer arDB)
         {
             this.db = arDB;
+        }
+
+        public bool AddPayment(ArPayment payment)
+        {
+            try
+            {
+                if (payment != null)
+                {
+                    db.ArPayments.Add(payment);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool DbDispose()
@@ -28,13 +46,13 @@ namespace ArDBLayer
             return true;
         }
 
-        public bool AddAccount(ArAccount account)
+        public bool EditPayment(ArPayment payment)
         {
             try
             {
-                if (account != null)
+                if (payment != null)
                 {
-                    db.ArAccounts.Add(account);
+                    db.Entry(payment).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     return true;
                 }
@@ -46,77 +64,59 @@ namespace ArDBLayer
             }
         }
 
-
-        public bool EditAccount(ArAccount account)
+        public IQueryable<ArPayment> GetPayment()
         {
             try
             {
-                if (account != null)
+                return db.ArPayments;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public ArPayment GetPaymentById(int id)
+        {
+            try
+            {
+                return db.ArPayments.Find(id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IQueryable<ArPaymentType> GetPaymentTypes()
+        {
+            try
+            {
+                return db.ArPaymentTypes;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public bool RemovePayment(ArPayment payment)
+        {
+
+            try
+            {
+                if (payment != null)
                 {
-                    db.Entry(account).State = EntityState.Modified;
+                    db.ArPayments.Remove(payment);
                     db.SaveChanges();
                     return true;
                 }
                 return false;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-                return false;
-            }
-        }
-
-        public IQueryable<ArAccount> GetAccounts()
-        {
-            try
-            {
-                return db.ArAccounts;
-            }
             catch
-            {
-                return null;
-            }
-        }
-
-        public bool RemoveAccount(ArAccount account)
-        {
-            try {
-                if (account != null)
-                {
-                    db.ArAccounts.Remove(account);
-                    db.SaveChanges();
-                    return true;
-                }
-                return true;
-            } catch
             {
                 return false;
             }
         }
-
-        public ArAccount GetAccountById(int id)
-        {
-            try
-            {
-                return db.ArAccounts.Find(id);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public IQueryable<ArAccStatus> GetAccStatus()
-        {
-            try
-            {
-                return db.ArAccStatus;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
     }
 }
