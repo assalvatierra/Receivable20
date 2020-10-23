@@ -187,3 +187,10 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArModels.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArModels.pdb
 C:\Users\ACER\Documents\GitHub\Receivable20\ArWeb\bin\ArModels.dll.config
+D:\Projects\Receivable20\ArWeb\bin\ArModels.dll
+D:\Projects\Receivable20\ArWeb\bin\EntityFramework.dll
+D:\Projects\Receivable20\ArWeb\bin\EntityFramework.SqlServer.dll
+D:\Projects\Receivable20\ArWeb\bin\ArModels.pdb
+D:\Projects\Receivable20\ArWeb\bin\ArModels.dll.config
+D:\Projects\Receivable20\ArWeb\bin\EntityFramework.xml
+D:\Projects\Receivable20\ArWeb\bin\EntityFramework.SqlServer.xml
