@@ -75,6 +75,9 @@
     <Compile Include="Models\ArActionItem.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArCategory.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ArDB.Context.cs">
       <DependentUpon>ArDB.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>

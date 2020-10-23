@@ -18,6 +18,11 @@ namespace ArServices
             db = new TransactionDb();
         }
 
+        public TransactionMgr(ArDBContainer arDB)
+        {
+            this.db = new TransactionDb(arDB);
+        }
+
         public bool AddTransaction(ArTransaction transaction)
         {
             try

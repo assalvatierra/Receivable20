@@ -18,6 +18,10 @@ namespace ArServices
             db = new PaymentDb();
         }
 
+        public PaymentMgr(ArDBContainer arDB)
+        {
+            db = new PaymentDb(arDB);
+        }
         public bool AddPayment(ArPayment payment)
         {
             try
@@ -89,7 +93,7 @@ namespace ArServices
             }
         }
 
-        public bool RemovePayment(int id)
+        public bool RemovePayment(int? id)
         {
             try
             {

@@ -10,7 +10,6 @@ namespace ArInterfaces
     public interface iPaymentDb
     {
         bool DbDispose();
-
         IQueryable<ArPayment> GetPayment();
         bool AddPayment(ArPayment payment);
         bool EditPayment(ArPayment payment);

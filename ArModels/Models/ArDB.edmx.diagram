@@ -25,6 +25,8 @@
         <AssociationConnector Association="ArDB.ArPaymentArTransPayment" />
         <EntityTypeShape EntityType="ArDB.ArPaymentType" Width="1.5" PointX="15.375" PointY="1" />
         <AssociationConnector Association="ArDB.ArPaymentTypeArPayment" />
+        <EntityTypeShape EntityType="ArDB.ArCategory" Width="1.5" PointX="12.625" PointY="4.25" />
+        <AssociationConnector Association="ArDB.ArCategoryArTransaction" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

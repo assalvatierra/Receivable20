@@ -13,3 +13,6 @@ insert into ArActionItems([Action],[Remarks],[SortNo]) values
 
 insert into ArAccounts([Name],[Landline],[Email],[Mobile],[Company],[Address],[Remarks],[ArAccStatusId]) values
 ('< New Account >', null, 'NA', 'NA', null, null, null, 1);
+
+insert into ArCategories([Name],[Remarks],[SortNo]) values
+('Others', null, 100);

@@ -142,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ArAccountsController.cs" />
+    <Compile Include="Controllers\ArActionsController.cs" />
     <Compile Include="Controllers\ArPaymentsController.cs" />
     <Compile Include="Controllers\ArTransactionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -215,6 +216,11 @@
     <Content Include="Views\ArPayments\Details.cshtml" />
     <Content Include="Views\ArPayments\Edit.cshtml" />
     <Content Include="Views\ArPayments\Index.cshtml" />
+    <Content Include="Views\ArActions\Create.cshtml" />
+    <Content Include="Views\ArActions\Delete.cshtml" />
+    <Content Include="Views\ArActions\Details.cshtml" />
+    <Content Include="Views\ArActions\Edit.cshtml" />
+    <Content Include="Views\ArActions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

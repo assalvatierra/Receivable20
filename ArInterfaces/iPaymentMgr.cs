@@ -11,7 +11,7 @@ namespace ArInterfaces
     {
         bool AddPayment(ArPayment payment);
         bool EditPayment(ArPayment payment);
-        bool RemovePayment(int id);
+        bool RemovePayment(int? id);
         ArPayment GetPaymentById(int? id);
         List<ArPayment> GetPayments();
         IEnumerable<ArPaymentType> GetPaymentTypes();

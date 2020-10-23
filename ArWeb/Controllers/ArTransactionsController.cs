@@ -43,6 +43,7 @@ namespace ArWeb.Controllers
         {
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status");
             ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name");
+            ViewBag.ArCategoryId = new SelectList(ar.CategoryMgr.GetCategories(), "Id", "Name");
             return View();
         }
 
@@ -51,7 +52,7 @@ namespace ArWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId")] ArTransaction arTransaction)
+        public ActionResult Create([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId,ArCategoryId")] ArTransaction arTransaction)
         {
             if (ModelState.IsValid && InputValidation(arTransaction))
             {
@@ -71,6 +72,7 @@ namespace ArWeb.Controllers
 
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status");
             ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name");
+            ViewBag.ArCategoryId = new SelectList(ar.CategoryMgr.GetCategories(), "Id", "Name");
             return View(arTransaction);
         }
 
@@ -88,6 +90,7 @@ namespace ArWeb.Controllers
             }
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status", arTransaction.ArTransStatusId);
             ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name", arTransaction.ArAccountId);
+            ViewBag.ArCategoryId = new SelectList(ar.CategoryMgr.GetCategories(), "Id", "Name", arTransaction.ArCategoryId);
             return View(arTransaction);
         }
 
@@ -96,7 +99,7 @@ namespace ArWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId")] ArTransaction arTransaction)
+        public ActionResult Edit([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId,ArCategoryId")] ArTransaction arTransaction)
         {
             if (ModelState.IsValid && InputValidation(arTransaction))
             {
@@ -105,6 +108,7 @@ namespace ArWeb.Controllers
             }
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status", arTransaction.ArTransStatusId);
             ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name", arTransaction.ArAccountId);
+            ViewBag.ArCategoryId = new SelectList(ar.CategoryMgr.GetCategories(), "Id", "Name", arTransaction.ArCategoryId);
             return View(arTransaction);
         }
 
@@ -149,12 +153,12 @@ namespace ArWeb.Controllers
                 isValid = false;
             }
 
-            if (transaction.Amount.IsNullOrWhiteSpace())
+            if (transaction.Amount < -1 )
             {
                 ModelState.AddModelError("Amount", "Invalid Amount");
                 isValid = false;
             }
-            if (transaction.Interval.IsNullOrWhiteSpace())
+            if (transaction.Interval < 0)
             {
                 ModelState.AddModelError("Interval", "Invalid Interval");
                 isValid = false;

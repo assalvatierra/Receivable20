@@ -59,9 +59,9 @@ namespace ArDBLayer
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+               
                 return false;
             }
         }

@@ -4,21 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ArInterfaces;
+using ArModels.Models;
 
 namespace ArServices
 {
     public class ReceivableFactory
     {
+        private ArDBContainer arDB;
         iAccountMgr accountMgr;
         iTransactionMgr transactionMgr;
         iPaymentMgr paymentMgr;
+        iActionMgr actionMgr;
+        iCategoryMgr categoryMgr;
 
         public ReceivableFactory()
         {
-            this.accountMgr = new AccountMgr();
-            this.transactionMgr = new TransactionMgr();
-            this.paymentMgr = new PaymentMgr();
+            this.arDB = new ArDBContainer();
+            this.accountMgr = new AccountMgr(arDB);
+            this.transactionMgr = new TransactionMgr(arDB);
+            this.paymentMgr = new PaymentMgr(arDB);
+            this.actionMgr = new ActionMgr(arDB);
+            this.categoryMgr = new CategoryMgr(arDB);
         }
 
         public iAccountMgr AccountMgr
@@ -34,6 +40,14 @@ namespace ArServices
         public iPaymentMgr PaymentMgr
         {
             get { return this.paymentMgr; }
+        }
+        public iActionMgr ActionMgr
+        {
+            get { return this.actionMgr; }
+        }
+        public iCategoryMgr CategoryMgr
+        {
+            get { return this.categoryMgr; }
         }
     }
 }

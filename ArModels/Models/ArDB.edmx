@@ -16,6 +16,7 @@
     <EntitySet Name="ArActionItems" EntityType="ArDB.Store.ArActionItems" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArTransPayments" EntityType="ArDB.Store.ArTransPayments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArPaymentTypes" EntityType="ArDB.Store.ArPaymentTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArCategories" EntityType="ArDB.Store.ArCategories" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ArTransactionArTransPost" Association="ArDB.Store.ArTransactionArTransPost">
       <End Role="ArTransaction" EntitySet="ArTransactions" />
       <End Role="ArTransPost" EntitySet="ArTransPosts" />
@@ -56,6 +57,10 @@
       <End Role="ArPaymentType" EntitySet="ArPaymentTypes" />
       <End Role="ArPayment" EntitySet="ArPayments" />
     </AssociationSet>
+    <AssociationSet Name="ArCategoryArTransaction" Association="ArDB.Store.ArCategoryArTransaction">
+      <End Role="ArCategory" EntitySet="ArCategories" />
+      <End Role="ArTransaction" EntitySet="ArTransactions" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ArTransactions">
     <Key>
@@ -67,12 +72,13 @@
     <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="DtEncoded" Type="datetime" Nullable="false" />
     <Property Name="DtDue" Type="datetime" Nullable="false" />
-    <Property Name="Amount" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Interval" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" />
+    <Property Name="Interval" Type="int" Nullable="false" />
     <Property Name="IsRepeating" Type="bit" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArTransStatusId" Type="int" Nullable="false" />
     <Property Name="ArAccountId" Type="int" Nullable="false" />
+    <Property Name="ArCategoryId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ArTransPosts">
     <Key>
@@ -89,10 +95,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DtPayment" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DtPayment" Type="datetime" Nullable="false" />
     <Property Name="Amount" Type="decimal" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
-    <Property Name="Reference" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Reference" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArAccountId" Type="int" Nullable="false" />
     <Property Name="ArPaymentTypeId" Type="int" Nullable="false" />
   </EntityType>
@@ -158,6 +164,15 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="ArCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="SortNo" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ArTransactionArTransPost">
     <End Role="ArTransaction" Type="ArDB.Store.ArTransactions" Multiplicity="1" />
@@ -279,6 +294,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ArCategoryArTransaction">
+    <End Role="ArCategory" Type="ArDB.Store.ArCategories" Multiplicity="1" />
+    <End Role="ArTransaction" Type="ArDB.Store.ArTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArTransaction">
+        <PropertyRef Name="ArCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -334,6 +361,11 @@
             <End Role="ArPaymentType" EntitySet="ArPaymentTypes" />
             <End Role="ArPayment" EntitySet="ArPayments" />
           </AssociationSet>
+          <EntitySet Name="ArCategories" EntityType="ArDB.ArCategory" />
+          <AssociationSet Name="ArCategoryArTransaction" Association="ArDB.ArCategoryArTransaction">
+            <End Role="ArCategory" EntitySet="ArCategories" />
+            <End Role="ArTransaction" EntitySet="ArTransactions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ArTransaction">
           <Key>
@@ -345,8 +377,8 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="80" />
           <Property Name="DtEncoded" Type="DateTime" Nullable="false" />
           <Property Name="DtDue" Type="DateTime" Nullable="false" />
-          <Property Name="Amount" Type="String" Nullable="false" />
-          <Property Name="Interval" Type="String" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <Property Name="Interval" Type="Int32" Nullable="false" />
           <Property Name="IsRepeating" Type="Boolean" Nullable="false" />
           <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
           <NavigationProperty Name="ArTransPosts" Relationship="ArDB.ArTransactionArTransPost" FromRole="ArTransaction" ToRole="ArTransPost" />
@@ -356,6 +388,8 @@
           <Property Name="ArAccountId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ArActions" Relationship="ArDB.ArTransactionArAction" FromRole="ArTransaction" ToRole="ArAction" />
           <NavigationProperty Name="ArTransPayments" Relationship="ArDB.ArTransactionArTransPayment" FromRole="ArTransaction" ToRole="ArTransPayment" />
+          <NavigationProperty Name="ArCategory" Relationship="ArDB.ArCategoryArTransaction" FromRole="ArTransaction" ToRole="ArCategory" />
+          <Property Name="ArCategoryId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ArTransPost">
           <Key>
@@ -373,11 +407,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DtPayment" Type="String" Nullable="false" />
+          <Property Name="DtPayment" Type="DateTime" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Nullable="false" />
           <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
           <NavigationProperty Name="ArAccount" Relationship="ArDB.ArAccountArPayment" FromRole="ArPayment" ToRole="ArAccount" />
-          <Property Name="Reference" Type="String" Nullable="false" MaxLength="80" />
+          <Property Name="Reference" Type="String" Nullable="true" MaxLength="80" />
           <Property Name="ArAccountId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ArTransPayments" Relationship="ArDB.ArPaymentArTransPayment" FromRole="ArPayment" ToRole="ArTransPayment" />
           <NavigationProperty Name="ArPaymentType" Relationship="ArDB.ArPaymentTypeArPayment" FromRole="ArPayment" ToRole="ArPaymentType" />
@@ -577,6 +611,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ArCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="80" />
+          <Property Name="SortNo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArTransactions" Relationship="ArDB.ArCategoryArTransaction" FromRole="ArCategory" ToRole="ArTransaction" />
+        </EntityType>
+        <Association Name="ArCategoryArTransaction">
+          <End Type="ArDB.ArCategory" Role="ArCategory" Multiplicity="1" />
+          <End Type="ArDB.ArTransaction" Role="ArTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArTransaction">
+              <PropertyRef Name="ArCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -598,6 +654,7 @@
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="ArTransStatusId" ColumnName="ArTransStatusId" />
           <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
+          <ScalarProperty Name="ArCategoryId" ColumnName="ArCategoryId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -692,6 +749,16 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArCategory)">
+        <MappingFragment StoreEntitySet="ArCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="SortNo" ColumnName="SortNo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

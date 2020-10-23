@@ -21,7 +21,7 @@ namespace ArModels.Models
         }
     
         public int Id { get; set; }
-        public string DtPayment { get; set; }
+        public System.DateTime DtPayment { get; set; }
         public decimal Amount { get; set; }
         public string Remarks { get; set; }
         public string Reference { get; set; }

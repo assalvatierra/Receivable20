@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountMgr.cs" />
+    <Compile Include="ActionMgr.cs" />
+    <Compile Include="CategoryMgr.cs" />
     <Compile Include="PaymentMgr.cs" />
     <Compile Include="ReceivableFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

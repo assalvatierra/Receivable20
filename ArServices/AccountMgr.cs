@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ArInterfaces;
-using ArModels;
 using ArModels.Models;
 using ArDBLayer;
 
@@ -17,6 +16,10 @@ namespace ArServices
         public AccountMgr()
         {
             db = new AccountDb();
+        }
+        public AccountMgr(ArDBContainer arDB)
+        {
+            db = new AccountDb(arDB);
         }
 
         public bool AddAccount(ArAccount account)
@@ -61,9 +64,9 @@ namespace ArServices
             {
                 return db.GetAccounts().ToList();
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                
                 return null;
             }
         }

@@ -16,6 +16,7 @@
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="ArTransStatusId" ColumnName="ArTransStatusId" />
           <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
+          <ScalarProperty Name="ArCategoryId" ColumnName="ArCategoryId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -110,6 +111,16 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArCategory)">
+        <MappingFragment StoreEntitySet="ArCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="SortNo" ColumnName="SortNo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

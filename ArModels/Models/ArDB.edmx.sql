@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/22/2020 17:16:53
+-- Date Created: 10/23/2020 14:57:47
 -- Generated from EDMX file: C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
@@ -47,6 +47,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ArPaymentTypeArPayment]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ArPayments] DROP CONSTRAINT [FK_ArPaymentTypeArPayment];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ArCategoryArTransaction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArTransactions] DROP CONSTRAINT [FK_ArCategoryArTransaction];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -82,6 +85,9 @@ GO
 IF OBJECT_ID(N'[dbo].[ArPaymentTypes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ArPaymentTypes];
 GO
+IF OBJECT_ID(N'[dbo].[ArTransCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArTransCategories];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -95,12 +101,13 @@ CREATE TABLE [dbo].[ArTransactions] (
     [Description] nvarchar(80)  NOT NULL,
     [DtEncoded] datetime  NOT NULL,
     [DtDue] datetime  NOT NULL,
-    [Amount] nvarchar(max)  NOT NULL,
-    [Interval] nvarchar(max)  NOT NULL,
+    [Amount] decimal(18,0)  NOT NULL,
+    [Interval] int  NOT NULL,
     [IsRepeating] bit  NOT NULL,
     [Remarks] nvarchar(80)  NULL,
     [ArTransStatusId] int  NOT NULL,
-    [ArAccountId] int  NOT NULL
+    [ArAccountId] int  NOT NULL,
+    [ArCategoryId] int  NOT NULL
 );
 GO
 
@@ -117,10 +124,10 @@ GO
 -- Creating table 'ArPayments'
 CREATE TABLE [dbo].[ArPayments] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [DtPayment] nvarchar(max)  NOT NULL,
+    [DtPayment] datetime  NOT NULL,
     [Amount] decimal(18,0)  NOT NULL,
     [Remarks] nvarchar(80)  NULL,
-    [Reference] nvarchar(80)  NOT NULL,
+    [Reference] nvarchar(80)  NULL,
     [ArAccountId] int  NOT NULL,
     [ArPaymentTypeId] int  NOT NULL
 );
@@ -189,6 +196,15 @@ CREATE TABLE [dbo].[ArPaymentTypes] (
 );
 GO
 
+-- Creating table 'ArCategories'
+CREATE TABLE [dbo].[ArCategories] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(80)  NOT NULL,
+    [Remarks] nvarchar(80)  NOT NULL,
+    [SortNo] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -250,6 +266,12 @@ GO
 -- Creating primary key on [Id] in table 'ArPaymentTypes'
 ALTER TABLE [dbo].[ArPaymentTypes]
 ADD CONSTRAINT [PK_ArPaymentTypes]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ArCategories'
+ALTER TABLE [dbo].[ArCategories]
+ADD CONSTRAINT [PK_ArCategories]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -405,6 +427,21 @@ GO
 CREATE INDEX [IX_FK_ArPaymentTypeArPayment]
 ON [dbo].[ArPayments]
     ([ArPaymentTypeId]);
+GO
+
+-- Creating foreign key on [ArCategoryId] in table 'ArTransactions'
+ALTER TABLE [dbo].[ArTransactions]
+ADD CONSTRAINT [FK_ArCategoryArTransaction]
+    FOREIGN KEY ([ArCategoryId])
+    REFERENCES [dbo].[ArCategories]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArCategoryArTransaction'
+CREATE INDEX [IX_FK_ArCategoryArTransaction]
+ON [dbo].[ArTransactions]
+    ([ArCategoryId]);
 GO
 
 -- --------------------------------------------------

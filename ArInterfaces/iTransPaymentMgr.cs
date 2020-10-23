@@ -14,5 +14,5 @@ namespace ArInterfaces
         bool RemoveTransPayment(ArTransPayment transPayment);
         ArTransPayment GetTransPaymentById(int id);
         List<ArTransPayment> GetTransPayments();
-    }
+    } 
 }

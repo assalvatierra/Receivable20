@@ -28,12 +28,13 @@ namespace ArModels.Models
         public string Description { get; set; }
         public System.DateTime DtEncoded { get; set; }
         public System.DateTime DtDue { get; set; }
-        public string Amount { get; set; }
-        public string Interval { get; set; }
+        public decimal Amount { get; set; }
+        public int Interval { get; set; }
         public bool IsRepeating { get; set; }
         public string Remarks { get; set; }
         public int ArTransStatusId { get; set; }
         public int ArAccountId { get; set; }
+        public int ArCategoryId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArTransPost> ArTransPosts { get; set; }
@@ -43,5 +44,6 @@ namespace ArModels.Models
         public virtual ICollection<ArAction> ArActions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArTransPayment> ArTransPayments { get; set; }
+        public virtual ArCategory ArCategory { get; set; }
     }
 }

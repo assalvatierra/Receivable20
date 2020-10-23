@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="iAccountMgr.cs" />
     <Compile Include="iAccountDb.cs" />
+    <Compile Include="iActionDb.cs" />
+    <Compile Include="iActionMgr.cs" />
+    <Compile Include="iCategoryDb.cs" />
+    <Compile Include="iCategoryMgr.cs" />
     <Compile Include="iPaymentDb.cs" />
     <Compile Include="iPaymentMgr.cs" />
     <Compile Include="iTransactionDb.cs" />
