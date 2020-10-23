@@ -62,6 +62,31 @@ namespace ArWeb.Controllers
             return View(account);
         }
 
+
+        // GET: ArAccounts/Create
+        public ActionResult CreateAccTrans( int transId )
+        {
+            ViewBag.TransId = transId;
+            ViewBag.ArAccStatusId = new SelectList(ar.AccountMgr.GetArAccStatus(), "Id", "Status");
+            return View();
+        }
+
+        // POST: ArAccounts/Create
+        [HttpPost]
+        public ActionResult CreateAccTrans([Bind(Include = "Id,Name,Landline,Email,Mobile,Company,Address,Remarks,ArAccStatusId")] ArAccount account, int transId)
+        {
+            if (ModelState.IsValid && InputValidation(account))
+            {
+                ar.AccountMgr.AddAccount(account);
+
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.TransId = transId;
+            ViewBag.ArAccStatusId = new SelectList(ar.AccountMgr.GetArAccStatus(), "Id", "Status", account.ArAccStatusId);
+            return View(account);
+        }
+
         // GET: ArAccounts/Edit/5
         public ActionResult Edit(int? id)
         {

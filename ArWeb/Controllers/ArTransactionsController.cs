@@ -55,7 +55,17 @@ namespace ArWeb.Controllers
         {
             if (ModelState.IsValid && InputValidation(arTransaction))
             {
-                ar.TransactionMgr.AddTransaction(arTransaction);
+
+                //new account
+                if (arTransaction.ArAccountId == 1)
+                {
+                    return RedirectToAction("CreateAccTrans", "ArAccout", new { transactionId = arTransaction.Id });
+                }
+                else
+                {
+                    ar.TransactionMgr.AddTransaction(arTransaction);
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -149,7 +159,6 @@ namespace ArWeb.Controllers
                 ModelState.AddModelError("Interval", "Invalid Interval");
                 isValid = false;
             }
-
 
 
             return isValid;

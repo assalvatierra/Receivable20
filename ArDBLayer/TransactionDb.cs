@@ -17,6 +17,10 @@ namespace ArDBLayer
         {
             this.db = new ArDBContainer();
         }
+        public TransactionDb(ArDBContainer arDB)
+        {
+            this.db = arDB;
+        }
 
         public bool AddTransaction(ArTransaction transaction)
         {

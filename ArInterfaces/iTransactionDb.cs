@@ -17,5 +17,6 @@ namespace ArInterfaces
         ArTransaction GetTransactionById(int id);
         IQueryable<ArTransaction> GetTransactions();
         IQueryable<ArTransStatus> GetTransactionStatus();
+
     }
 }

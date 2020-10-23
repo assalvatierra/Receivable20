@@ -43,8 +43,12 @@
   <ItemGroup>
     <Compile Include="iAccountMgr.cs" />
     <Compile Include="iAccountDb.cs" />
+    <Compile Include="iPaymentDb.cs" />
+    <Compile Include="iPaymentMgr.cs" />
     <Compile Include="iTransactionDb.cs" />
     <Compile Include="iTransactionMgr.cs" />
+    <Compile Include="iTransPaymentDb.cs" />
+    <Compile Include="iTransPaymentMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
