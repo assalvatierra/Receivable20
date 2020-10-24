@@ -47,6 +47,18 @@ namespace ArServices
             }
         }
 
+        public int GetTransAccountId(int id)
+        {
+            try
+            {
+                return GetTransactionById(id).ArAccountId;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public ArTransaction GetTransactionById(int id)
         {
             try
@@ -65,8 +77,9 @@ namespace ArServices
             {
                 return db.GetTransactions().ToList();
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return null;
             }
         }
@@ -88,6 +101,24 @@ namespace ArServices
             try
             {
                 return db.DeleteTransaction(transaction);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateTransAcc(int transactionId, int accountId)
+        {
+            try
+            {
+                //get transaction
+                ArTransaction transaction = GetTransactionById(transactionId);
+                //edit transaction account id
+                transaction.ArAccountId = accountId;
+                //update transaction
+                return EditTransaction(transaction);
+
             }
             catch
             {

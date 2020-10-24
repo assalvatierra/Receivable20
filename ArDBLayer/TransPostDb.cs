@@ -27,7 +27,7 @@ namespace ArDBLayer
         {
             try
             {
-                if (transPost != null)
+                if (transPost == null)
                 {
                     return false;
                 }

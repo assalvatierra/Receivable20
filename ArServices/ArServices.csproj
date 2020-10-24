@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ArServices</RootNamespace>
     <AssemblyName>ArServices</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +45,7 @@
     <Compile Include="AccountMgr.cs" />
     <Compile Include="ActionMgr.cs" />
     <Compile Include="CategoryMgr.cs" />
+    <Compile Include="TransPaymentMgr.cs" />
     <Compile Include="TransPostMgr.cs" />
     <Compile Include="PaymentMgr.cs" />
     <Compile Include="ReceivableFactory.cs" />

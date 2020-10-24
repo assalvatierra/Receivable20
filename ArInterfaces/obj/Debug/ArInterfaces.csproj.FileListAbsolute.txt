@@ -22,3 +22,15 @@ D:\Projects\Receivable20\ArInterfaces\bin\Debug\ArModels.dll.config
 D:\Projects\Receivable20\ArInterfaces\bin\Debug\EntityFramework.xml
 D:\Projects\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csprojAssemblyReference.cache
 D:\Projects\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CopyComplete
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\bin\Debug\ArInterfaces.dll
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\bin\Debug\ArInterfaces.pdb
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\bin\Debug\ArModels.dll
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\bin\Debug\EntityFramework.dll
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\bin\Debug\ArModels.pdb
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\bin\Debug\ArModels.dll.config
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\bin\Debug\EntityFramework.xml
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CoreCompileInputs.cache
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CopyComplete
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.dll
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.pdb
+C:\Users\VILLOSA\source\repos\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csprojAssemblyReference.cache

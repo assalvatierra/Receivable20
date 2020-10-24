@@ -16,6 +16,7 @@ namespace ArInterfaces
         List<ArPayment> GetPayments();
         IEnumerable<ArPaymentType> GetPaymentTypes();
         bool DbDispose();
+
     } 
 
 }

@@ -28,7 +28,7 @@ namespace ArDBLayer
         {
             try
             {
-                if (transPayment != null)
+                if (transPayment == null)
                 {
                     return false;
                 }
@@ -37,8 +37,9 @@ namespace ArDBLayer
                 db.SaveChanges();
                 return true;
             }
-            catch
+            catch (Exception ex )
             {
+                throw ex;
                 return false;
             }
         }

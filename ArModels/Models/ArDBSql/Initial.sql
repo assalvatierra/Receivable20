@@ -15,4 +15,4 @@ insert into ArAccounts([Name],[Landline],[Email],[Mobile],[Company],[Address],[R
 ('< New Account >', null, 'NA', 'NA', null, null, null, 1);
 
 insert into ArCategories([Name],[Remarks],[SortNo]) values
-('Others', null, 100);
+('Others', '', 100);
