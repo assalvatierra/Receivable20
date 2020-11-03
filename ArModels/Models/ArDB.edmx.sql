@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/23/2020 14:57:47
+-- Date Created: 10/26/2020 11:06:37
 -- Generated from EDMX file: C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
@@ -85,8 +85,8 @@ GO
 IF OBJECT_ID(N'[dbo].[ArPaymentTypes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ArPaymentTypes];
 GO
-IF OBJECT_ID(N'[dbo].[ArTransCategories]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ArTransCategories];
+IF OBJECT_ID(N'[dbo].[ArCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArCategories];
 GO
 
 -- --------------------------------------------------
@@ -101,7 +101,7 @@ CREATE TABLE [dbo].[ArTransactions] (
     [Description] nvarchar(80)  NOT NULL,
     [DtEncoded] datetime  NOT NULL,
     [DtDue] datetime  NOT NULL,
-    [Amount] decimal(18,0)  NOT NULL,
+    [Amount] decimal(2,0)  NOT NULL,
     [Interval] int  NOT NULL,
     [IsRepeating] bit  NOT NULL,
     [Remarks] nvarchar(80)  NULL,
@@ -115,8 +115,8 @@ GO
 CREATE TABLE [dbo].[ArTransPosts] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DtPost] datetime  NOT NULL,
-    [Amount] decimal(18,0)  NOT NULL,
-    [Balance] decimal(18,0)  NOT NULL,
+    [Amount] decimal(2,0)  NOT NULL,
+    [Balance] decimal(2,0)  NOT NULL,
     [ArTransactionId] int  NOT NULL
 );
 GO
@@ -125,7 +125,7 @@ GO
 CREATE TABLE [dbo].[ArPayments] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DtPayment] datetime  NOT NULL,
-    [Amount] decimal(18,0)  NOT NULL,
+    [Amount] decimal(2,0)  NOT NULL,
     [Remarks] nvarchar(80)  NULL,
     [Reference] nvarchar(80)  NULL,
     [ArAccountId] int  NOT NULL,

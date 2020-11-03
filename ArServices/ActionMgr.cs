@@ -110,5 +110,41 @@ namespace ArServices
                 return false;
             }
         }
+
+        public bool AddAction(int actionId, DateTime dtPreformed, string performedBy, int transactionId)
+        {
+            try
+            {
+                ArAction action = new ArAction();
+                action.ArActionItemId = actionId;
+                action.DtPerformed = dtPreformed;
+                action.PreformedBy = performedBy;
+                action.ArTransactionId = transactionId;
+
+                return AddAction(action);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public ArAction GetTransLastAction(int transId)
+        {
+            try
+            {
+                var actionList = db.GetActions().Where(a => a.ArTransactionId == transId).OrderByDescending(a=>a.DtPerformed).ToList();
+
+                if(actionList != null)
+                {
+                    return actionList.LastOrDefault();
+                }
+                return new ArAction { ArActionItemId = 1 };
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

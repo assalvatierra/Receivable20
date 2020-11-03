@@ -36,5 +36,6 @@ namespace ArModels.Models
         public virtual DbSet<ArTransPayment> ArTransPayments { get; set; }
         public virtual DbSet<ArPaymentType> ArPaymentTypes { get; set; }
         public virtual DbSet<ArCategory> ArCategories { get; set; }
+
     }
 }

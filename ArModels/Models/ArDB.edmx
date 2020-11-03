@@ -72,7 +72,7 @@
     <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="DtEncoded" Type="datetime" Nullable="false" />
     <Property Name="DtDue" Type="datetime" Nullable="false" />
-    <Property Name="Amount" Type="decimal" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Precision="2" />
     <Property Name="Interval" Type="int" Nullable="false" />
     <Property Name="IsRepeating" Type="bit" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
@@ -86,8 +86,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DtPost" Type="datetime" Nullable="false" />
-    <Property Name="Amount" Type="decimal" Nullable="false" />
-    <Property Name="Balance" Type="decimal" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Precision="2" />
+    <Property Name="Balance" Type="decimal" Nullable="false" Precision="2" />
     <Property Name="ArTransactionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ArPayments">
@@ -96,7 +96,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DtPayment" Type="datetime" Nullable="false" />
-    <Property Name="Amount" Type="decimal" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Precision="2" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="Reference" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArAccountId" Type="int" Nullable="false" />
@@ -377,7 +377,7 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="80" />
           <Property Name="DtEncoded" Type="DateTime" Nullable="false" />
           <Property Name="DtDue" Type="DateTime" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="2" />
           <Property Name="Interval" Type="Int32" Nullable="false" />
           <Property Name="IsRepeating" Type="Boolean" Nullable="false" />
           <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
@@ -397,8 +397,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DtPost" Type="DateTime" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" />
-          <Property Name="Balance" Type="Decimal" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="2" />
+          <Property Name="Balance" Type="Decimal" Nullable="false" Precision="2" />
           <NavigationProperty Name="ArTransaction" Relationship="ArDB.ArTransactionArTransPost" FromRole="ArTransPost" ToRole="ArTransaction" />
           <Property Name="ArTransactionId" Type="Int32" Nullable="false" />
         </EntityType>
@@ -408,7 +408,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DtPayment" Type="DateTime" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="2" />
           <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
           <NavigationProperty Name="ArAccount" Relationship="ArDB.ArAccountArPayment" FromRole="ArPayment" ToRole="ArAccount" />
           <Property Name="Reference" Type="String" Nullable="true" MaxLength="80" />

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ArDBStoreContainer" CdmEntityContainer="ArDBContainer">
+    <EntitySetMapping Name="ArTransactions">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArTransaction)">
+        <MappingFragment StoreEntitySet="ArTransactions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="DtInvoice" ColumnName="DtInvoice" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DtEncoded" ColumnName="DtEncoded" />
+          <ScalarProperty Name="DtDue" ColumnName="DtDue" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Interval" ColumnName="Interval" />
+          <ScalarProperty Name="IsRepeating" ColumnName="IsRepeating" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ArTransStatusId" ColumnName="ArTransStatusId" />
+          <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
+          <ScalarProperty Name="ArCategoryId" ColumnName="ArCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArTransPosts">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArTransPost)">
+        <MappingFragment StoreEntitySet="ArTransPosts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DtPost" ColumnName="DtPost" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="ArTransactionId" ColumnName="ArTransactionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArPayments">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArPayment)">
+        <MappingFragment StoreEntitySet="ArPayments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DtPayment" ColumnName="DtPayment" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
+          <ScalarProperty Name="ArPaymentTypeId" ColumnName="ArPaymentTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArTransStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArTransStatus)">
+        <MappingFragment StoreEntitySet="ArTransStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArAccounts">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArAccount)">
+        <MappingFragment StoreEntitySet="ArAccounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Landline" ColumnName="Landline" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ArAccStatusId" ColumnName="ArAccStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArAccStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArAccStatus)">
+        <MappingFragment StoreEntitySet="ArAccStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArActions">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArAction)">
+        <MappingFragment StoreEntitySet="ArActions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DtPerformed" ColumnName="DtPerformed" />
+          <ScalarProperty Name="PreformedBy" ColumnName="PreformedBy" />
+          <ScalarProperty Name="ArTransactionId" ColumnName="ArTransactionId" />
+          <ScalarProperty Name="ArActionItemId" ColumnName="ArActionItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArActionItems">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArActionItem)">
+        <MappingFragment StoreEntitySet="ArActionItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArTransPayments">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArTransPayment)">
+        <MappingFragment StoreEntitySet="ArTransPayments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArTransactionId" ColumnName="ArTransactionId" />
+          <ScalarProperty Name="ArPaymentId" ColumnName="ArPaymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArPaymentTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArPaymentType)">
+        <MappingFragment StoreEntitySet="ArPaymentTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArCategory)">
+        <MappingFragment StoreEntitySet="ArCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
