@@ -1,0 +1,16 @@
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\ArDBLayer.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\ArDBLayer.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\ArInterfaces.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\ArModels.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\EntityFramework.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\ArInterfaces.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\ArModels.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\ArModels.dll.config
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\EntityFramework.xml
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.csprojAssemblyReference.cache
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.csproj.CopyComplete
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.pdb

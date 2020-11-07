@@ -1,0 +1,12 @@
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Release\ArModels.dll.config
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Release\ArModels.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Release\ArModels.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Release\EntityFramework.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Release\EntityFramework.xml
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Release\ArModels.csprojAssemblyReference.cache
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Release\ArModels.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Release\ArModels.csproj.CopyComplete
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Release\ArModels.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Release\ArModels.pdb
