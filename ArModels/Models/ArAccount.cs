@@ -19,6 +19,8 @@ namespace ArModels.Models
         {
             this.ArTransactions = new HashSet<ArTransaction>();
             this.ArPayments = new HashSet<ArPayment>();
+            this.ArAccntCredits = new HashSet<ArAccntCredit>();
+            this.ArAccntPaymentTerms = new HashSet<ArAccntTerm>();
         }
     
         public int Id { get; set; }
@@ -36,5 +38,9 @@ namespace ArModels.Models
         public virtual ArAccStatus ArAccStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArPayment> ArPayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ArAccntCredit> ArAccntCredits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ArAccntTerm> ArAccntPaymentTerms { get; set; }
     }
 }

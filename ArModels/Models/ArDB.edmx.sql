@@ -2,14 +2,14 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/23/2020 14:57:47
--- Generated from EDMX file: C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
+-- Date Created: 11/07/2020 21:09:44
+-- Generated from EDMX file: D:\Projects\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [ARDB-2020];
-GO
+--USE [ARDB-2020];
+--GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
 
@@ -50,6 +50,18 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ArCategoryArTransaction]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ArTransactions] DROP CONSTRAINT [FK_ArCategoryArTransaction];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ArAccountArAccntCredit]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArAccntCredits] DROP CONSTRAINT [FK_ArAccountArAccntCredit];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ArCreditStatusArAccntCredit]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArAccntCredits] DROP CONSTRAINT [FK_ArCreditStatusArAccntCredit];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ArAccountArAccntPaymentTerm]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArAccntTerms] DROP CONSTRAINT [FK_ArAccountArAccntPaymentTerm];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ArAccntTermStatusArAccntPaymentTerm]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArAccntTerms] DROP CONSTRAINT [FK_ArAccntTermStatusArAccntPaymentTerm];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -85,8 +97,20 @@ GO
 IF OBJECT_ID(N'[dbo].[ArPaymentTypes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ArPaymentTypes];
 GO
-IF OBJECT_ID(N'[dbo].[ArTransCategories]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ArTransCategories];
+IF OBJECT_ID(N'[dbo].[ArCategories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArCategories];
+GO
+IF OBJECT_ID(N'[dbo].[ArAccntCredits]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArAccntCredits];
+GO
+IF OBJECT_ID(N'[dbo].[ArCreditStatus]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArCreditStatus];
+GO
+IF OBJECT_ID(N'[dbo].[ArAccntTerms]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArAccntTerms];
+GO
+IF OBJECT_ID(N'[dbo].[ArAccntTermStatus]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArAccntTermStatus];
 GO
 
 -- --------------------------------------------------
@@ -157,7 +181,7 @@ GO
 -- Creating table 'ArAccStatus'
 CREATE TABLE [dbo].[ArAccStatus] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Status] nvarchar(max)  NOT NULL
+    [Status] nvarchar(10)  NOT NULL
 );
 GO
 
@@ -202,6 +226,45 @@ CREATE TABLE [dbo].[ArCategories] (
     [Name] nvarchar(80)  NOT NULL,
     [Remarks] nvarchar(80)  NOT NULL,
     [SortNo] int  NOT NULL
+);
+GO
+
+-- Creating table 'ArAccntCredits'
+CREATE TABLE [dbo].[ArAccntCredits] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [ArAccountId] int  NOT NULL,
+    [DtCredit] datetime  NOT NULL,
+    [CreditLimit] decimal(18,0)  NOT NULL,
+    [OverLimitAllowed] decimal(18,0)  NOT NULL,
+    [CreditWarning] decimal(18,0)  NOT NULL,
+    [ApprovedBy] nvarchar(80)  NULL,
+    [ArCreditStatusId] int  NOT NULL
+);
+GO
+
+-- Creating table 'ArCreditStatus'
+CREATE TABLE [dbo].[ArCreditStatus] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Status] nvarchar(10)  NOT NULL
+);
+GO
+
+-- Creating table 'ArAccntTerms'
+CREATE TABLE [dbo].[ArAccntTerms] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [dtTerm] datetime  NOT NULL,
+    [NoOfDays] int  NOT NULL,
+    [Remarks] nvarchar(150)  NULL,
+    [ArAccountId] int  NOT NULL,
+    [ApprovedBy] nvarchar(max)  NOT NULL,
+    [ArAccntTermStatusId] int  NOT NULL
+);
+GO
+
+-- Creating table 'ArAccntTermStatus'
+CREATE TABLE [dbo].[ArAccntTermStatus] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Status] nvarchar(10)  NOT NULL
 );
 GO
 
@@ -272,6 +335,30 @@ GO
 -- Creating primary key on [Id] in table 'ArCategories'
 ALTER TABLE [dbo].[ArCategories]
 ADD CONSTRAINT [PK_ArCategories]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ArAccntCredits'
+ALTER TABLE [dbo].[ArAccntCredits]
+ADD CONSTRAINT [PK_ArAccntCredits]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ArCreditStatus'
+ALTER TABLE [dbo].[ArCreditStatus]
+ADD CONSTRAINT [PK_ArCreditStatus]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ArAccntTerms'
+ALTER TABLE [dbo].[ArAccntTerms]
+ADD CONSTRAINT [PK_ArAccntTerms]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ArAccntTermStatus'
+ALTER TABLE [dbo].[ArAccntTermStatus]
+ADD CONSTRAINT [PK_ArAccntTermStatus]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -442,6 +529,66 @@ GO
 CREATE INDEX [IX_FK_ArCategoryArTransaction]
 ON [dbo].[ArTransactions]
     ([ArCategoryId]);
+GO
+
+-- Creating foreign key on [ArAccountId] in table 'ArAccntCredits'
+ALTER TABLE [dbo].[ArAccntCredits]
+ADD CONSTRAINT [FK_ArAccountArAccntCredit]
+    FOREIGN KEY ([ArAccountId])
+    REFERENCES [dbo].[ArAccounts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArAccountArAccntCredit'
+CREATE INDEX [IX_FK_ArAccountArAccntCredit]
+ON [dbo].[ArAccntCredits]
+    ([ArAccountId]);
+GO
+
+-- Creating foreign key on [ArCreditStatusId] in table 'ArAccntCredits'
+ALTER TABLE [dbo].[ArAccntCredits]
+ADD CONSTRAINT [FK_ArCreditStatusArAccntCredit]
+    FOREIGN KEY ([ArCreditStatusId])
+    REFERENCES [dbo].[ArCreditStatus]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArCreditStatusArAccntCredit'
+CREATE INDEX [IX_FK_ArCreditStatusArAccntCredit]
+ON [dbo].[ArAccntCredits]
+    ([ArCreditStatusId]);
+GO
+
+-- Creating foreign key on [ArAccountId] in table 'ArAccntTerms'
+ALTER TABLE [dbo].[ArAccntTerms]
+ADD CONSTRAINT [FK_ArAccountArAccntPaymentTerm]
+    FOREIGN KEY ([ArAccountId])
+    REFERENCES [dbo].[ArAccounts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArAccountArAccntPaymentTerm'
+CREATE INDEX [IX_FK_ArAccountArAccntPaymentTerm]
+ON [dbo].[ArAccntTerms]
+    ([ArAccountId]);
+GO
+
+-- Creating foreign key on [ArAccntTermStatusId] in table 'ArAccntTerms'
+ALTER TABLE [dbo].[ArAccntTerms]
+ADD CONSTRAINT [FK_ArAccntTermStatusArAccntPaymentTerm]
+    FOREIGN KEY ([ArAccntTermStatusId])
+    REFERENCES [dbo].[ArAccntTermStatus]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArAccntTermStatusArAccntPaymentTerm'
+CREATE INDEX [IX_FK_ArAccntTermStatusArAccntPaymentTerm]
+ON [dbo].[ArAccntTerms]
+    ([ArAccntTermStatusId]);
 GO
 
 -- --------------------------------------------------

@@ -64,6 +64,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ArAccntCredit.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArAccntTerm.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArAccntTermStatus.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ArAccount.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
@@ -77,6 +86,9 @@
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArCategory.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArCreditStatus.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArDB.Context.cs">
