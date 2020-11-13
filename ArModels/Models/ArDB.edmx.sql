@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/07/2020 21:09:44
+-- Date Created: 11/13/2020 14:16:55
 -- Generated from EDMX file: D:\Projects\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
@@ -125,7 +125,7 @@ CREATE TABLE [dbo].[ArTransactions] (
     [Description] nvarchar(80)  NOT NULL,
     [DtEncoded] datetime  NOT NULL,
     [DtDue] datetime  NOT NULL,
-    [Amount] decimal(18,0)  NOT NULL,
+    [Amount] decimal(2,0)  NOT NULL,
     [Interval] int  NOT NULL,
     [IsRepeating] bit  NOT NULL,
     [Remarks] nvarchar(80)  NULL,
@@ -139,8 +139,8 @@ GO
 CREATE TABLE [dbo].[ArTransPosts] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DtPost] datetime  NOT NULL,
-    [Amount] decimal(18,0)  NOT NULL,
-    [Balance] decimal(18,0)  NOT NULL,
+    [Amount] decimal(2,0)  NOT NULL,
+    [Balance] decimal(2,0)  NOT NULL,
     [ArTransactionId] int  NOT NULL
 );
 GO
@@ -149,7 +149,7 @@ GO
 CREATE TABLE [dbo].[ArPayments] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DtPayment] datetime  NOT NULL,
-    [Amount] decimal(18,0)  NOT NULL,
+    [Amount] decimal(2,0)  NOT NULL,
     [Remarks] nvarchar(80)  NULL,
     [Reference] nvarchar(80)  NULL,
     [ArAccountId] int  NOT NULL,

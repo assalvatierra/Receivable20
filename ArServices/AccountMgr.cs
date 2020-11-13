@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 using ArInterfaces;
 using ArModels.Models;
 using ArDBLayer;
+using System.Data.Entity;
+using System.Data.Entity.Core;
+using System.Data.SqlClient;
 
 namespace ArServices
 {
     public class AccountMgr : iAccountMgr
     {
         private AccountDb db;
+
+        ArDBContainer DBContainer = new ArDBContainer();
+
 
         public AccountMgr()
         {
@@ -95,6 +101,140 @@ namespace ArServices
                 return null;
             }
         }
+
+        #region Account Credit Limit
+        public List<ArAccntCredit> AllAccntCreditLimit(int AccntId)
+        {
+            try
+            {
+                return DBContainer.ArAccntCredits.Where(d=>d.ArAccountId == AccntId).ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Account credit details Not found");
+            }
+        }
+
+        public ArAccntCredit GetLatestAccntCreditLimit(int AccntId)
+        {
+            try
+            {
+                return this.AllAccntCreditLimit(AccntId).OrderByDescending(d=>d.DtCredit).First();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Account credit details Not found");
+            }
+
+        }
+       
+
+        public bool UpdateAccntCredit(ArAccntCredit credit)
+        {
+            try
+            {
+                if (credit != null)
+                {
+                    DBContainer.Entry(credit).State = EntityState.Modified;
+                    DBContainer.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to udpate credit details");
+            }
+
+            return false;
+        }
+
+        public bool AddAccntCredit(ArAccntCredit credit)
+        {
+            try
+            {
+                if (credit != null)
+                {
+                    DBContainer.ArAccntCredits.Add(credit);
+                    DBContainer.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to add new credit details");
+            }
+
+            return false;
+        }
+        #endregion
+
+        #region Payment term
+        public List<ArAccntTerm> AllAccntPaymentTerm(int AccntId)
+        {
+            try
+            {
+                return DBContainer.ArAccntTerms.Where(d => d.ArAccountId == AccntId).ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: unable to retrieve Payment terms");
+            }
+            
+        }
+
+        public ArAccntTerm GetLatestAccntPaymentTerm(int AccntId)
+        {
+            try
+            {
+                return this.AllAccntPaymentTerm(AccntId).OrderByDescending(d => d.dtTerm).First();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Account credit details Not found");
+            }
+
+        }
+
+        public bool UpdateAccntPaymentTerm(ArAccntTerm term)
+        {
+            try
+            {
+                if (term != null)
+                {
+                    DBContainer.Entry(term).State = EntityState.Modified;
+                    DBContainer.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to udpate payment terms");
+            }
+
+            return false;
+        }
+
+        public bool AddAccntPaymentTerm(ArAccntTerm term)
+        {
+            try
+            {
+                if (term != null)
+                {
+                    DBContainer.ArAccntTerms.Add(term);
+                    DBContainer.SaveChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to add new payment term");
+            }
+
+            return false;
+        }
+
+        #endregion
+
 
     }
 }

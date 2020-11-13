@@ -16,7 +16,6 @@ D:\Projects\Receivable20\ArModels\bin\Debug\EntityFramework.dll
 D:\Projects\Receivable20\ArModels\bin\Debug\EntityFramework.SqlServer.dll
 D:\Projects\Receivable20\ArModels\bin\Debug\EntityFramework.xml
 D:\Projects\Receivable20\ArModels\bin\Debug\EntityFramework.SqlServer.xml
-D:\Projects\Receivable20\ArModels\obj\Debug\ArModels.csprojAssemblyReference.cache
 D:\Projects\Receivable20\ArModels\obj\Debug\ArModels.csproj.CoreCompileInputs.cache
 D:\Projects\Receivable20\ArModels\obj\Debug\ArModels.csproj.CopyComplete
 D:\Projects\Receivable20\ArModels\obj\Debug\ArModels.dll

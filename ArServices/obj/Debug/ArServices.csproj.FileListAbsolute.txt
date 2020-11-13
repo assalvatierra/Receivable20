@@ -46,3 +46,6 @@ C:\Users\VILLOSA\source\repos\Receivable20\ArServices\obj\Debug\ArServices.cspro
 C:\Users\VILLOSA\source\repos\Receivable20\ArServices\obj\Debug\ArServices.csproj.CopyComplete
 C:\Users\VILLOSA\source\repos\Receivable20\ArServices\obj\Debug\ArServices.dll
 C:\Users\VILLOSA\source\repos\Receivable20\ArServices\obj\Debug\ArServices.pdb
+D:\Projects\Receivable20\ArServices\bin\Debug\ArServices.dll.config
+D:\Projects\Receivable20\ArServices\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\Receivable20\ArServices\bin\Debug\EntityFramework.SqlServer.xml

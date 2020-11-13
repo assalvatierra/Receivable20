@@ -124,5 +124,48 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ArAccntCredits">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArAccntCredit)">
+        <MappingFragment StoreEntitySet="ArAccntCredits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
+          <ScalarProperty Name="DtCredit" ColumnName="DtCredit" />
+          <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+          <ScalarProperty Name="OverLimitAllowed" ColumnName="OverLimitAllowed" />
+          <ScalarProperty Name="CreditWarning" ColumnName="CreditWarning" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="ArCreditStatusId" ColumnName="ArCreditStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArCreditStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArCreditStatus)">
+        <MappingFragment StoreEntitySet="ArCreditStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArAccntTerms">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArAccntTerm)">
+        <MappingFragment StoreEntitySet="ArAccntTerms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="dtTerm" ColumnName="dtTerm" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="ArAccntTermStatusId" ColumnName="ArAccntTermStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArAccntTermStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArAccntTermStatus)">
+        <MappingFragment StoreEntitySet="ArAccntTermStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
