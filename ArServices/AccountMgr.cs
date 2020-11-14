@@ -14,29 +14,36 @@ namespace ArServices
 {
     public class AccountMgr : iAccountMgr
     {
-        private AccountDb db;
-
-        ArDBContainer DBContainer = new ArDBContainer();
-
+        //private AccountDb db;
+        ArDBContainer db = new ArDBContainer();
 
         public AccountMgr()
         {
-            db = new AccountDb();
+            if (db == null)
+            {
+                db = new ArDBContainer();
+            }
         }
         public AccountMgr(ArDBContainer arDB)
         {
-            db = new AccountDb(arDB);
+            db = arDB;
         }
 
         public bool AddAccount(ArAccount account)
         {
             try
             {
-                return db.AddAccount(account);
+                if (account != null)
+                {
+                    db.ArAccounts.Add(account);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Recievable Account");
             }
         }
 
@@ -44,11 +51,17 @@ namespace ArServices
         {
             try
             {
-                return db.EditAccount(account);
+                if (account != null)
+                {
+                    db.Entry(account).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Edit Recievable Account");
             }
         }
 
@@ -56,11 +69,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetAccountById(id);
+                return db.ArAccounts.Find(id);
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Recievable Account by Id");
             }
         }
 
@@ -68,12 +81,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetAccounts().ToList();
+                return db.ArAccounts.ToList();
             }
             catch
             {
-                
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Recievable Accounts");
             }
         }
 
@@ -81,12 +93,18 @@ namespace ArServices
         {
             try
             {
-                return db.RemoveAccount(account);
+                if (account != null)
+                {
+                    db.ArAccounts.Remove(account);
+                    db.SaveChanges();
+                    return true;
+                }
+                return true;
             }
             catch
             {
-                return false;
-            }
+                throw new EntitySqlException("Services: Unable to Remove Recievable Account");
+            } 
         }
 
 
@@ -94,11 +112,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetAccStatus().ToList();
+                return db.ArAccStatus;
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Recievable Account Status");
             }
         }
 
@@ -107,7 +125,7 @@ namespace ArServices
         {
             try
             {
-                return DBContainer.ArAccntCredits.Where(d=>d.ArAccountId == AccntId).ToList();
+                return db.ArAccntCredits.Where(d=>d.ArAccountId == AccntId).ToList();
             }
             catch
             {
@@ -135,8 +153,8 @@ namespace ArServices
             {
                 if (credit != null)
                 {
-                    DBContainer.Entry(credit).State = EntityState.Modified;
-                    DBContainer.SaveChanges();
+                    db.Entry(credit).State = EntityState.Modified;
+                    db.SaveChanges();
                     return true;
                 }
             }
@@ -154,8 +172,8 @@ namespace ArServices
             {
                 if (credit != null)
                 {
-                    DBContainer.ArAccntCredits.Add(credit);
-                    DBContainer.SaveChanges();
+                    db.ArAccntCredits.Add(credit);
+                    db.SaveChanges();
                     return true;
                 }
             }
@@ -173,7 +191,7 @@ namespace ArServices
         {
             try
             {
-                return DBContainer.ArAccntTerms.Where(d => d.ArAccountId == AccntId).ToList();
+                return db.ArAccntTerms.Where(d => d.ArAccountId == AccntId).ToList();
             }
             catch
             {
@@ -201,8 +219,8 @@ namespace ArServices
             {
                 if (term != null)
                 {
-                    DBContainer.Entry(term).State = EntityState.Modified;
-                    DBContainer.SaveChanges();
+                    db.Entry(term).State = EntityState.Modified;
+                    db.SaveChanges();
                     return true;
                 }
             }
@@ -220,8 +238,8 @@ namespace ArServices
             {
                 if (term != null)
                 {
-                    DBContainer.ArAccntTerms.Add(term);
-                    DBContainer.SaveChanges();
+                    db.ArAccntTerms.Add(term);
+                    db.SaveChanges();
                     return true;
                 }
             }

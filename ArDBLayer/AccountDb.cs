@@ -40,8 +40,9 @@ namespace ArDBLayer
                 }
                 return false;
             }
-            catch
+            catch (Exception ex)
             {
+                throw new Exception(string.Format("Unable to Create new Recievable Account", "0", ex.Message));
                 return false;
             }
         }
@@ -59,9 +60,9 @@ namespace ArDBLayer
                 }
                 return false;
             }
-            catch
+            catch (Exception ex)
             {
-               
+                throw new Exception(string.Format("Unable to Edit Recievable Account", "0", ex.Message));
                 return false;
             }
         }
@@ -72,8 +73,9 @@ namespace ArDBLayer
             {
                 return db.ArAccounts;
             }
-            catch
+            catch (Exception ex)
             {
+                throw new Exception(string.Format("Unable to retrieve Accounts", "0", ex.Message));
                 return null;
             }
         }
@@ -88,8 +90,10 @@ namespace ArDBLayer
                     return true;
                 }
                 return true;
-            } catch
+            }
+            catch (Exception ex)
             {
+                throw new Exception(string.Format("Unable to Remove Recievable Account", "0", ex.Message));
                 return false;
             }
         }
@@ -100,8 +104,9 @@ namespace ArDBLayer
             {
                 return db.ArAccounts.Find(id);
             }
-            catch
+            catch (Exception ex)
             {
+                throw new Exception(string.Format("Unable to Retrieve Recievable Account by Id", "0", ex.Message));
                 return null;
             }
         }
@@ -112,8 +117,9 @@ namespace ArDBLayer
             {
                 return db.ArAccStatus;
             }
-            catch
+            catch (Exception ex)
             {
+                throw new Exception(string.Format("Unable to Get Recievable Account Status", "0", ex.Message));
                 return null;
             }
         }
