@@ -6,32 +6,40 @@ using System.Threading.Tasks;
 using ArInterfaces;
 using ArModels.Models;
 using ArDBLayer;
+using System.Data.Entity.Core;
+using System.Data.Entity;
 
 namespace ArServices
 {
     public class ActionMgr : iActionMgr
     {
-        private ActionDb db;
+        private ArDBContainer db;
 
         public ActionMgr()
         {
-            this.db = new ActionDb();
+            this.db = new ArDBContainer();
         }
 
         public ActionMgr(ArDBContainer arDB)
         {
-            this.db = new ActionDb(arDB);
+            this.db = arDB;
         }
 
         public bool AddAction(ArAction action)
         {
             try
             {
-                return db.AddAction(action);
+                if (action != null)
+                {
+                    db.ArActions.Add(action);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Recievable Account");
             }
         }
 
@@ -39,11 +47,13 @@ namespace ArServices
         {
             try
             {
-                return db.DbDispose();
+                db.Dispose();
+
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Dispose Db");
             }
         }
 
@@ -51,11 +61,17 @@ namespace ArServices
         {
             try
             {
-                return db.EditAction(action);
+                if (action != null)
+                {
+                    db.Entry(action).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Recievable Account");
             }
         }
 
@@ -64,11 +80,11 @@ namespace ArServices
 
             try
             {
-                return db.GetActionById((int)id);
+                return db.ArActions.Find(id);
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Recievable Account by Id");
             }
         }
 
@@ -77,7 +93,7 @@ namespace ArServices
 
             try
             {
-                return db.GetActions().ToList();
+                return db.ArActions.ToList();
             }
             catch
             {
@@ -89,7 +105,7 @@ namespace ArServices
         {
             try
             {
-                return db.GetActionItems().ToList();
+                return db.ArActionItems.ToList();
             }
             catch
             {
@@ -101,9 +117,16 @@ namespace ArServices
         {
             try
             {
-                ArAction action = db.GetActionById(id);
+                ArAction action = GetActionById(id);
 
-                return db.RemoveAction(action);
+                if (action != null)
+                {
+                    db.ArActions.Remove(action);
+                    db.SaveChanges();
+                    return true;
+                }
+
+                return false;
             }
             catch
             {
@@ -133,7 +156,7 @@ namespace ArServices
         {
             try
             {
-                var actionList = db.GetActions().Where(a => a.ArTransactionId == transId).OrderByDescending(a=>a.DtPerformed).ToList();
+                var actionList = GetActions().Where(a => a.ArTransactionId == transId).OrderByDescending(a=>a.DtPerformed).ToList();
 
                 if(actionList != null)
                 {

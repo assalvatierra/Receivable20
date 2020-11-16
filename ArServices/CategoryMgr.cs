@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,23 +12,30 @@ namespace ArServices
 {
     public class CategoryMgr : iCategoryMgr
     {
-        private CategoryDb db;
+        private ArDBContainer db;
 
         public CategoryMgr()
         {
-            this.db = new CategoryDb();
+            this.db = new ArDBContainer();
         }
 
         public CategoryMgr(ArDBContainer arDB)
         {
-            this.db = new CategoryDb(arDB);
+            this.db = arDB;
         }
 
         public bool AddCategory(ArCategory category)
         {
             try
             {
-                return db.AddCategory(category);
+                if (category == null)
+                {
+                    return false;
+                }
+
+                db.ArCategories.Remove(category);
+                db.SaveChanges();
+                return true;
             }
             catch
             {
@@ -40,7 +48,8 @@ namespace ArServices
 
             try
             {
-                return db.DbDispose();
+                db.Dispose();
+                return true;
             }
             catch
             {
@@ -53,7 +62,14 @@ namespace ArServices
 
             try
             {
-                return db.EditCategory(category);
+                if (category == null)
+                {
+                    return false;
+                }
+
+                db.Entry(category).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
             }
             catch
             {
@@ -65,7 +81,7 @@ namespace ArServices
         {
             try
             {
-                return db.GetCategories().ToList();
+                return db.ArCategories.ToList();
             }
             catch
             {
@@ -77,7 +93,7 @@ namespace ArServices
         {
             try
             {
-                return db.GetCategoryById((int)id);
+                return db.ArCategories.Find(id);
             }
             catch
             {
@@ -89,9 +105,12 @@ namespace ArServices
         {
             try
             {
-                ArCategory category = db.GetCategoryById(id);
+                var category = GetCategoryById(id);
 
-                return db.RemoveCategory(category);
+                db.ArCategories.Remove(category);
+                db.SaveChanges();
+
+                return true;
             }
             catch
             {
