@@ -156,6 +156,10 @@
     <Content Include="App_Data\ARDB-2020_log.ldf">
       <DependentUpon>ARDB-2020.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\aspnet-JobsV1-20160528101923.mdf" />
+    <Content Include="App_Data\aspnet-JobsV1-20160528101923_log.ldf">
+      <DependentUpon>aspnet-JobsV1-20160528101923.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

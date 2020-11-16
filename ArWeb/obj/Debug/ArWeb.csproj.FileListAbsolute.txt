@@ -292,3 +292,4 @@ C:\Users\VILLOSA\source\repos\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CoreComp
 C:\Users\VILLOSA\source\repos\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CopyComplete
 C:\Users\VILLOSA\source\repos\Receivable20\ArWeb\obj\Debug\ArWeb.dll
 C:\Users\VILLOSA\source\repos\Receivable20\ArWeb\obj\Debug\ArWeb.pdb
+D:\Projects\Receivable20\ArWeb\bin\ArServices.dll.config

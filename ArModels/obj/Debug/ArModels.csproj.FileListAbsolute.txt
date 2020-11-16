@@ -31,3 +31,4 @@ C:\Users\VILLOSA\source\repos\Receivable20\ArModels\obj\Debug\ArModels.csproj.Co
 C:\Users\VILLOSA\source\repos\Receivable20\ArModels\obj\Debug\ArModels.csproj.CopyComplete
 C:\Users\VILLOSA\source\repos\Receivable20\ArModels\obj\Debug\ArModels.dll
 C:\Users\VILLOSA\source\repos\Receivable20\ArModels\obj\Debug\ArModels.pdb
+D:\Projects\Receivable20\ArModels\obj\Debug\ArModels.csprojAssemblyReference.cache

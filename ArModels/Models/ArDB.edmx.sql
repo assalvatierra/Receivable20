@@ -2,14 +2,14 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/13/2020 14:16:55
+-- Date Created: 11/16/2020 15:52:00
 -- Generated from EDMX file: D:\Projects\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
---USE [ARDB-2020];
---GO
+USE [aspnet-JobsV1-20160528101923];
+GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
 
