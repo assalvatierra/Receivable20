@@ -99,6 +99,7 @@
     <Property Name="ArTransStatusId" Type="int" Nullable="false" />
     <Property Name="ArAccountId" Type="int" Nullable="false" />
     <Property Name="ArCategoryId" Type="int" Nullable="false" />
+    <Property Name="DtService" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ArTransPosts">
     <Key>
@@ -878,6 +879,7 @@
           <ScalarProperty Name="ArTransStatusId" ColumnName="ArTransStatusId" />
           <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
           <ScalarProperty Name="ArCategoryId" ColumnName="ArCategoryId" />
+          <ScalarProperty Name="DtService" ColumnName="DtService" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
