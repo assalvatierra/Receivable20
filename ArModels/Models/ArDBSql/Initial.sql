@@ -16,3 +16,9 @@ insert into ArAccounts([Name],[Landline],[Email],[Mobile],[Company],[Address],[R
 
 insert into ArCategories([Name],[Remarks],[SortNo]) values
 ('Others', '', 100);
+
+insert into ArCreditStatus([Status]) values ('Active','Pending','Expired');
+insert into ArAccntTerms([Status]) values('Active','Pending','Expired');
+
+
+
