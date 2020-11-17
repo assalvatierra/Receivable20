@@ -12,7 +12,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArWeb</RootNamespace>
+    <RootNamespace>JobsV1</RootNamespace>
     <AssemblyName>ArWeb</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
@@ -141,6 +141,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Receivables\Controllers\ArAccntCreditsController.cs" />
+    <Compile Include="Areas\Receivables\ReceivablesAreaRegistration.cs" />
+    <Compile Include="Controllers\ArAccntCreditsController.cs" />
     <Compile Include="Controllers\ArAccountsController.cs" />
     <Compile Include="Controllers\ArActionsController.cs" />
     <Compile Include="Controllers\ArPaymentsController.cs" />
@@ -174,6 +177,14 @@
     <Content Include="Scripts\DateRangePicker\bower.json" />
     <Content Include="Scripts\DateRangePicker\package.json" />
     <Content Include="Content\daterangepicker.scss" />
+    <Content Include="Areas\Receivables\Views\web.config" />
+    <Content Include="Areas\Receivables\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Receivables\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntCredits\Create.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntCredits\Delete.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntCredits\Details.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntCredits\Edit.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntCredits\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />
@@ -225,6 +236,11 @@
     <Content Include="Views\ArActions\Details.cshtml" />
     <Content Include="Views\ArActions\Edit.cshtml" />
     <Content Include="Views\ArActions\Index.cshtml" />
+    <Content Include="Views\ArAccntCredits\Create.cshtml" />
+    <Content Include="Views\ArAccntCredits\Delete.cshtml" />
+    <Content Include="Views\ArAccntCredits\Details.cshtml" />
+    <Content Include="Views\ArAccntCredits\Edit.cshtml" />
+    <Content Include="Views\ArAccntCredits\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -261,6 +277,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Receivables\Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
