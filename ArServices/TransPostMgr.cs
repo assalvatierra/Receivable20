@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,27 +13,34 @@ namespace ArServices
 {
     public class TransPostMgr : iTransPostMgr
     {
-        private TransPostDb db;
+        private ArDBContainer db;
 
         public TransPostMgr()
         {
-            db = new TransPostDb();
+            db = new ArDBContainer();
         }
 
         public TransPostMgr(ArDBContainer arDB)
         {
-            this.db = new TransPostDb(arDB);
+            this.db = arDB;
         }
 
         public bool AddTransPost(ArTransPost transPost)
         {
             try
             {
-                return db.AddTransPost(transPost);
+                if (transPost == null)
+                {
+                    return false;
+                }
+
+                db.ArTransPosts.Add(transPost);
+                db.SaveChanges();
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Trasnsaction Post");
             }
         }
 
@@ -39,11 +48,18 @@ namespace ArServices
         {
             try
             {
-                return db.EditTransPost(transPost);
+                if (transPost != null)
+                {
+                    return false;
+                }
+
+                db.Entry(transPost).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Edit Trasnsaction Post");
             }
         }
 
@@ -51,11 +67,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetTransPostById(id);
+                return db.ArTransPosts.Find(id);
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Trasnsaction by Id");
             }
         }
 
@@ -63,11 +79,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetTransPosts().ToList();
+                return db.ArTransPosts.ToList();
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Trasnsaction Posts");
             }
         }
 
@@ -75,11 +91,18 @@ namespace ArServices
         {
             try
             {
-                return db.AddTransPost(transPost);
+                if (transPost != null)
+                {
+                    return false;
+                }
+
+                db.ArTransPosts.Add(transPost);
+                db.SaveChanges();
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Remove Trasnsaction");
             }
         }
     }

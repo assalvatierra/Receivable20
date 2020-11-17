@@ -32,10 +32,12 @@ namespace ArDBLayer
                     db.SaveChanges();
                     return true;
                 }
+
                 return false;
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return false;
             }
         }
@@ -47,8 +49,9 @@ namespace ArDBLayer
                 db.Dispose();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return false;
             }
         }
@@ -65,10 +68,11 @@ namespace ArDBLayer
                 db.ArTransactions.Remove(transaction);
                 db.SaveChanges();
                 return true;
-               
+
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return false;
             }
         }
@@ -87,8 +91,9 @@ namespace ArDBLayer
                 return true;
 
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return false;
             }
         }
@@ -99,8 +104,9 @@ namespace ArDBLayer
             {
                 return db.ArTransactions.Find(id);
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return null;
             }
         }
@@ -111,8 +117,9 @@ namespace ArDBLayer
             {
                 return db.ArTransactions;
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return null;
             }
         }
@@ -123,8 +130,9 @@ namespace ArDBLayer
             {
                 return db.ArTransStatus;
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return null;
             }
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,27 +13,33 @@ namespace ArServices
 {
     public class TransactionMgr : iTransactionMgr
     {
-        private TransactionDb db;
+        private ArDBContainer db;
 
         public TransactionMgr()
         {
-            db = new TransactionDb();
+            db = new ArDBContainer();
         }
 
         public TransactionMgr(ArDBContainer arDB)
         {
-            this.db = new TransactionDb(arDB);
+            this.db = arDB;
         }
 
         public bool AddTransaction(ArTransaction transaction)
         {
             try
             {
-                return db.AddTransaction(transaction);
+                if (transaction != null)
+                {
+                    db.ArTransactions.Add(transaction);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Transaction");
             }
         }
 
@@ -39,11 +47,18 @@ namespace ArServices
         {
             try
             {
-                return db.EditTransaction(transaction);
+                if (transaction == null)
+                {
+                    return false;
+                }
+
+                db.Entry(transaction).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Edit Transaction");
             }
         }
 
@@ -55,7 +70,7 @@ namespace ArServices
             }
             catch
             {
-                return 0;
+                throw new EntitySqlException("Services: Unable to Get Transaction Account ");
             }
         }
 
@@ -63,11 +78,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetTransactionById(id);
+                return db.ArTransactions.Find(id);
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Transaction by Id ");
             }
         }
 
@@ -75,12 +90,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetTransactions().ToList();
+                return db.ArTransactions.ToList();
             }
-            catch (Exception ex)
+            catch 
             {
-                throw ex;
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Transactions ");
             }
         }
 
@@ -88,11 +102,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetTransactionStatus().ToList();
+                return db.ArTransStatus.ToList();
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Transaction Status ");
             }
         }
 
@@ -100,11 +114,18 @@ namespace ArServices
         {
             try
             {
-                return db.DeleteTransaction(transaction);
+                if (transaction == null)
+                {
+                    return false;
+                }
+
+                db.ArTransactions.Remove(transaction);
+                db.SaveChanges();
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Remove Transaction ");
             }
         }
 
@@ -112,17 +133,20 @@ namespace ArServices
         {
             try
             {
-                //get transaction
-                ArTransaction transaction = GetTransactionById(transactionId);
-                //edit transaction account id
-                transaction.ArAccountId = accountId;
-                //update transaction
-                return EditTransaction(transaction);
-
-            }
-            catch
-            {
+                if (transactionId != 0)
+                {
+                    //get transaction
+                    ArTransaction transaction = GetTransactionById(transactionId);
+                    //edit transaction account id
+                    transaction.ArAccountId = accountId;
+                    //update transaction
+                    return EditTransaction(transaction);
+                }
                 return false;
+            }
+            catch 
+            {
+                throw new EntitySqlException("Services: Unable to Get Transaction Account ");
             }
         }
     }

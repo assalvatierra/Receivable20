@@ -7,48 +7,69 @@ using ArModels;
 using ArInterfaces;
 using ArModels.Models;
 using ArDBLayer;
+using System.Data.Entity.Core;
 
 namespace ArServices
 {
     public class PaymentMgr : iPaymentMgr
     {
-        private PaymentDb db;
+        private ArDBContainer db;
         public PaymentMgr()
         {
-            db = new PaymentDb();
+            db = new ArDBContainer();
         }
 
         public PaymentMgr(ArDBContainer arDB)
         {
-            db = new PaymentDb(arDB);
+            db = arDB;
         }
         public bool AddPayment(ArPayment payment)
         {
             try
             {
-                return db.AddPayment(payment);
+                if (payment != null)
+                {
+                    db.ArPayments.Add(payment);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Payment");
             }
         }
 
         public bool DbDispose()
         {
-            db.DbDispose();
-            return true;
+            try
+            {
+                db.Dispose();
+                return true;
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Add Dispose Db");
+            }
+           
         }
 
         public bool EditPayment(ArPayment payment)
         {
             try
             {
-                return db.EditPayment(payment);
+                if (payment != null)
+                {
+                    db.Entry(payment).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Edit Payment");
             }
         }
 
@@ -61,11 +82,11 @@ namespace ArServices
                     return null;
                 }
 
-                return db.GetPaymentById((int)id);
+                return db.ArPayments.Find(id);
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Payment by Id");
             }
         }
 
@@ -73,11 +94,13 @@ namespace ArServices
         {
             try
             {
-                return db.GetPayment().ToList();
+                return db.ArPayments.ToList();
             }
             catch
             {
-                return new List<ArPayment>();
+                //return new List<ArPayment>();
+
+                throw new EntitySqlException("Services: Unable to Get Payments");
             }
         }
 
@@ -85,11 +108,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetPaymentTypes().ToList();
+                return db.ArPaymentTypes.ToList();
             }
             catch
             {
-                return new List<ArPaymentType>();
+                throw new EntitySqlException("Services: Unable to Get Payments Types");
             }
         }
 
@@ -102,17 +125,20 @@ namespace ArServices
                     return false;
                 }
 
-                ArPayment payment = db.GetPaymentById((int)id);
-                if (payment == null)
-                {
-                    return false;
-                }
+                ArPayment payment = GetPaymentById(id);
+          
 
-                return db.RemovePayment(payment);
+                if (payment != null)
+                {
+                    db.ArPayments.Remove(payment);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Remove Payment");
             }
         }
     }

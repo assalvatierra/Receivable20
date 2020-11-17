@@ -97,7 +97,7 @@ namespace ArServices
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Recievable Actions");
             }
         }
 
@@ -109,7 +109,7 @@ namespace ArServices
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Recievable Actions Items");
             }
         }
 
@@ -130,7 +130,7 @@ namespace ArServices
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Remove Recievable Actions");
             }
         }
 
@@ -148,7 +148,7 @@ namespace ArServices
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Recievable Actions");
             }
         }
 
@@ -166,7 +166,7 @@ namespace ArServices
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Trans Last Action");
             }
         }
     }

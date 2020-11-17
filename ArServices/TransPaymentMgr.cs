@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,26 +14,33 @@ namespace ArServices
     public class TransPaymentMgr : iTransPaymentMgr
     {
 
-        private TransPaymentDb db;
+        private ArDBContainer db;
 
         public TransPaymentMgr()
         {
-            db = new TransPaymentDb();
+            db = new ArDBContainer();
         }
         public TransPaymentMgr(ArDBContainer arDB)
         {
-            db = new TransPaymentDb(arDB);
+            db = arDB;
         }
 
         public bool AddTransPayment(ArTransPayment transPayment)
         {
             try
             {
-                return db.AddTransPayment(transPayment);
+                if (transPayment == null)
+                {
+                    return false;
+                }
+
+                db.ArTransPayments.Add(transPayment);
+                db.SaveChanges();
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Transaction Payment");
             }
         }
 
@@ -48,12 +57,11 @@ namespace ArServices
                 arTransPayment.ArTransactionId = transId;
                 arTransPayment.ArPaymentId = paymentId;
 
-                return db.AddTransPayment(arTransPayment);
+                return AddTransPayment(arTransPayment);
             }
             catch 
             {
-               
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Transaction Payment ");
             }
         }
 
@@ -61,11 +69,18 @@ namespace ArServices
         {
             try
             {
-                return db.EditTransPayment(transPayment);
+                if (transPayment == null)
+                {
+                    return false;
+                }
+
+                db.Entry(transPayment).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Edit Transaction Payment ");
             }
         }
 
@@ -73,11 +88,11 @@ namespace ArServices
         {
             try
             {
-                return db.GetTransPaymentById(id);
+                return db.ArTransPayments.Find(id);
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Transaction Payment by Id");
             }
         }
 
@@ -86,11 +101,11 @@ namespace ArServices
 
             try
             {
-                return db.GetTransPayments().ToList();
+                return db.ArTransPayments.ToList();
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Transaction Payments ");
             }
         }
 
@@ -99,11 +114,11 @@ namespace ArServices
 
             try
             {
-                return db.GetTransPayments().Where(t=>t.ArTransactionId == transId).ToList();
+                return GetTransPayments().Where(t=>t.ArTransactionId == transId).ToList();
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Transaction Payment by Transaction Id ");
             }
         }
 
@@ -112,11 +127,18 @@ namespace ArServices
 
             try
             {
-                return db.DeleteTransPayment(transPayment);
+                if (transPayment == null)
+                {
+                    return false;
+                }
+
+                db.ArTransPayments.Remove(transPayment);
+                db.SaveChanges();
+                return true;
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Get Transaction Payment Remove Transaction Payment");
             }
         }
     }

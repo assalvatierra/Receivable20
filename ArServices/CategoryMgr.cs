@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +40,7 @@ namespace ArServices
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Add Category");
             }
         }
 
@@ -53,7 +54,7 @@ namespace ArServices
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Dispose Db");
             }
         }
 
@@ -73,7 +74,7 @@ namespace ArServices
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Edit Category");
             }
         }
 
@@ -85,7 +86,7 @@ namespace ArServices
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Categories");
             }
         }
 
@@ -97,7 +98,7 @@ namespace ArServices
             }
             catch
             {
-                return null;
+                throw new EntitySqlException("Services: Unable to Get Category by Id");
             }
         }
 
@@ -114,7 +115,7 @@ namespace ArServices
             }
             catch
             {
-                return false;
+                throw new EntitySqlException("Services: Unable to Remove Category");
             }
         }
     }
