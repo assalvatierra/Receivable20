@@ -215,6 +215,8 @@
     <Content Include="Areas\Receivables\Views\ArAccntCredits\Index.cshtml" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\bower.json" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\package.json" />
+    <Content Include="Areas\Receivables\Views\ArTransactions\TransactionHistory.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArTransactions\PostAndCloseTransaction.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />

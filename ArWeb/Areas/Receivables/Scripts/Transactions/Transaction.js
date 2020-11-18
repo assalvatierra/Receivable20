@@ -45,6 +45,8 @@ function InitDatePicker() {
         }
     );
 
+    $('input[name="DtEncoded"]').val(moment().format('MM/DD/YYYY h:mm A'));
+
     //Date 2
     var ddd3 = $('input[name="DtDue"]').val();
 

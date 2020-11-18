@@ -38,7 +38,8 @@ namespace JobsV1.Areas.Receivables.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.Payments = ar.TransPaymentMgr.GetTransPaymentsByTransId(arTransaction.Id); 
+            ViewBag.Payments = ar.TransPaymentMgr.GetTransPaymentsByTransId(arTransaction.Id);
+            ViewBag.IsClosed = ar.TransactionMgr.IsClosed((int)id);
             return View(arTransaction);
         }
 
@@ -68,7 +69,9 @@ namespace JobsV1.Areas.Receivables.Controllers
                 var currentUser = HttpContext.User.Identity.Name;
 
                 ar.TransactionMgr.AddTransaction(arTransaction);
-                //ar.ActionMgr.AddAction(1, today, currentUser, arTransaction.Id);
+
+                //new transaction action history (new bill)
+                ar.ActionMgr.AddAction(1, today, currentUser, arTransaction.Id);
 
                 //new account
                 if (arTransaction.ArAccountId == 1)
@@ -232,6 +235,44 @@ namespace JobsV1.Areas.Receivables.Controllers
             ViewBag.ArAccStatusId = new SelectList(ar.AccountMgr.GetArAccStatus(), "Id", "Status", account.ArAccStatusId);
             return View(account);
         }
+
+
+        public ActionResult TransactionHistory(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var actionHistory = ar.TransactionMgr.GetTransactionById((int)id).ArActions.ToList();
+
+            ViewBag.TransId = id;
+            return View(actionHistory);
+        }
+
+        public ActionResult PostAndCloseTransaction(int id)
+        {
+            DateTime today = dateClass.GetCurrentDateTime();
+
+            //get transaction
+            var transaction = ar.TransactionMgr.GetTransactionById(id);
+
+            decimal TotalAmount = transaction.Amount;
+            decimal TotalPayment = ar.TransPaymentMgr.GetTotalTransPayment(id);
+            decimal TotalBalance = TotalAmount - TotalPayment;
+
+            if (TotalPayment >= TotalAmount)
+            {
+                //close
+                ar.TransactionMgr.CloseTransactionStatus(id);
+
+                //post
+                ar.TransPostMgr.CreateTransPost(transaction, today, TotalBalance);
+            }
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
 
     }
 }

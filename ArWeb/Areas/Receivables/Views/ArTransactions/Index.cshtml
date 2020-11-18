@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.DtService)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.DtInvoice)
         </th>
         <th>
@@ -44,6 +47,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @item.DtService.ToString("MMM dd yyyy")
+        </td>
         <td>
             @item.DtInvoice.ToString("MMM dd yyyy")
         </td>

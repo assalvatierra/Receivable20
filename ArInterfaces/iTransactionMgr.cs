@@ -16,6 +16,9 @@ namespace ArInterfaces
         List<ArTransaction> GetTransactions();
         IEnumerable<ArTransStatus> GetTransactionStatus();
         bool UpdateTransAcc(int transactionId, int accountId);
+        bool CloseTransactionStatus(int id);
         int GetTransAccountId(int id);
+
+        bool IsClosed(int id);
     }
 }

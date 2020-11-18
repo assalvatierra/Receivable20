@@ -44,6 +44,24 @@ namespace ArServices
             }
         }
 
+        public bool CreateTransPost(ArTransaction transaction, DateTime postDate, decimal balance)
+        {
+            try
+            {
+                ArTransPost arTransPost = new ArTransPost();
+                arTransPost.DtPost = postDate;
+                arTransPost.Amount = transaction.Amount;
+                arTransPost.Balance = balance;
+                arTransPost.ArTransactionId = transaction.Id;
+
+                return AddTransPost(arTransPost);
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Add Trasnsaction Post");
+            }
+        }
+
         public bool EditTransPost(ArTransPost transPost)
         {
             try

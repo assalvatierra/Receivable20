@@ -122,6 +122,20 @@ namespace ArServices
             }
         }
 
+
+        public ArTransPayment GetTransPaymentsByPaymentId(int paymentId)
+        {
+
+            try
+            {
+                return GetTransPayments().Where(t => t.ArPaymentId == paymentId).FirstOrDefault();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Transaction Payment by Payment Id ");
+            }
+        }
+
         public bool RemoveTransPayment(ArTransPayment transPayment)
         {
 
@@ -135,6 +149,26 @@ namespace ArServices
                 db.ArTransPayments.Remove(transPayment);
                 db.SaveChanges();
                 return true;
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Transaction Payment Remove Transaction Payment");
+            }
+        }
+
+        public decimal GetTotalTransPayment(int transId)
+        {
+            try
+            {
+                var payments = GetTransPaymentsByTransId(transId);
+                decimal totalPayment = 0;
+
+                foreach (var payment in payments)
+                {
+                    totalPayment += payment.ArPayment.Amount;
+                }
+
+                return totalPayment;
             }
             catch
             {

@@ -154,6 +154,11 @@ namespace JobsV1.Areas.Receivables.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //remove payment transaction
+            var transPayment = ar.TransPaymentMgr.GetTransPaymentsByPaymentId(id);
+            ar.TransPaymentMgr.RemoveTransPayment(transPayment);
+
+            //remove payment
             ar.PaymentMgr.RemovePayment(id);
             return RedirectToAction("Index");
         }

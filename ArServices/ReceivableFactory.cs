@@ -17,6 +17,7 @@ namespace ArServices
         iActionMgr actionMgr;
         iCategoryMgr categoryMgr;
         iTransPaymentMgr transPaymentMgr;
+        iTransPostMgr transPostMgr;
 
         public ReceivableFactory()
         {
@@ -27,6 +28,7 @@ namespace ArServices
             this.actionMgr = new ActionMgr(arDB);
             this.categoryMgr = new CategoryMgr(arDB);
             this.transPaymentMgr = new TransPaymentMgr(arDB);
+            this.transPostMgr = new TransPostMgr(arDB);
         }
 
         public iAccountMgr AccountMgr
@@ -54,6 +56,10 @@ namespace ArServices
         public iTransPaymentMgr TransPaymentMgr
         {
             get { return this.transPaymentMgr; }
+        }
+        public iTransPostMgr TransPostMgr
+        {
+            get { return this.transPostMgr; }
         }
     }
 }

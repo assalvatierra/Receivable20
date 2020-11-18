@@ -37,9 +37,30 @@ namespace ArServices
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch 
             {
-                throw ex;
+                throw new EntitySqlException("Services: Unable to Add Transaction");
+            }
+        }
+
+        public bool CloseTransactionStatus(int id)
+        {
+            try
+            {
+                var transaction = GetTransactionById(id);
+
+                if (transaction == null)
+                {
+                    return false;
+                }
+
+                transaction.ArTransStatusId = 3; // close
+
+                return EditTransaction(transaction);
+
+            }
+            catch
+            {
                 throw new EntitySqlException("Services: Unable to Add Transaction");
             }
         }
@@ -93,9 +114,9 @@ namespace ArServices
             {
                 return db.ArTransactions.ToList();
             }
-            catch (Exception ex)
+            catch 
             {
-                throw ex;
+               
                 throw new EntitySqlException("Services: Unable to Get Transactions ");
             }
         }
@@ -109,6 +130,27 @@ namespace ArServices
             catch
             {
                 throw new EntitySqlException("Services: Unable to Get Transaction Status ");
+            }
+        }
+
+        public bool IsClosed(int id)
+        {
+            try
+            {
+                var transaction = GetTransactionById(id);
+
+                if (transaction.ArTransStatusId == 3)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Transaction Closed Status ");
             }
         }
 

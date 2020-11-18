@@ -127,7 +127,6 @@ namespace ArServices
 
                 ArPayment payment = GetPaymentById(id);
           
-
                 if (payment != null)
                 {
                     db.ArPayments.Remove(payment);
@@ -136,8 +135,9 @@ namespace ArServices
                 }
                 return false;
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 throw new EntitySqlException("Services: Unable to Remove Payment");
             }
         }

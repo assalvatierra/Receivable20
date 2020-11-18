@@ -4,6 +4,10 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_ModuleLayout.cshtml";
 }
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 
 <h2>Details</h2>
 
@@ -77,7 +81,49 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+ 
+<h4>
+    Transactions List
+</h4>
+<table class="table">
+    <tr>
+        <th> Description </th>
+        <th> DtService </th>
+        <th> Invoice No </th>
+        <th> DtInvoice </th>
+        <th> Due </th>
+        <th> Remarks </th>
+        <th> Status </th>
+        <th> Amount </th>
+    </tr>
+
+    @foreach (var transaction in Model.ArTransactions)
+    {
+    <tr>
+        <td>
+            @transaction.Description
+        </td>
+        <td>
+            @transaction.DtService.ToString("MMM dd yyyy")
+        </td>
+        <td>
+            @transaction.DtInvoice.ToString("MMM dd yyyy")
+        </td>
+        <td>
+            @transaction.DtDue.ToString("MMM dd yyyy")
+        </td>
+        <td>
+            @transaction.InvoiceId
+        </td>
+        <td>
+            @transaction.Remarks
+        </td>
+        <td>
+            @transaction.ArTransStatu.Status
+        </td>
+        <td>
+            @transaction.Amount.ToString("#,##0.00")
+        </td>
+    </tr>
+    }
+</table>
