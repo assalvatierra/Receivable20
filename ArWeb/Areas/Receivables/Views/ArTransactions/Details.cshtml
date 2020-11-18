@@ -4,7 +4,9 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_ModuleLayout.cshtml";
     var transPayments = ViewBag.Payments as IEnumerable<ArModels.Models.ArTransPayment>;
-    decimal totalAmount = 0;
+    decimal totalAmount = Model.Amount;
+    decimal totalPaid = 0;
+    decimal totalBalance = 0;
 }
 
 <h2>Transaction Details</h2>
@@ -88,10 +90,10 @@
     </tr>
     @foreach (var payments in transPayments)
     {
-        totalAmount = payments.ArPayment.Amount;
+        totalPaid = payments.ArPayment.Amount;
         <tr>
             <td>
-                @payments.ArPayment.DtPayment.ToShortDateString()
+                @payments.ArPayment.DtPayment.ToString("MMM dd yyyy")
             </td>
             <td>
                 @payments.ArPayment.ArAccount.Name
@@ -112,7 +114,13 @@
             <span class="pull-right">Total</span>
         </td>
         <td colspan="4">
-            @totalAmount.ToString("#,##0.00")
+            @totalPaid.ToString("#,##0.00")
         </td>
     </tr>
 </table>
+@{ 
+    totalBalance = totalAmount - totalPaid;
+}
+<h3>
+    Balance: @totalBalance.ToString("#,##0.00")
+</h3>

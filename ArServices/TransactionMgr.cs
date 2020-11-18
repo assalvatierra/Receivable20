@@ -37,8 +37,9 @@ namespace ArServices
                 }
                 return false;
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 throw new EntitySqlException("Services: Unable to Add Transaction");
             }
         }
@@ -92,8 +93,9 @@ namespace ArServices
             {
                 return db.ArTransactions.ToList();
             }
-            catch 
+            catch (Exception ex)
             {
+                throw ex;
                 throw new EntitySqlException("Services: Unable to Get Transactions ");
             }
         }

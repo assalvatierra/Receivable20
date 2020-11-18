@@ -168,6 +168,10 @@
     <Content Include="App_Data\aspnet-JobsV1-20160528101923_log.ldf">
       <DependentUpon>aspnet-JobsV1-20160528101923.mdf</DependentUpon>
     </Content>
+    <Content Include="Areas\Receivables\Scripts\DateRangePicker\daterangepicker.js" />
+    <Content Include="Areas\Receivables\Scripts\DateRangePicker\moment.js" />
+    <Content Include="Areas\Receivables\Scripts\DateRangePicker\moment.min.js" />
+    <Content Include="Areas\Receivables\Scripts\DateRangePicker\package.js" />
     <Content Include="Areas\Receivables\Scripts\Payments\Payments.js" />
     <Content Include="Areas\Receivables\Scripts\Transactions\Transaction.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -209,6 +213,8 @@
     <Content Include="Areas\Receivables\Views\ArAccntCredits\Details.cshtml" />
     <Content Include="Areas\Receivables\Views\ArAccntCredits\Edit.cshtml" />
     <Content Include="Areas\Receivables\Views\ArAccntCredits\Index.cshtml" />
+    <Content Include="Areas\Receivables\Scripts\DateRangePicker\bower.json" />
+    <Content Include="Areas\Receivables\Scripts\DateRangePicker\package.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />
@@ -303,7 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Receivables\Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
   <PropertyGroup>

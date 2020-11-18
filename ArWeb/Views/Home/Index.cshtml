@@ -13,7 +13,7 @@
         <h2>Recievables Transactions </h2>
         <p> Add, remove, and update transactions.</p>
         <p>
-            @Html.ActionLink("Go to List", "Index", "ArTransactions", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Go to List", "Index", "ArTransactions", new { area = "Receivables" }, new { @class = "btn btn-default" })
         </p>
     </div>
 
@@ -21,14 +21,14 @@
         <h2>Payments</h2>
         <p> Add, remove, and update payments.</p>
         <p>
-            @Html.ActionLink("Go to List", "Index", "ArPayments", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Go to List", "Index", "ArPayments", new { area = "Receivables" }, new { @class = "btn btn-default" })
         </p>
     </div>
     <div class="col-md-4">
         <h2>Accounts </h2>
         <p> Add, remove, and update customer accounts.</p>
         <p>
-            @Html.ActionLink("Go to List", "Index", "ArAccounts", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Go to List", "Index", "ArAccounts", new { area = "Receivables" }, new { @class = "btn btn-default" })
 
             @Html.ActionLink("test", "Index", "ArAccntCredits", new { area = "Receivables" }, null)
 

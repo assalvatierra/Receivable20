@@ -65,6 +65,26 @@ function InitDatePicker() {
     );
 
 
+    //Date 4
+    var ddd4 = $('input[name="DtService"]').val();
+
+    $('input[name="DtService"]').daterangepicker(
+        {
+            timePicker: false,
+            timePickerIncrement: 1,
+            singleDatePicker: true,
+            showDropdowns: true,
+            locale: {
+                format: 'MM/DD/YYYY'
+            }
+        },
+        function (start, end, label) {
+            // alert(start.format('YYYY-MM-DD h:mm A'));
+
+        }
+    );
+
+
 }
 
 
