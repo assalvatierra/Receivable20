@@ -55,6 +55,7 @@
     <Compile Include="AccountMgr.cs" />
     <Compile Include="ActionMgr.cs" />
     <Compile Include="CategoryMgr.cs" />
+    <Compile Include="DateClassMgr.cs" />
     <Compile Include="TransPaymentMgr.cs" />
     <Compile Include="TransPostMgr.cs" />
     <Compile Include="PaymentMgr.cs" />

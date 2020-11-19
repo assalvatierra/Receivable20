@@ -142,7 +142,7 @@
 
         if (totalPaid >= totalAmount)
         {
-            @Html.ActionLink("Post and Close", "PostAndCloseTransaction", "ArPayments", new { id = Model.Id }, null)
+            @Html.ActionLink("Post and Close", "PostAndCloseTransaction", new { id = Model.Id }, null)
         }
         else
         {

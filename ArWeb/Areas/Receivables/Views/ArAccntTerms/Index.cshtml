@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ArModels.Models.ArAccntCredit>
+﻿@model IEnumerable<ArModels.Models.ArAccntTerm>
 
 @{
     ViewBag.Title = "Index";
@@ -12,25 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DtCredit)
+            @Html.DisplayNameFor(model => model.dtTerm)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreditLimit)
+            @Html.DisplayNameFor(model => model.NoOfDays)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OverLimitAllowed)
+            @Html.DisplayNameFor(model => model.Remarks)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreditWarning)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApprovedBy)   
+            @Html.DisplayNameFor(model => model.ApprovedBy)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ArAccount.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ArCreditStatu.Status)
+            @Html.DisplayNameFor(model => model.ArAccntTermStatu.Status)
         </th>
         <th></th>
     </tr>
@@ -38,16 +35,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DtCredit)
+            @Html.DisplayFor(modelItem => item.dtTerm)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreditLimit)
+            @Html.DisplayFor(modelItem => item.NoOfDays)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OverLimitAllowed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreditWarning)
+            @Html.DisplayFor(modelItem => item.Remarks)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ApprovedBy)
@@ -56,7 +50,7 @@
             @Html.DisplayFor(modelItem => item.ArAccount.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ArCreditStatu.Status)
+            @Html.DisplayFor(modelItem => item.ArAccntTermStatu.Status)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

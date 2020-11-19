@@ -135,12 +135,19 @@ namespace ArServices
 
         public ArAccntCredit GetLatestAccntCreditLimit(int AccntId)
         {
-            try
-            {
-                return this.AllAccntCreditLimit(AccntId).OrderByDescending(d=>d.DtCredit).First();
+            try { 
+
+                if (this.AllAccntCreditLimit(AccntId).Count() == 0)
+                {
+                    return new ArAccntCredit();
+                }
+
+                return this.AllAccntCreditLimit(AccntId).OrderByDescending(d=>d.DtCredit).FirstOrDefault();
+
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 throw new EntitySqlException("Services: Account credit details Not found");
             }
 
@@ -204,7 +211,12 @@ namespace ArServices
         {
             try
             {
-                return this.AllAccntPaymentTerm(AccntId).OrderByDescending(d => d.dtTerm).First();
+                if (AllAccntPaymentTerm(AccntId) == null)
+                {
+                    return new ArAccntTerm();
+                }
+                var payments = AllAccntPaymentTerm(AccntId);
+                return this.AllAccntPaymentTerm(AccntId).OrderByDescending(d => d.dtTerm).FirstOrDefault();
             }
             catch
             {

@@ -7,12 +7,15 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ArModels.Models;
+using ArServices;
 
 namespace JobsV1.Areas.Receivables.Controllers
 {
     public class ArAccntCreditsController : Controller
     {
         private ArDBContainer db = new ArDBContainer();
+
+        private ReceivableFactory ar = new ReceivableFactory();
 
         // GET: Receivables/ArAccntCredits
         public ActionResult Index()
@@ -28,11 +31,12 @@ namespace JobsV1.Areas.Receivables.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ArAccntCredit arAccntCredit = db.ArAccntCredits.Find(id);
+            ArAccntCredit arAccntCredit = ar.AccountMgr.GetLatestAccntCreditLimit((int)id);
             if (arAccntCredit == null)
             {
                 return HttpNotFound();
             }
+
             return View(arAccntCredit);
         }
 
@@ -56,6 +60,39 @@ namespace JobsV1.Areas.Receivables.Controllers
                 db.ArAccntCredits.Add(arAccntCredit);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+
+            ViewBag.ArAccountId = new SelectList(db.ArAccounts, "Id", "Name", arAccntCredit.ArAccountId);
+            ViewBag.ArCreditStatusId = new SelectList(db.ArCreditStatus, "Id", "Status", arAccntCredit.ArCreditStatusId);
+            return View(arAccntCredit);
+        }
+
+
+        // GET: Receivables/ArAccntCredits/Create
+        public ActionResult CreateCredit(int id)
+        {
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ViewBag.ArAccountId = new SelectList(db.ArAccounts, "Id", "Name", id);
+            ViewBag.ArCreditStatusId = new SelectList(db.ArCreditStatus, "Id", "Status");
+            return View();
+        }
+
+        // POST: Receivables/ArAccntCredits/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCredit([Bind(Include = "Id,ArAccountId,DtCredit,CreditLimit,OverLimitAllowed,CreditWarning,ApprovedBy,ArCreditStatusId")] ArAccntCredit arAccntCredit)
+        {
+            if (ModelState.IsValid)
+            {
+                db.ArAccntCredits.Add(arAccntCredit);
+                db.SaveChanges();
+                return RedirectToAction("Details", "ArAccounts",new { id = arAccntCredit.ArAccountId });
             }
 
             ViewBag.ArAccountId = new SelectList(db.ArAccounts, "Id", "Name", arAccntCredit.ArAccountId);
@@ -91,7 +128,7 @@ namespace JobsV1.Areas.Receivables.Controllers
             {
                 db.Entry(arAccntCredit).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "ArAccounts", new { id = arAccntCredit.ArAccountId });
             }
             ViewBag.ArAccountId = new SelectList(db.ArAccounts, "Id", "Name", arAccntCredit.ArAccountId);
             ViewBag.ArCreditStatusId = new SelectList(db.ArCreditStatus, "Id", "Status", arAccntCredit.ArCreditStatusId);
@@ -121,7 +158,7 @@ namespace JobsV1.Areas.Receivables.Controllers
             ArAccntCredit arAccntCredit = db.ArAccntCredits.Find(id);
             db.ArAccntCredits.Remove(arAccntCredit);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "ArAccounts", new { id = arAccntCredit.ArAccountId });
         }
 
         protected override void Dispose(bool disposing)

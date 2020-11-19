@@ -141,9 +141,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Receivables\Controllers\ArAccntTermsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArAccountsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArPaymentsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArTransactionsController.cs" />
+    <Compile Include="Areas\Receivables\Controllers\ArTransPostsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\HomeController.cs" />
     <Compile Include="Areas\Receivables\ReceivablesAreaRegistration.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArAccntCreditsController.cs" />
@@ -172,6 +174,7 @@
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\moment.js" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\moment.min.js" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\package.js" />
+    <Content Include="Areas\Receivables\Scripts\DefaultDatePicker.js" />
     <Content Include="Areas\Receivables\Scripts\Payments\Payments.js" />
     <Content Include="Areas\Receivables\Scripts\Transactions\Transaction.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -216,7 +219,18 @@
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\bower.json" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\package.json" />
     <Content Include="Areas\Receivables\Views\ArTransactions\TransactionHistory.cshtml" />
-    <Content Include="Areas\Receivables\Views\ArTransactions\PostAndCloseTransaction.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArTransPosts\Create.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArTransPosts\Delete.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArTransPosts\Details.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArTransPosts\Edit.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArTransPosts\Index.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntCredits\CreateCredit.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntTerms\Create.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntTerms\Delete.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntTerms\Details.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntTerms\Edit.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntTerms\Index.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccntTerms\CreateTerms.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />
@@ -311,6 +325,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Receivables\Data\" />
+    <Folder Include="Areas\Receivables\Scripts\Credits\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
   <PropertyGroup>
