@@ -88,64 +88,64 @@
     <div class="col-md-4">
         <h4>Account Credits</h4>
 
-        @if (accCredit == null)
+        @if (Model.ArAccntCredits.Count() == 0)
         {
             @Html.ActionLink("Add Credit", "CreateCredit", "ArAccntCredits", new { id = Model.Id }, null)
         }
         else
         {
-    <dl class="dl-horizontal">
-        <dt>
-            Date Credit
-        </dt>
+            <dl class="dl-horizontal">
+                <dt>
+                    Date Credit
+                </dt>
 
-        <dd>
-            @accCredit.DtCredit.ToString("MMM dd yyyy"):
-        </dd>
+                <dd>
+                    @accCredit.DtCredit.ToString("MMM dd yyyy"):
+                </dd>
 
-        <dt>
-            Limit
-        </dt>
+                <dt>
+                    Limit
+                </dt>
 
-        <dd>
-            @accCredit.CreditLimit.ToString("#,##0.0")
-        </dd>
-        <dt>
-            Overlimit
-        </dt>
+                <dd>
+                    @accCredit.CreditLimit.ToString("#,##0.0")
+                </dd>
+                <dt>
+                    Overlimit
+                </dt>
 
-        <dd>
-            @accCredit.OverLimitAllowed.ToString("#,##0.0")
-        </dd>
-        <dt>
-            Warning
-        </dt>
-        <dd>
-            @accCredit.CreditWarning.ToString("#,##0.0")
-        </dd>
-        <dt>
-            Approved by
-        </dt>
-        <dd>
-            @accCredit.ApprovedBy
-        </dd>
-        <dt>
-            Status
-        </dt>
-        <dd>
-            @accCredit.ArCreditStatu.Status
-        </dd>
-        <dt>
+                <dd>
+                    @accCredit.OverLimitAllowed.ToString("#,##0.0")
+                </dd>
+                <dt>
+                    Warning
+                </dt>
+                <dd>
+                    @accCredit.CreditWarning.ToString("#,##0.0")
+                </dd>
+                <dt>
+                    Approved by
+                </dt>
+                <dd>
+                    @accCredit.ApprovedBy
+                </dd>
+                <dt>
+                    Status
+                </dt>
+                <dd>
+                    @accCredit.ArCreditStatu.Status
+                </dd>
+                <dt>
 
-        </dt>
-        <dd>
-            @Html.ActionLink("Add", "CreateCredit", "ArAccntCredits", new { id = Model.Id }, null) |
+                </dt>
+                <dd>
+                    @Html.ActionLink("Add", "CreateCredit", "ArAccntCredits", new { id = Model.Id }, null) |
 
-            @Html.ActionLink("Edit", "Edit", "ArAccntCredits", new { id = accCredit.Id }, null) |
+                    @Html.ActionLink("Edit", "Edit", "ArAccntCredits", new { id = accCredit.Id }, null) |
 
-            @Html.ActionLink("Delete", "Delete", "ArAccntCredits", new { id = accCredit.Id }, null)
-        </dd>
-    </dl>
+                    @Html.ActionLink("Delete", "Delete", "ArAccntCredits", new { id = accCredit.Id }, null)
+                </dd>
+            </dl>
         }
 
     </div>
@@ -153,12 +153,12 @@
     <div class="col-md-4">
         <h4>Account Terms</h4>
 
-        @if (accTerms == null)
+        @if (Model.ArAccntPaymentTerms.Count() == 0)
         {
             @Html.ActionLink("Add Terms", "CreateTerms", "ArAccntTerms", new { id = Model.Id }, null)
         }
         else
-        { 
+        {
             <dl class="dl-horizontal">
                 <dt>
                     Date Terms
@@ -204,7 +204,7 @@
             </dl>
         }
 
-        </div>
+    </div>
 </div>
 <h4>
     Transactions List

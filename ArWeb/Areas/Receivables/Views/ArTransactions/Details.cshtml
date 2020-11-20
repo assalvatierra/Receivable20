@@ -42,6 +42,10 @@
             <b class="text-muted"> Due Date: </b>
             <span> @Model.DtDue.ToString("MMM dd yyyy") </span>
         </p>
+        <p>
+            <b class="text-muted"> Status: </b>
+            <span> @Model.ArTransStatu.Status </span>
+        </p>
     </div>
     <div class="col-md-6">
         <br />
@@ -90,10 +94,16 @@
             Reference
         </th>
         <th>
+            Type
+        </th>
+        <th>
             Remarks
         </th>
         <th>
             Amount
+        </th>
+        <th>
+
         </th>
     </tr>
     @foreach (var payments in transPayments)
@@ -110,18 +120,26 @@
                 @payments.ArPayment.Reference
             </td>
             <td>
+                @payments.ArPayment.ArPaymentType.Type
+            </td>
+            <td>
                 @payments.ArPayment.Remarks
             </td>
             <td>
                 @payments.ArPayment.Amount.ToString("#,##0.00")
             </td>
+            <td>
+                @Html.ActionLink("Edit", "EditTransPayment", "ArPayments", new { id = payments.Id }, null) |
+           
+                @Html.ActionLink("Delete", "DeleteTransPayment", "ArPayments", new { id = payments.Id }, null)
+            </td>
         </tr>
     }
     <tr>
-        <td colspan="4">
+        <td colspan="5">
             <span class="pull-right">Total</span>
         </td>
-        <td colspan="4">
+        <td colspan="2">
             @totalPaid.ToString("#,##0.00")
         </td>
     </tr>

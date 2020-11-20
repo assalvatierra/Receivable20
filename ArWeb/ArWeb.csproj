@@ -231,6 +231,8 @@
     <Content Include="Areas\Receivables\Views\ArAccntTerms\Edit.cshtml" />
     <Content Include="Areas\Receivables\Views\ArAccntTerms\Index.cshtml" />
     <Content Include="Areas\Receivables\Views\ArAccntTerms\CreateTerms.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArPayments\EditTransPayment.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArPayments\DeleteTransPayment.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />
