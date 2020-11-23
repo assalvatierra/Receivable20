@@ -10,7 +10,7 @@
 <div class="row">
 
     <div class="col-md-4">
-        <h2>Recievables Transactions </h2>
+        <h2>Transactions </h2>
         <p> Add, remove, and update transactions.</p>
         <p>
             @Html.ActionLink("Go to List", "Index", "ArTransactions", new { area = "Receivables" }, new { @class = "btn btn-default" })
@@ -18,12 +18,23 @@
     </div>
 
     @*<div class="col-md-4">
-        <h2>Payments</h2>
-        <p> Add, remove, and update payments.</p>
+            <h2>Payments</h2>
+            <p> Add, remove, and update payments.</p>
+            <p>
+                @Html.ActionLink("Go to List", "Index", "ArPayments", new { area = "Receivables" }, new { @class = "btn btn-default" })
+            </p>
+        </div>*@
+
+
+    <div class="col-md-4">
+        <h2>Receivables Mgt</h2>
+        <p> Monitor Due Date, Reminders, and Settlement.</p>
         <p>
-            @Html.ActionLink("Go to List", "Index", "ArPayments", new { area = "Receivables" }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Due Date", "DueDateMgt", "ArMgt", new { area = "Receivables" }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Reminders", "Reminders", "ArMgt", new { area = "Receivables" }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Settlement", "Settlement", "ArMgt", new { area = "Receivables" }, new { @class = "btn btn-default" })
         </p>
-    </div>*@
+    </div>
 
     <div class="col-md-4">
         <h2>Accounts </h2>
@@ -31,7 +42,7 @@
         <p>
             @Html.ActionLink("Go to List", "Index", "ArAccounts", new { area = "Receivables" }, new { @class = "btn btn-default" })
 
-            @Html.ActionLink("test", "Index", "ArAccntCredits", new { area = "Receivables" }, null)
+            @*@Html.ActionLink("test", "Index", "ArAccntCredits", new { area = "Receivables" }, null)*@
 
         </p>
     </div>

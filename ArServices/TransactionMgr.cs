@@ -121,6 +121,25 @@ namespace ArServices
             }
         }
 
+        public List<ArTransaction> GetTransactions(string status)
+        {
+            try
+            {
+                var transactions = db.ArTransactions.ToList();
+                if (!String.IsNullOrWhiteSpace(status))
+                {
+                    transactions = transactions.Where(t => t.ArTransStatu.Status == status).ToList();
+                }
+
+                return transactions.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                throw new EntitySqlException("Services: Unable to Get Transactions ");
+            }
+        }
+
         public IEnumerable<ArTransStatus> GetTransactionStatus()
         {
             try

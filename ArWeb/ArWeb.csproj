@@ -143,6 +143,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArAccntTermsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArAccountsController.cs" />
+    <Compile Include="Areas\Receivables\Controllers\ArMgtController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArPaymentsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArTransactionsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArTransPostsController.cs" />
@@ -170,6 +171,9 @@
     <Content Include="App_Data\aspnet-JobsV1-20160528101923_log.ldf">
       <DependentUpon>aspnet-JobsV1-20160528101923.mdf</DependentUpon>
     </Content>
+    <Content Include="Areas\Receivables\Data\ArDB.edmx.sql" />
+    <Content Include="Areas\Receivables\Data\SampleData.sql" />
+    <Content Include="Areas\Receivables\Data\Initial.sql" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\moment.js" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\moment.min.js" />
@@ -233,6 +237,9 @@
     <Content Include="Areas\Receivables\Views\ArAccntTerms\CreateTerms.cshtml" />
     <Content Include="Areas\Receivables\Views\ArPayments\EditTransPayment.cshtml" />
     <Content Include="Areas\Receivables\Views\ArPayments\DeleteTransPayment.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArMgt\DueDateMgt.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArMgt\Reminders.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArMgt\Settlement.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />
@@ -326,7 +333,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Receivables\Data\" />
     <Folder Include="Areas\Receivables\Scripts\Credits\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>

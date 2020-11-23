@@ -162,7 +162,7 @@ namespace JobsV1.Areas.Receivables.Controllers
             if (ModelState.IsValid && InputValidation(arPayment))
             {
                 ar.PaymentMgr.EditPayment(arPayment);
-                return RedirectToAction("Details", "ArTransactions", new { id = transId });
+                return RedirectToAction("Details", "ArTransactions", new { id = arPayment.Id });
             }
             ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name", arPayment.ArAccountId);
             ViewBag.ArPaymentTypeId = new SelectList(ar.PaymentMgr.GetPaymentTypes(), "Id", "Type", arPayment.ArPaymentTypeId);
@@ -196,6 +196,38 @@ namespace JobsV1.Areas.Receivables.Controllers
             //remove payment
             ar.PaymentMgr.RemovePayment(id);
             return RedirectToAction("Index");
+        }
+
+
+        // GET: ArPayments/Delete/5
+        public ActionResult DeleteTransPayment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ArPayment arPayment = ar.PaymentMgr.GetPaymentById(id);
+            if (arPayment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(arPayment);
+        }
+
+        // POST: ArPayments/Delete/5
+        [HttpPost, ActionName("DeleteTransPayment")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteTransPaymentConfirmed(int id)
+        {
+            //remove payment transaction
+            var transPayment = ar.TransPaymentMgr.GetTransPaymentsByPaymentId(id);
+            ar.TransPaymentMgr.RemoveTransPayment(transPayment);
+
+            var transId = transPayment.Id;
+
+            //remove payment
+            ar.PaymentMgr.RemovePayment(id);
+            return RedirectToAction("Details", "ArTransactions", new { id = transId });
         }
 
         protected override void Dispose(bool disposing)

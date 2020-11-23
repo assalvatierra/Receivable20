@@ -14,6 +14,7 @@ namespace ArInterfaces
         bool RemoveTransaction(ArTransaction transaction);
         ArTransaction GetTransactionById(int id);
         List<ArTransaction> GetTransactions();
+        List<ArTransaction> GetTransactions(string status);
         IEnumerable<ArTransStatus> GetTransactionStatus();
         bool UpdateTransAcc(int transactionId, int accountId);
         bool CloseTransactionStatus(int id);

@@ -17,9 +17,11 @@ namespace JobsV1.Areas.Receivables.Controllers
         private ReceivableFactory ar = new ReceivableFactory();
 
         // GET: ArTransactions
-        public ActionResult Index()
+        public ActionResult Index(string status)
         {
-            var arTransactions = ar.TransactionMgr.GetTransactions();
+            var arTransactions = ar.TransactionMgr.GetTransactions(status);
+
+            ViewBag.Status = status;
             return View(arTransactions.ToList());
         }
 
@@ -271,6 +273,11 @@ namespace JobsV1.Areas.Receivables.Controllers
             return RedirectToAction("Details", new { id = id });
         }
 
+        public string CheckAccountCredit(int accountId)
+        {
 
+
+            return "";
+        }
     }
 }
