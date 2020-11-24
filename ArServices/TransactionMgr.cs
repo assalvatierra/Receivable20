@@ -84,6 +84,18 @@ namespace ArServices
             }
         }
 
+        public List<ArTransaction> GetActiveTransactions()
+        {
+            try
+            {
+                return GetTransactions().Where(t => t.ArTransStatusId != 3).ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Active Transaction");
+            }
+        }
+
         public int GetTransAccountId(int id)
         {
             try
@@ -125,7 +137,7 @@ namespace ArServices
         {
             try
             {
-                var transactions = db.ArTransactions.ToList();
+                var transactions = GetTransactions();
                 if (!String.IsNullOrWhiteSpace(status))
                 {
                     transactions = transactions.Where(t => t.ArTransStatu.Status == status).ToList();

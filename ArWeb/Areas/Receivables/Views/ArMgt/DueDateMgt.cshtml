@@ -1,12 +1,15 @@
 ﻿@model IEnumerable<ArModels.Models.ArTransaction>
 @{
-    ViewBag.Title = "DueDateMgt";
+    ViewBag.Title = "Due Date Mgt";
+    DateTime today = new DateTime();
 }
 
 <h2>DueDateMgt</h2>
 <p>
     @Html.ActionLink("Back to Home", "Index", "Home", new { area = "" }, null)
 </p>
+
+<h4> Incoming Due </h4>
 <table class="table">
     <tr>
         <th> Invoice </th>
@@ -16,20 +19,49 @@
         <th> Desc </th>
         <th> Status </th>
         <th> Amount </th>
-        <th></th>
+        <th> Actions </th>
     </tr>
-    @foreach (var transaction in Model)
+    @foreach (var transaction in Model.Where(t=>t.DtDue <= today ).OrderByDescending(t=>t.DtDue))
     {
         <tr>
-            <td> @transaction. </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td> @transaction.InvoiceId </td>
+            <td> @transaction.DtInvoice.ToString("MMM dd yyyy") </td>
+            <td> @transaction.DtDue.ToString("MMM dd yyyy") </td>
+            <td> @transaction.ArAccount.Name </td>
+            <td> @transaction.Description </td>
+            <td> @transaction.ArTransStatu.Status </td>
+            <td> @transaction.Amount.ToString("#,#00.00") </td>
+            <td>  </td>
         </tr>
     }
-    
+
+</table>
+
+
+<h4> Over Due </h4>
+<table class="table">
+    <tr>
+        <th> Invoice </th>
+        <th> Invoice Date</th>
+        <th> Due Date</th>
+        <th> Account </th>
+        <th> Desc </th>
+        <th> Status </th>
+        <th> Amount </th>
+        <th> Actions </th>
+    </tr>
+    @foreach (var transaction in Model.Where(t => t.DtDue >= today).OrderByDescending(t => t.DtDue))
+    {
+        <tr>
+            <td> @transaction.InvoiceId </td>
+            <td> @transaction.DtInvoice.ToString("MMM dd yyyy") </td>
+            <td> @transaction.DtDue.ToString("MMM dd yyyy") </td>
+            <td> @transaction.ArAccount.Name </td>
+            <td> @transaction.Description </td>
+            <td> @transaction.ArTransStatu.Status </td>
+            <td> @transaction.Amount.ToString("#,#00.00") </td>
+            <td>  </td>
+        </tr>
+    }
+
 </table>

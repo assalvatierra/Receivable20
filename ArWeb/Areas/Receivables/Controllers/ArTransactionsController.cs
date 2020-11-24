@@ -275,8 +275,6 @@ namespace JobsV1.Areas.Receivables.Controllers
 
         public string CheckAccountCredit(int accountId)
         {
-
-
             return "";
         }
     }

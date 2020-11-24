@@ -15,6 +15,7 @@ namespace ArInterfaces
         ArTransaction GetTransactionById(int id);
         List<ArTransaction> GetTransactions();
         List<ArTransaction> GetTransactions(string status);
+        List<ArTransaction> GetActiveTransactions();
         IEnumerable<ArTransStatus> GetTransactionStatus();
         bool UpdateTransAcc(int transactionId, int accountId);
         bool CloseTransactionStatus(int id);

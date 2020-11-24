@@ -1,9 +1,37 @@
-﻿
+﻿@model IEnumerable<ArModels.Models.ArTransaction>
 @{
     ViewBag.Title = "Reminders";
 }
 
-<h2>Reminders</h2>
+<h2>
+    Reminders
+</h2>
 <p>
     @Html.ActionLink("Back to Home", "Index", "Home", new { area = "" }, null)
 </p>
+<table class="table">
+    <tr>
+        <th> Invoice </th>
+        <th> Invoice Date</th>
+        <th> Due Date</th>
+        <th> Account </th>
+        <th> Desc </th>
+        <th> Status </th>
+        <th> Amount </th>
+        <th> Actions </th>
+    </tr>
+    @foreach (var transaction in Model)
+    {
+        <tr>
+            <td> @transaction.InvoiceId </td>
+            <td> @transaction.DtInvoice </td>
+            <td> @transaction.DtDue </td>
+            <td> @transaction.ArAccount.Name </td>
+            <td> @transaction.Description </td>
+            <td> @transaction.ArTransStatu.Status </td>
+            <td> @transaction.Amount </td>
+            <td></td>
+        </tr>
+    }
+
+</table>

@@ -55,6 +55,12 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.DtInvoice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceId)
+        </th>
+        <th>
             Account
         </th>
         <th>
@@ -62,12 +68,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DtService)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DtInvoice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InvoiceId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DtDue)
@@ -94,6 +94,12 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @item.DtInvoice.ToString("MMM dd yyyy")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ArAccount.Name)
         </td>
         <td>
@@ -101,12 +107,6 @@
         </td>
         <td>
             @item.DtService.ToString("MMM dd yyyy")
-        </td>
-        <td>
-            @item.DtInvoice.ToString("MMM dd yyyy")
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvoiceId)
         </td>
         <td>
             @item.DtDue.ToString("MMM dd yyyy")
