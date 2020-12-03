@@ -175,5 +175,30 @@ namespace ArWeb.Controllers
 
             return isValid;
         }
+
+        //param: id = accountId
+        [HttpGet]
+        public decimal GetAccountCreditLimit(int? id)
+        {
+            try
+            {
+                if (id == null)
+                {
+                    return 0;
+                }
+
+                var accountCreditLimit = ar.AccountMgr.GetLatestAccntCreditLimit((int)id);
+                if (accountCreditLimit != null)
+                {
+                    return accountCreditLimit.CreditLimit;
+                }
+
+                return 0;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

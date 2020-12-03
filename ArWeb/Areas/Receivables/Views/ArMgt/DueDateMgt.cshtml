@@ -21,7 +21,7 @@
         <th> Amount </th>
         <th> Actions </th>
     </tr>
-    @foreach (var transaction in Model.Where(t=>t.DtDue <= today ).OrderByDescending(t=>t.DtDue))
+    @foreach (var transaction in Model.Where(t=> today  <= t.DtDue).OrderByDescending(t=>t.DtDue))
     {
         <tr>
             <td> @transaction.InvoiceId </td>
@@ -50,7 +50,7 @@
         <th> Amount </th>
         <th> Actions </th>
     </tr>
-    @foreach (var transaction in Model.Where(t => t.DtDue >= today).OrderByDescending(t => t.DtDue))
+    @foreach (var transaction in Model.Where(t => today  >= t.DtDue).OrderByDescending(t => t.DtDue))
     {
         <tr>
             <td> @transaction.InvoiceId </td>

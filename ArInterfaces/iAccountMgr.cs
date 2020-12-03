@@ -17,10 +17,10 @@ namespace ArInterfaces
         IEnumerable<ArAccStatus> GetArAccStatus();
 
         List<ArAccntCredit> AllAccntCreditLimit(int AccntId);
-
         ArAccntCredit GetLatestAccntCreditLimit(int AccntId);
         bool UpdateAccntCredit(ArAccntCredit credit);
         bool AddAccntCredit(ArAccntCredit credit);
+
         List<ArAccntTerm> AllAccntPaymentTerm(int AccntId);
         ArAccntTerm GetLatestAccntPaymentTerm(int AccntId);
         bool UpdateAccntPaymentTerm(ArAccntTerm term);
