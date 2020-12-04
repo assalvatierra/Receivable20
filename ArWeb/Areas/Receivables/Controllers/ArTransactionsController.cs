@@ -273,9 +273,22 @@ namespace JobsV1.Areas.Receivables.Controllers
             return RedirectToAction("Details", new { id = id });
         }
 
-        public string CheckAccountCredit(int accountId)
+        [HttpGet]
+        public JsonResult CheckAccountCredit(int id)
         {
-            return "";
+
+            var account = ar.AccountMgr.GetLatestAccntCreditLimit(id);
+
+            var creditLimit = new ArAccntCredit()
+            {
+                DtCredit = account.DtCredit,
+                ArAccountId = account.ArAccountId,
+                CreditLimit = account.CreditLimit,
+                CreditWarning = account.CreditWarning,
+                OverLimitAllowed = account.OverLimitAllowed
+            };
+
+            return Json(creditLimit, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using ArModels;
 using ArInterfaces;
 using ArModels.Models;
-using ArDBLayer;
 using System.Data.Entity.Core;
 
 namespace ArServices

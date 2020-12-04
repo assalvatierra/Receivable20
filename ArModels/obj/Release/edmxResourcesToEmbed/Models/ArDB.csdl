@@ -56,6 +56,26 @@
       <End Role="ArCategory" EntitySet="ArCategories" />
       <End Role="ArTransaction" EntitySet="ArTransactions" />
     </AssociationSet>
+    <EntitySet Name="ArAccntCredits" EntityType="ArDB.ArAccntCredit" />
+    <AssociationSet Name="ArAccountArAccntCredit" Association="ArDB.ArAccountArAccntCredit">
+      <End Role="ArAccount" EntitySet="ArAccounts" />
+      <End Role="ArAccntCredit" EntitySet="ArAccntCredits" />
+    </AssociationSet>
+    <EntitySet Name="ArCreditStatus" EntityType="ArDB.ArCreditStatus" />
+    <AssociationSet Name="ArCreditStatusArAccntCredit" Association="ArDB.ArCreditStatusArAccntCredit">
+      <End Role="ArCreditStatus" EntitySet="ArCreditStatus" />
+      <End Role="ArAccntCredit" EntitySet="ArAccntCredits" />
+    </AssociationSet>
+    <EntitySet Name="ArAccntTerms" EntityType="ArDB.ArAccntTerm" />
+    <AssociationSet Name="ArAccountArAccntPaymentTerm" Association="ArDB.ArAccountArAccntPaymentTerm">
+      <End Role="ArAccount" EntitySet="ArAccounts" />
+      <End Role="ArAccntPaymentTerm" EntitySet="ArAccntTerms" />
+    </AssociationSet>
+    <EntitySet Name="ArAccntTermStatus" EntityType="ArDB.ArAccntTermStatus" />
+    <AssociationSet Name="ArAccntTermStatusArAccntPaymentTerm" Association="ArDB.ArAccntTermStatusArAccntPaymentTerm">
+      <End Role="ArAccntTermStatus" EntitySet="ArAccntTermStatus" />
+      <End Role="ArAccntPaymentTerm" EntitySet="ArAccntTerms" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ArTransaction">
     <Key>
@@ -67,7 +87,7 @@
     <Property Name="Description" Type="String" Nullable="false" MaxLength="80" />
     <Property Name="DtEncoded" Type="DateTime" Nullable="false" />
     <Property Name="DtDue" Type="DateTime" Nullable="false" />
-    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="2" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
     <Property Name="Interval" Type="Int32" Nullable="false" />
     <Property Name="IsRepeating" Type="Boolean" Nullable="false" />
     <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
@@ -80,6 +100,7 @@
     <NavigationProperty Name="ArTransPayments" Relationship="ArDB.ArTransactionArTransPayment" FromRole="ArTransaction" ToRole="ArTransPayment" />
     <NavigationProperty Name="ArCategory" Relationship="ArDB.ArCategoryArTransaction" FromRole="ArTransaction" ToRole="ArCategory" />
     <Property Name="ArCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="DtService" Type="DateTime" Nullable="false" />
   </EntityType>
   <EntityType Name="ArTransPost">
     <Key>
@@ -87,8 +108,8 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DtPost" Type="DateTime" Nullable="false" />
-    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="2" />
-    <Property Name="Balance" Type="Decimal" Nullable="false" Precision="2" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+    <Property Name="Balance" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
     <NavigationProperty Name="ArTransaction" Relationship="ArDB.ArTransactionArTransPost" FromRole="ArTransPost" ToRole="ArTransaction" />
     <Property Name="ArTransactionId" Type="Int32" Nullable="false" />
   </EntityType>
@@ -98,7 +119,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DtPayment" Type="DateTime" Nullable="false" />
-    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="2" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
     <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
     <NavigationProperty Name="ArAccount" Relationship="ArDB.ArAccountArPayment" FromRole="ArPayment" ToRole="ArAccount" />
     <Property Name="Reference" Type="String" Nullable="true" MaxLength="80" />
@@ -155,13 +176,15 @@
     <Property Name="Address" Type="String" Nullable="true" MaxLength="120" />
     <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
     <Property Name="ArAccStatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ArAccntCredits" Relationship="ArDB.ArAccountArAccntCredit" FromRole="ArAccount" ToRole="ArAccntCredit" />
+    <NavigationProperty Name="ArAccntPaymentTerms" Relationship="ArDB.ArAccountArAccntPaymentTerm" FromRole="ArAccount" ToRole="ArAccntPaymentTerm" />
   </EntityType>
   <EntityType Name="ArAccStatus">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Status" Type="String" Nullable="false" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" />
     <NavigationProperty Name="ArAccounts" Relationship="ArDB.ArAccStatusArAccount" FromRole="ArAccStatus" ToRole="ArAccount" />
   </EntityType>
   <Association Name="ArAccountArTransaction">
@@ -320,6 +343,99 @@
       </Principal>
       <Dependent Role="ArTransaction">
         <PropertyRef Name="ArCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ArAccntCredit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="ArAccount" Relationship="ArDB.ArAccountArAccntCredit" FromRole="ArAccntCredit" ToRole="ArAccount" />
+    <Property Name="ArAccountId" Type="Int32" Nullable="false" />
+    <Property Name="DtCredit" Type="DateTime" Nullable="false" />
+    <Property Name="CreditLimit" Type="Decimal" Nullable="false" />
+    <Property Name="OverLimitAllowed" Type="Decimal" Nullable="false" />
+    <Property Name="CreditWarning" Type="Decimal" Nullable="false" />
+    <Property Name="ApprovedBy" Type="String" Nullable="true" MaxLength="80" />
+    <NavigationProperty Name="ArCreditStatu" Relationship="ArDB.ArCreditStatusArAccntCredit" FromRole="ArAccntCredit" ToRole="ArCreditStatus" />
+    <Property Name="ArCreditStatusId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ArAccountArAccntCredit">
+    <End Type="ArDB.ArAccount" Role="ArAccount" Multiplicity="1" />
+    <End Type="ArDB.ArAccntCredit" Role="ArAccntCredit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArAccntCredit">
+        <PropertyRef Name="ArAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ArCreditStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="ArAccntCredits" Relationship="ArDB.ArCreditStatusArAccntCredit" FromRole="ArCreditStatus" ToRole="ArAccntCredit" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <Association Name="ArCreditStatusArAccntCredit">
+    <End Type="ArDB.ArCreditStatus" Role="ArCreditStatus" Multiplicity="1" />
+    <End Type="ArDB.ArAccntCredit" Role="ArAccntCredit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArCreditStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArAccntCredit">
+        <PropertyRef Name="ArCreditStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ArAccntTerm">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dtTerm" Type="DateTime" Nullable="false" />
+    <Property Name="NoOfDays" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" Nullable="true" MaxLength="150" />
+    <NavigationProperty Name="ArAccount" Relationship="ArDB.ArAccountArAccntPaymentTerm" FromRole="ArAccntPaymentTerm" ToRole="ArAccount" />
+    <Property Name="ArAccountId" Type="Int32" Nullable="false" />
+    <Property Name="ApprovedBy" Type="String" Nullable="false" />
+    <NavigationProperty Name="ArAccntTermStatu" Relationship="ArDB.ArAccntTermStatusArAccntPaymentTerm" FromRole="ArAccntPaymentTerm" ToRole="ArAccntTermStatus" />
+    <Property Name="ArAccntTermStatusId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ArAccountArAccntPaymentTerm">
+    <End Type="ArDB.ArAccount" Role="ArAccount" Multiplicity="1" />
+    <End Type="ArDB.ArAccntTerm" Role="ArAccntPaymentTerm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArAccntPaymentTerm">
+        <PropertyRef Name="ArAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ArAccntTermStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" Nullable="false" MaxLength="10" />
+    <NavigationProperty Name="ArAccntPaymentTerms" Relationship="ArDB.ArAccntTermStatusArAccntPaymentTerm" FromRole="ArAccntTermStatus" ToRole="ArAccntPaymentTerm" />
+  </EntityType>
+  <Association Name="ArAccntTermStatusArAccntPaymentTerm">
+    <End Type="ArDB.ArAccntTermStatus" Role="ArAccntTermStatus" Multiplicity="1" />
+    <End Type="ArDB.ArAccntTerm" Role="ArAccntPaymentTerm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArAccntTermStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArAccntPaymentTerm">
+        <PropertyRef Name="ArAccntTermStatusId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

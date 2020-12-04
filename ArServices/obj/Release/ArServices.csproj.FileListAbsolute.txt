@@ -14,3 +14,6 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.cs
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.csproj.CopyComplete
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.pdb
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Release\ArServices.dll.config
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\ACER\Documents\GitHub\Receivable20\ArServices\bin\Release\EntityFramework.SqlServer.xml

@@ -64,10 +64,6 @@
     <Compile Include="TransactionMgr.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArDBLayer\ArDBLayer.csproj">
-      <Project>{7afe168f-5afe-4d9b-9edc-55658f5e1a7c}</Project>
-      <Name>ArDBLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ArInterfaces\ArInterfaces.csproj">
       <Project>{8d86ba9c-d048-4484-a858-b3623587bceb}</Project>
       <Name>ArInterfaces</Name>

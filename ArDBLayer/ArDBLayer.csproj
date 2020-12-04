@@ -93,11 +93,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArInterfaces\ArInterfaces.csproj">
-      <Project>{8D86BA9C-D048-4484-A858-B3623587BCEB}</Project>
+      <Project>{8d86ba9c-d048-4484-a858-b3623587bceb}</Project>
       <Name>ArInterfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\ArModels\ArModels.csproj">
-      <Project>{4B968B7D-9789-48B5-B8BE-D5ED78C36FF7}</Project>
+      <Project>{4b968b7d-9789-48b5-b8be-d5ed78c36ff7}</Project>
       <Name>ArModels</Name>
     </ProjectReference>
   </ItemGroup>

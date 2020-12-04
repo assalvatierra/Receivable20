@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArModels\ArModels.csproj">
-      <Project>{4B968B7D-9789-48B5-B8BE-D5ED78C36FF7}</Project>
+      <Project>{4b968b7d-9789-48b5-b8be-d5ed78c36ff7}</Project>
       <Name>ArModels</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,5 +1,5 @@
 ﻿insert into ArTransStatus([Status]) values
-('New'),('Ongoing'),('Close');
+('New'),('Approved'),('Sent'),('Payment'),('Settlement'),('Closed');
 
 insert into ArAccStatus([Status]) values
 ('Active'),('Inactive'),('OnHold');
