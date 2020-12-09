@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ArModels.Models.ArTransaction>
 @{
     ViewBag.Title = "Due Date Mgt";
-    DateTime today = new DateTime();
+    DateTime today = ViewBag.today;
 }
 
 <h2>DueDateMgt</h2>
@@ -21,9 +21,17 @@
         <th> Amount </th>
         <th> Actions </th>
     </tr>
-    @foreach (var transaction in Model.Where(t=> today  <= t.DtDue).OrderByDescending(t=>t.DtDue))
+    @foreach (var transaction in Model.Where(t=> today  <= t.DtDue).OrderBy(t=>t.DtDue))
     {
-        <tr>
+        var color = "white";
+        var dttoday = today;
+        var res = (transaction.DtDue == dttoday.Date);
+        if (transaction.DtDue == dttoday.Date)
+        {
+            color = "gray";
+        }
+
+        <tr style="background-color:@color;">
             <td> @transaction.InvoiceId </td>
             <td> @transaction.DtInvoice.ToString("MMM dd yyyy") </td>
             <td> @transaction.DtDue.ToString("MMM dd yyyy") </td>
@@ -31,7 +39,22 @@
             <td> @transaction.Description </td>
             <td> @transaction.ArTransStatu.Status </td>
             <td> @transaction.Amount.ToString("#,#00.00") </td>
-            <td>  </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li> @Html.ActionLink("Add Payment", "CreateTransPayment", "ArPayments", new { transId = transaction.Id }, null) </li>
+                        <li> @Html.ActionLink("Change Due Date", "CreateTransPayment", "ArPayments", new { transId = transaction.Id }, null) </li>
+                        <li role="separator" class="divider"></li>
+                        <li> @Html.ActionLink("Edit", "Edit", new { id = transaction.Id }) </li>
+                        <li> @Html.ActionLink("Details", "Details", new { id = transaction.Id }) </li>
+                    </ul>
+                </div>
+
+            </td>
         </tr>
     }
 

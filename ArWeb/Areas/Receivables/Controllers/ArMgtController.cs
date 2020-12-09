@@ -23,7 +23,7 @@ namespace JobsV1.Areas.Receivables.Controllers
         {
             //get ongoing transactions
             var transactions = ar.TransactionMgr.GetActiveTransactions();
-
+            ViewBag.today = ar.DateClassMgr.GetCurrentDate();
             return View(transactions);
         }
 

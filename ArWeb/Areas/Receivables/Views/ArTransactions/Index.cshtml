@@ -32,16 +32,45 @@
         @Html.ActionLink("New", "Index", new { status = "New" })<span> |</span>
     }
 
-    @if (status == "Ongoing")
+    @if (status == "Approved")
     {
-        <span>Ongoing |</span>
+        <span>Approved |</span>
     }
     else
     {
-        @Html.ActionLink("Ongoing", "Index", new { status = "Ongoing" })<span> |</span>
+        @Html.ActionLink("Approved", "Index", new { status = "Approved" })<span> |</span>
     }
 
-    @if (status == "Close")
+
+    @if (status == "Reminder Sent")
+    {
+        <span>Reminder Sent |</span>
+    }
+    else
+    {
+        @Html.ActionLink("Reminder Sent", "Index", new { status = "Reminder Sent" })<span> |</span>
+    }
+
+    @if (status == "Payment")
+    {
+        <span>Payment |</span>
+    }
+    else
+    {
+        @Html.ActionLink("Payment", "Index", new { status = "Payment" })<span> |</span>
+    }
+
+    @if (status == "Settlement")
+    {
+        <span>Settlement |</span>
+    }
+    else
+    {
+        @Html.ActionLink("Settlement", "Index", new { status = "Settlement" })<span> |</span>
+    }
+
+
+    @if (status == "Closed")
     {
         <span>Closed </span>
     }
@@ -49,7 +78,6 @@
     {
         @Html.ActionLink("Closed", "Index", new { status = "Close" })
     }
-        
 
 </p>
 <table class="table">
@@ -87,7 +115,6 @@
         <th>
             Paid&nbsp;Amount
         </th>
-        <th style="min-width:100px;"></th>
         <th></th>
     </tr>
 
@@ -138,14 +165,64 @@
             </span>
         </td>
         <td>
-            @Html.ActionLink("Add Payment", "CreateTransPayment", "ArPayments", new { transId = item.Id }, null) 
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Actions
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li>
+                        @if (item.ArTransStatusId == 1)
+                        {
+                            <a class="cursor-link" onclick="UpdateStatus(@item.Id, 2)"> Approve </a>
+                        }
+                        else if (item.ArTransStatusId >= 2 && item.ArTransStatusId <= 5)
+                        {
+                            @Html.ActionLink("Add Payment", "CreateTransPayment", "ArPayments", new { transId = item.Id }, null)
+                            if (item.ArTransStatusId == 2)
+                            {
+                                <a class="cursor-link" onclick="UpdateStatus(@item.Id, 5)"> For Settlement </a>
+                            }
+                        }
+                    <li role="separator" class="divider"></li>
+                    <li> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </li>
+                    <li> @Html.ActionLink("Details", "Details", new { id = item.Id }) </li>
+                    <li> @Html.ActionLink("Delete", "Delete", new { id = item.Id }) </li>
+                </ul>
+            </div>
+
         </td>
     </tr>
 }
 
 </table>
+
+
+@section Scripts{
+    <script>
+
+        function UpdateStatus(transId, statusId) {
+            $("#overlay").show();
+           var result =  $.post("../Receivables/ArTransactions/UpdateTransStatus",{
+                   transId: transId,
+                   statusId: statusId
+                }, (response) => {
+                   console.log("Update Status : " + response);
+                   if (response == "True") {
+                       $("#overlay").hide();
+                       window.location.reload(false);
+                   } else {
+                       alert("Unable to Update transaction.");
+                       $("#overlay").hide();
+                   }
+                }
+            );
+            console.log(result);
+            if (result["ResponseCode"] == 500) {
+               alert("Unable to Update transaction.");
+               $("#overlay").hide();
+            }
+        }
+
+    </script>
+    }

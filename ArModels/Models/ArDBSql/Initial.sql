@@ -20,6 +20,3 @@ insert into ArCategories([Name],[Remarks],[SortNo]) values
 insert into ArCreditStatus([Status]) values ('Active'),('Pending'),('Expired');
 
 insert into ArAccntTermStatus([Status]) values ('Active'),('Pending'),('Expired');
-
-
-

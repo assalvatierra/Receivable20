@@ -290,5 +290,42 @@ namespace JobsV1.Areas.Receivables.Controllers
 
             return Json(creditLimit, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public bool UpdateTransStatus(int? transId, int? statusId)
+        {
+            if (transId == null || statusId == null)
+            {
+                return false;
+            }
+
+            var trans = ar.TransactionMgr.GetTransactionById((int)transId);
+
+            if (trans == null)
+            {
+                return false;
+            }
+
+            trans.ArTransStatusId = (int)statusId;
+            //update
+            var editResponse = ar.TransactionMgr.EditTransaction(trans);
+
+            if (editResponse)
+            {
+                //add activity
+                ArAction arAction = new ArAction();
+                arAction.ArTransactionId = (int)transId;
+                arAction.ArActionItemId = 2; //approve
+                arAction.DtPerformed = ar.DateClassMgr.GetCurrentDateTime();
+                arAction.PreformedBy = "User"; //edit to get user here!
+
+                ar.ActionMgr.AddAction(arAction);
+
+                return true;
+            }
+
+            return false;
+
+        }
     }
 }

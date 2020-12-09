@@ -29,7 +29,18 @@
             <td> @transaction.ArTransStatu.Status </td>
             <td> @transaction.Amount </td>
             <td>
-
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li> @Html.ActionLink("Settlement", "CreateTransPayment", "ArPayments", new { transId = transaction.Id }, null) </li>
+                        <li role="separator" class="divider"></li>
+                        <li> @Html.ActionLink("Edit", "Edit", new { id = transaction.Id }) </li>
+                        <li> @Html.ActionLink("Details", "Details", new { id = transaction.Id }) </li>
+                    </ul>
+                </div>
             </td>
         </tr>
     }
