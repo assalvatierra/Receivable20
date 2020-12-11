@@ -267,7 +267,13 @@ namespace JobsV1.Areas.Receivables.Controllers
                 ar.TransactionMgr.CloseTransactionStatus(id);
 
                 //post
-                ar.TransPostMgr.CreateTransPost(transaction, today, TotalBalance);
+               var postResponse = ar.TransPostMgr.CreateTransPost(transaction, today, TotalBalance);
+
+                if (postResponse)
+                {
+                    //add activity transaction closed 
+                    ar.ActionMgr.AddAction(7, today, GetUser(), id);
+                }
             }
 
             return RedirectToAction("Details", new { id = id });
@@ -312,20 +318,29 @@ namespace JobsV1.Areas.Receivables.Controllers
 
             if (editResponse)
             {
-                //add activity
-                ArAction arAction = new ArAction();
-                arAction.ArTransactionId = (int)transId;
-                arAction.ArActionItemId = 2; //approve
-                arAction.DtPerformed = ar.DateClassMgr.GetCurrentDateTime();
-                arAction.PreformedBy = "User"; //edit to get user here!
+                //add activity based on statusId
+                var today = ar.DateClassMgr.GetCurrentDateTime();
+                var user = GetUser(); //edit to get user here!
 
-                ar.ActionMgr.AddAction(arAction);
+                ar.ActionMgr.AddAction((int)statusId, today, user, (int)transId);
 
                 return true;
             }
 
             return false;
 
+        }
+
+        private string GetUser()
+        {
+            if (HttpContext.User.Identity != null)
+            {
+                return HttpContext.User.Identity.Name;
+            }
+            else
+            {
+                return "User";
+            }
         }
     }
 }

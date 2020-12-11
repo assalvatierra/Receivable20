@@ -90,7 +90,18 @@ namespace JobsV1.Areas.Receivables.Controllers
             if (ModelState.IsValid && InputValidation(arPayment))
             {
                 ar.PaymentMgr.AddPayment(arPayment);
-                ar.TransPaymentMgr.AddTransPayment(transId, arPayment.Id);
+                var createResponse = ar.TransPaymentMgr.AddTransPayment(transId, arPayment.Id);
+ 
+
+                if (createResponse)
+                {
+                    //add activity based on statusId
+                    var today = ar.DateClassMgr.GetCurrentDateTime();
+                    var user = "User"; //edit to get user here!
+
+                    ar.ActionMgr.AddAction(8, today, user, (int)transId);
+                }
+
                 return RedirectToAction("Details", "ArTransactions",new { id = transId });
             }
 

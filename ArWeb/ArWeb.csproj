@@ -179,6 +179,7 @@
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\moment.min.js" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\package.js" />
     <Content Include="Areas\Receivables\Scripts\DefaultDatePicker.js" />
+    <Content Include="Areas\Receivables\Scripts\Mgt\DueDate.js" />
     <Content Include="Areas\Receivables\Scripts\Payments\Payments.js" />
     <Content Include="Areas\Receivables\Scripts\Transactions\Transaction.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -237,9 +238,11 @@
     <Content Include="Areas\Receivables\Views\ArAccntTerms\CreateTerms.cshtml" />
     <Content Include="Areas\Receivables\Views\ArPayments\EditTransPayment.cshtml" />
     <Content Include="Areas\Receivables\Views\ArPayments\DeleteTransPayment.cshtml" />
-    <Content Include="Areas\Receivables\Views\ArMgt\DueDateMgt.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArMgt\Index.cshtml" />
     <Content Include="Areas\Receivables\Views\ArMgt\Reminders.cshtml" />
     <Content Include="Areas\Receivables\Views\ArMgt\Settlement.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArMgt\_ModalChangeDueDate.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArMgt\Approval.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />

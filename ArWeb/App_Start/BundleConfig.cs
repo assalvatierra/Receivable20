@@ -30,6 +30,10 @@ namespace ArWeb
                       "~/Content/bootstrap.css",
                       "~/Content/daterangepicker.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/DateRangePicker").Include(
+                    "~/Content/daterangepicker.css"
+                ));
         }
     }
 }

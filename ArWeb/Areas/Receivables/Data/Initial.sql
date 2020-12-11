@@ -1,5 +1,5 @@
 ﻿insert into ArTransStatus([Status]) values
-('New'),('Approved'),('Reminder Sent'),('Payment'),('Settlement'),('Closed');
+('New'),('For Approval'),('Approved'),('Sent'),('Settlement'),('Closed');
 
 insert into ArAccStatus([Status]) values
 ('Active'),('Inactive'),('OnHold');
@@ -8,7 +8,7 @@ insert into ArPaymentTypes([Type]) values
 ('Cash'),('Check'),('Bank'),('PO'),('Others');
 
 insert into ArActionItems([Action],[Remarks],[SortNo]) values
-('New Bill','',1),('Bill Approved','',2),('Bill Sent','',3),('Bill Received','',4),('Bill Payment','',5), ('Bill Settled','',6),('Bill Closed','',6),
+('New Bill','',1),('Bill For Approval','',2),('Bill Approved','',2),('Bill Sent','',3),('Bill Received','',4), ('Bill For Settlement','',6),('Bill Closed','',7),('Bill Payment','',8),
 ('1st Reminder Sent','',11),('2nd Reminder Sent','',12),('2nd Reminder Sent','',13);
 
 insert into ArAccounts([Name],[Landline],[Email],[Mobile],[Company],[Address],[Remarks],[ArAccStatusId]) values

@@ -1,0 +1,159 @@
+﻿@model IEnumerable<ArModels.Models.ArTransaction>
+@{
+    ViewBag.Title = "Ar Management";
+    DateTime today = ViewBag.today;
+}
+
+<h2>Receivables Management</h2>
+<p>
+    @Html.ActionLink("Back to Home", "Index", "Home", new { area = "" }, null)
+</p>
+
+<h4> Incoming Due </h4>
+<table class="table">
+    <tr>
+        <th> Invoice </th>
+        <th> Invoice Date</th>
+        <th> Due Date</th>
+        <th> Account </th>
+        <th> Desc </th>
+        <th> Status </th>
+        <th> Amount </th>
+        <th> Actions </th>
+    </tr>
+    @foreach (var transaction in Model.Where(t => today <= t.DtDue).OrderBy(t => t.DtDue))
+    {
+        var color = "white";
+        var textColor = "black";
+        var dttoday = today;
+        var res = (transaction.DtDue == dttoday.Date);
+        if (transaction.DtDue == dttoday.Date)
+        {
+            color = "dodgerBlue";
+            textColor = "White";
+        }
+
+        <tr style="background-color:@color;color:@textColor;">
+            <td> @transaction.InvoiceId </td>
+            <td> @transaction.DtInvoice.ToString("MMM dd yyyy") </td>
+            <td> @transaction.DtDue.ToString("MMM dd yyyy") </td>
+            <td> @transaction.ArAccount.Name </td>
+            <td> @transaction.Description </td>
+            <td> @transaction.ArTransStatu.Status </td>
+            <td> @transaction.Amount.ToString("#,#00.00") </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#ChangeDueDateModal" onclick="InitChangeDueDate(@transaction.Id ,'@transaction.DtDue.ToString("MMM dd yyyy")')"> Change Due Date </a>
+                        </li>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#ContactModal" onclick="InitChangeDueDate(@transaction.Id ,'@transaction.DtDue.ToString("MMM dd yyyy")')"> Contact </a>
+                        </li>
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#ReminderModal" onclick="InitChangeDueDate(@transaction.Id ,'@transaction.DtDue.ToString("MMM dd yyyy")')"> Send Reminder </a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li> @Html.ActionLink("Edit", "Edit", "ArTransactions", new { id = transaction.Id }, null) </li>
+                        <li> @Html.ActionLink("Details", "Details", "ArTransactions", new { id = transaction.Id }, null) </li>
+                        <li> @Html.ActionLink("Activities", "TransactionHistory", "ArTransactions", new { id = transaction.Id }, null) </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<h4> Over Due </h4>
+<table class="table">
+    <tr>
+        <th> Invoice </th>
+        <th> Invoice Date</th>
+        <th> Due Date</th>
+        <th> Account </th>
+        <th> Desc </th>
+        <th> Status </th>
+        <th> Amount </th>
+        <th> Actions </th>
+    </tr>
+    @foreach (var transaction in ViewBag.OverDueTrans as IEnumerable<ArModels.Models.ArTransaction>)
+    {
+        <tr>
+            <td> @transaction.InvoiceId </td>
+            <td> @transaction.DtInvoice.ToString("MMM dd yyyy") </td>
+            <td> @transaction.DtDue.ToString("MMM dd yyyy") </td>
+            <td> @transaction.ArAccount.Name </td>
+            <td> @transaction.Description </td>
+            <td> @transaction.ArTransStatu.Status </td>
+            <td> @transaction.Amount.ToString("#,#00.00") </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Actions
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li>
+                            <a href="" data-toggle="modal" data-target="#ChangeDueDateModal" onclick="InitChangeDueDate(@transaction.Id ,'@transaction.DtDue.ToString("MMM dd yyyy")')"> Change Due Date </a>
+                        </li>
+                        <li> @Html.ActionLink("History", "TransactionHistory", "ArTransactions", new { transId = transaction.Id }, null) </li>
+                        <li role="separator" class="divider"></li>
+                        <li> @Html.ActionLink("Edit", "Edit", "ArTransactions", new { id = transaction.Id }, null) </li>
+                        <li> @Html.ActionLink("Details", "Details", "ArTransactions", new { id = transaction.Id }, null) </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.Partial("_ModalChangeDueDate")
+@Html.Partial("_ModalContact")
+
+@section Scripts{
+    <script type="text/javascript" src="~/Areas/Receivables/Scripts/Mgt/DueDate.js"></script>
+    <script>
+        function InitChangeDueDate(transId, dueDate) {
+            $("#DueDate-transId").val(transId);
+            $("#DueDate-Old").val(dueDate);
+        }
+
+        function Submit_DueDateChange() {
+            var newDueDate = $("#DueDate-New").val();
+            var transId = $("#DueDate-transId").val();
+
+            console.log(newDueDate);
+            console.log(transId);
+
+            $("#overlay").show();
+
+            var result = $.post("../Receivables/ArMgt/UpdateDueDate",
+                {
+                    transId: transId,
+                    dueDate: newDueDate
+                },
+                (response) => {
+                    console.log(response);
+                    if (response == "True") {
+                        $("#ChangeDueDateModal").modal('hide');
+                        $("#overlay").hide();
+                        window.location.reload(false);
+                    } else {
+
+                        alert("Unable to Update Due Date.");
+                        $("#overlay").hide();
+                    }
+                }
+            );
+
+            console.log(result);
+        }
+    </script>
+}

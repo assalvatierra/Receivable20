@@ -19,5 +19,6 @@ namespace ArInterfaces
         bool DbDispose();
         ArAction GetTransLastAction(int transId);
 
+
     }
 }
