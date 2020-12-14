@@ -13,25 +13,29 @@ namespace JobsV1.Areas.Receivables.Controllers
     {
         private ReceivableFactory ar = new ReceivableFactory();
 
-        // GET: Receivables/ArMgt
-
         #region Due Date Management
+        // GET: Receivables/ArMgt
         public ActionResult Index()
         {
             var today = ar.DateClassMgr.GetCurrentDate();
-            var tomorrow = today.AddDays(2);
+            var tomorrow = today.AddDays(1);
             var yesterday = today.AddDays(-1);
 
             //get ongoing transactions
             var transactions = ar.TransactionMgr.GetActiveTransactions();
-            var overDue = transactions.Where(t => t.DtDue <= yesterday);
+            var overDue = transactions.Where(t => t.DtDue.AddDays(1) < today);
+
+            transactions = transactions.Where(c => !overDue.Contains(c)).ToList();
 
             ViewBag.today = today;
             ViewBag.OverDueTrans = overDue.OrderBy(t=>t.DtDue).ToList(); 
 
-            return View(transactions.Where(c=> !overDue.Contains(c)));
+            return View(transactions.OrderBy(d => d.DtDue));
         }
 
+        // GET: Receivables/ArMgt/UpdateDueDate
+        // Param:   transId = transactionId
+        //          dueDate = new dueDate
         [HttpPost]
         public bool UpdateDueDate(int? transId, string dueDate)
         {
@@ -60,6 +64,38 @@ namespace JobsV1.Areas.Receivables.Controllers
             //edit 
             transaction.DtDue = newDueDate;
             return ar.TransactionMgr.EditTransaction(transaction);
+        }
+
+        // GET: Receivables/ArMgt/GetCustomerMobile
+        // Param : transId = transactionId
+        [HttpGet]
+        public JsonResult GetTransactionDetails(int transId)
+        {
+            var transaction = ar.TransactionMgr.GetTransactionById(transId);
+
+            if (transaction == null)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }
+
+
+            return Json(new {
+                transaction.Id,
+                transaction.InvoiceId,
+                transaction.DtInvoice,
+                transaction.DtDue,
+                transaction.Description,
+                transaction.Amount,
+                transaction.ArTransStatu.Status,
+
+            }
+                , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public bool SendEmailReminder(string recipient, string emailMessage)
+        {
+            return ar.EmailMgr.SendEmail_test(recipient);
         }
 
         #endregion

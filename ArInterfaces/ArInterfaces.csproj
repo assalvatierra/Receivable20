@@ -49,6 +49,7 @@
     <Compile Include="iCategoryDb.cs" />
     <Compile Include="iCategoryMgr.cs" />
     <Compile Include="iDateClassMgr.cs" />
+    <Compile Include="iEmailMgr.cs" />
     <Compile Include="iPaymentDb.cs" />
     <Compile Include="iPaymentMgr.cs" />
     <Compile Include="iTransactionDb.cs" />
