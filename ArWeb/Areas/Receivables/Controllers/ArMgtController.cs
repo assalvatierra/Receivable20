@@ -78,7 +78,6 @@ namespace JobsV1.Areas.Receivables.Controllers
                 return Json("Error", JsonRequestBehavior.AllowGet);
             }
 
-
             return Json(new {
                 transaction.Id,
                 transaction.InvoiceId,
@@ -95,7 +94,22 @@ namespace JobsV1.Areas.Receivables.Controllers
         [HttpPost]
         public bool SendEmailReminder(string recipient, string emailMessage)
         {
-            return ar.EmailMgr.SendEmail_test(recipient);
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(recipient.Trim()))
+                {
+
+                    emailMessage = emailMessage.Replace("\n", "<br>");
+
+                    return ar.EmailMgr.SendEmail(recipient, emailMessage);
+                }
+
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         #endregion

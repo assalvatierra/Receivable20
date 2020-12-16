@@ -243,6 +243,7 @@
 
             $("#EmailReminder-Email").val(AccountEmail);
             $("#EmailReminder-Name").val(AccountName);
+            $("#EmailReminder-transId").val(transId);
 
             var result = $.get("/Receivables/ArMgt/GetTransactionDetails",
                 {
@@ -287,22 +288,36 @@
 
         }
 
-
         function SendReminderToEmail() {
+            console.log("Sending to Email");
 
+            var transId = $("#EmailReminder-transId").val();
             
-           var email_recipient =  $("#EmailReminder-Email").val();
-           var email_content = $("#EmailReminder-EmailMsg").val();
+            $("#EmailReminderModal").modal('hide');
+            $("#overlay").show();
 
-           var result =  $("/Receivables/ArMgt/SendEmailReminder",
-                { recipient: email_recipient, emailMessage: email_content },
-                (result) => {
+            var email_recipient = $("#EmailReminder-Email").val();
+            var email_content = $("#EmailReminder-EmailMsg").val();
 
-                    console.log(result);
+
+            var result =  $.post("/Receivables/ArMgt/SendEmailReminder",
+                {
+                    recipient: email_recipient,
+                    emailMessage: email_content
+                },
+                (response) => {
+                    console.log("response :" + response);
+                    
+                    if (response == 'True') {
+                        alert("Email Sent");
+                    } else {
+                        alert("Unable to send email to recipient. Please try again later.");
+                    }
+
+                    $("#overlay").hide();
                 }
             );
 
-            console.log(result);
         }
 
 

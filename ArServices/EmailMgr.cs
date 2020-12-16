@@ -30,11 +30,25 @@ namespace ArServices
                 return Send(mailContent);
             else
                 return false;
+
         }
 
         public bool SendEmail(string recipient)
         {
-            var emailContent = " <b> Email Notification Content </b>  ";
+            var emailContent = " <b> Receivable Reminder </b>  ";
+
+            //build email content
+            var mailContent = BuildEmailContent(recipient, emailContent);
+            if (mailContent != null)
+                return Send(mailContent);
+            else
+                return false;
+        }
+
+        public bool SendEmail(string recipient, string emailMsg)
+        {
+            var emailContent = " <h2> Invoice Reminder </h2>  <hr /> "
+                + emailMsg + " <hr />" ;
 
             //build email content
             var mailContent = BuildEmailContent(recipient, emailContent);
@@ -52,7 +66,7 @@ namespace ArServices
                 MailDefinition md = new MailDefinition();
                 md.From = "Realwheels.Reservation@RealWheelsDavao.com";      //sender mail
                 md.IsBodyHtml = true;                 //set true to enable use of html tags 
-                md.Subject = "Reservation Details";   //mail title
+                md.Subject = "Invoice Reminder";   //mail title
 
                 ListDictionary replacements = new ListDictionary();
                 replacements.Add("{name}", "Reservation");
@@ -63,7 +77,7 @@ namespace ArServices
                 body =
                     "" +
                     " <div style='background-color:#f4f4f4;padding:20px;' align='center'>" +
-                    " <div style='background-color:white;min-width:200px;width:370px;margin:30px;padding:30px;text-align:center;color:#555555;font:normal 300 16px/21px 'Helvetica Neue',Arial'> " +
+                    " <div style='background-color:white;min-width:200px;width:450px;margin:30px;padding:30px;text-align:left;color:#555555;font:normal 300 16px/21px 'Helvetica Neue',Arial'> " +
                       htmlContent +
                     " <p> This is an auto-generated email.<br /> DO NOT REPLY TO THIS MESSAGE </p> " +
                     " <p> For further inquiries kindly email us through inquiries.realwheels@gmail.com or dial(+63) 082 333 5157. </p> " +
@@ -100,8 +114,9 @@ namespace ArServices
                 return true;
 
             }
-            catch
+            catch (Exception ex)
             {
+                throw ex;
                 return false;
             }
         }
