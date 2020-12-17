@@ -96,10 +96,9 @@ namespace JobsV1.Areas.Receivables.Controllers
                 if (createResponse)
                 {
                     //add activity based on statusId
-                    var today = ar.DateClassMgr.GetCurrentDateTime();
                     var user = "User"; //edit to get user here!
 
-                    ar.ActionMgr.AddAction(8, today, user, (int)transId);
+                    ar.ActionMgr.AddAction(7, user, (int)transId);
                 }
 
                 return RedirectToAction("Details", "ArTransactions",new { id = transId });

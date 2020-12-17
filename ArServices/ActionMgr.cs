@@ -13,15 +13,18 @@ namespace ArServices
     public class ActionMgr : iActionMgr
     {
         private ArDBContainer db;
+        private DateClassMgr dateMgr;
 
         public ActionMgr()
         {
             this.db = new ArDBContainer();
+            this.dateMgr = new DateClassMgr();
         }
 
         public ActionMgr(ArDBContainer arDB)
         {
             this.db = arDB;
+            this.dateMgr = new DateClassMgr();
         }
 
         public bool AddAction(ArAction action)
@@ -133,15 +136,35 @@ namespace ArServices
             }
         }
 
-        public bool AddAction(int actionId, DateTime dtPreformed, string performedBy, int transactionId)
+        public bool AddAction(int actionId, string performedBy, int transactionId)
         {
             try
             {
                 ArAction action = new ArAction();
                 action.ArActionItemId = actionId;
-                action.DtPerformed = dtPreformed;
+                action.DtPerformed = dateMgr.GetCurrentDateTime();
                 action.PreformedBy = performedBy;
                 action.ArTransactionId = transactionId;
+
+                return AddAction(action);
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Add Recievable Actions");
+            }
+        }
+
+
+        public bool AddAction(int actionId, string performedBy, int transactionId, string remarks)
+        {
+            try
+            {
+                ArAction action = new ArAction();
+                action.ArActionItemId = actionId;
+                action.DtPerformed = dateMgr.GetCurrentDateTime();
+                action.PreformedBy = performedBy;
+                action.ArTransactionId = transactionId;
+                action.Remarks = remarks;
 
                 return AddAction(action);
             }

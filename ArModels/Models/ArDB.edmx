@@ -160,6 +160,7 @@
     <Property Name="PreformedBy" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="ArTransactionId" Type="int" Nullable="false" />
     <Property Name="ArActionItemId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
   </EntityType>
   <EntityType Name="ArActionItems">
     <Key>
@@ -640,6 +641,7 @@
           <Property Name="ArTransactionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ArActionItem" Relationship="ArDB.ArActionItemArAction" FromRole="ArAction" ToRole="ArActionItem" />
           <Property Name="ArActionItemId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
         </EntityType>
         <EntityType Name="ArActionItem">
           <Key>
@@ -946,6 +948,7 @@
           <ScalarProperty Name="PreformedBy" ColumnName="PreformedBy" />
           <ScalarProperty Name="ArTransactionId" ColumnName="ArTransactionId" />
           <ScalarProperty Name="ArActionItemId" ColumnName="ArActionItemId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

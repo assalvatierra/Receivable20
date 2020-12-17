@@ -10,7 +10,8 @@ namespace ArInterfaces
     public interface iActionMgr
     {
         bool AddAction(ArAction action);
-        bool AddAction(int actionId, DateTime dtPreformed, string performedBy, int transactionId);
+        bool AddAction(int actionId, string performedBy, int transactionId);
+        bool AddAction(int actionId, string performedBy, int transactionId, string remarks);
         bool EditAction(ArAction action);
         bool RemoveAction(int id);
         ArAction GetActionById(int? id);

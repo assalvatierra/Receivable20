@@ -16,11 +16,10 @@ namespace ArServices
         * SendEmail for Notifications
         * param:
         *      recipient (string)
-        *      
         */
         public bool SendEmail_test(string recipient)
         {
-            var emailContent = " <b> Email Notification Content </b>  ";
+            var emailContent = " <b> Email Notification Content </b>";
 
             recipient = "jahdielsvillosa@gmail.com";
 
@@ -30,7 +29,6 @@ namespace ArServices
                 return Send(mailContent);
             else
                 return false;
-
         }
 
         public bool SendEmail(string recipient)
@@ -72,7 +70,7 @@ namespace ArServices
                 replacements.Add("{name}", "Reservation");
 
                 string body;
-                string recipient_Email = "jahdielsvillosa@gmail.com";
+                string recipient_Email = recipient;
 
                 body =
                     "" +
@@ -99,7 +97,6 @@ namespace ArServices
         {
             try
             {
-
                 // configure mail server
                 SmtpClient SmtpServer = new SmtpClient("mail.realwheelsdavao.com"); //smtp server
                 SmtpServer.Port = 587;          //default smtp port
@@ -112,11 +109,9 @@ namespace ArServices
                 SmtpServer.Send(mailMessage);           //send message
 
                 return true;
-
             }
             catch (Exception ex)
             {
-                throw ex;
                 return false;
             }
         }

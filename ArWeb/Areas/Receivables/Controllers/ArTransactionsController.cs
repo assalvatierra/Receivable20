@@ -71,7 +71,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                 ar.TransactionMgr.AddTransaction(arTransaction);
 
                 //new transaction action history (new bill)
-                ar.ActionMgr.AddAction(1, today, currentUser, arTransaction.Id);
+                ar.ActionMgr.AddAction(1, currentUser, arTransaction.Id);
 
                 //new account
                 if (arTransaction.ArAccountId == 1)
@@ -272,7 +272,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                 if (postResponse)
                 {
                     //add activity transaction closed 
-                    ar.ActionMgr.AddAction(7, today, GetUser(), id);
+                    ar.ActionMgr.AddAction(6, GetUser(), id);
                 }
             }
 
@@ -318,11 +318,9 @@ namespace JobsV1.Areas.Receivables.Controllers
 
             if (editResponse)
             {
-                //add activity based on statusId
-                var today = ar.DateClassMgr.GetCurrentDateTime();
                 var user = GetUser(); //edit to get user here!
 
-                ar.ActionMgr.AddAction((int)statusId, today, user, (int)transId);
+                ar.ActionMgr.AddAction((int)statusId, user, (int)transId);
 
                 return true;
             }
@@ -333,7 +331,7 @@ namespace JobsV1.Areas.Receivables.Controllers
 
         private string GetUser()
         {
-            if (HttpContext.User.Identity != null)
+            if (HttpContext.User.Identity.Name != "")
             {
                 return HttpContext.User.Identity.Name;
             }

@@ -179,7 +179,10 @@
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\moment.min.js" />
     <Content Include="Areas\Receivables\Scripts\DateRangePicker\package.js" />
     <Content Include="Areas\Receivables\Scripts\DefaultDatePicker.js" />
+    <Content Include="Areas\Receivables\Scripts\Mgt\Approval.js" />
+    <Content Include="Areas\Receivables\Scripts\Mgt\ArMgt.js" />
     <Content Include="Areas\Receivables\Scripts\Mgt\DueDate.js" />
+    <Content Include="Areas\Receivables\Scripts\Mgt\Settlement.js" />
     <Content Include="Areas\Receivables\Scripts\Payments\Payments.js" />
     <Content Include="Areas\Receivables\Scripts\Transactions\Transaction.js" />
     <Content Include="Content\bootstrap-theme.css" />

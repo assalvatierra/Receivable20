@@ -22,7 +22,7 @@ namespace JobsV1.Areas.Receivables.Controllers
             var yesterday = today.AddDays(-1);
 
             //get ongoing transactions
-            var transactions = ar.TransactionMgr.GetActiveTransactions();
+            var transactions = ar.TransactionMgr.GetApprovedTransactions();
             var overDue = transactions.Where(t => t.DtDue.AddDays(1) < today);
 
             transactions = transactions.Where(c => !overDue.Contains(c)).ToList();
@@ -63,7 +63,15 @@ namespace JobsV1.Areas.Receivables.Controllers
 
             //edit 
             transaction.DtDue = newDueDate;
-            return ar.TransactionMgr.EditTransaction(transaction);
+            var editResult = ar.TransactionMgr.EditTransaction(transaction);
+
+            if (editResult == true)
+            {
+                //first reminder
+                ar.ActionMgr.AddAction(8, GetUser(), (int)transId, "Change Due Date");
+            }
+
+            return editResult;
         }
 
         // GET: Receivables/ArMgt/GetCustomerMobile
@@ -92,16 +100,24 @@ namespace JobsV1.Areas.Receivables.Controllers
         }
 
         [HttpPost]
-        public bool SendEmailReminder(string recipient, string emailMessage)
+        public bool SendEmailReminder(int? transId, string recipient, string emailMessage)
         {
             try
             {
-                if (!String.IsNullOrWhiteSpace(recipient.Trim()))
+                if (!String.IsNullOrWhiteSpace(recipient.Trim()) && transId != null)
                 {
 
                     emailMessage = emailMessage.Replace("\n", "<br>");
 
-                    return ar.EmailMgr.SendEmail(recipient, emailMessage);
+                    var EmailResult = ar.EmailMgr.SendEmail(recipient, emailMessage);
+
+                    //add activity history
+                    var today = ar.DateClassMgr.GetCurrentDateTime();
+
+                    //first reminder
+                    ar.ActionMgr.AddAction( 9, GetUser(), (int)transId);
+
+                    return EmailResult;
                 }
 
                 return false;
@@ -119,9 +135,42 @@ namespace JobsV1.Areas.Receivables.Controllers
         public ActionResult Approval()
         {
             //get ongoing transactions
-            var transactions = ar.TransactionMgr.GetActiveTransactions();
+            var transactions = ar.TransactionMgr.GetForApprovalTrans();
 
             return View(transactions);
+        }
+
+
+        [HttpPost]
+        public bool UpdateTransStatus(int? transId, int? statusId)
+        {
+            if (transId == null || statusId == null)
+            {
+                return false;
+            }
+
+            var trans = ar.TransactionMgr.GetTransactionById((int)transId);
+
+            if (trans == null)
+            {
+                return false;
+            }
+
+            trans.ArTransStatusId = (int)statusId;
+            //update
+            var editResponse = ar.TransactionMgr.EditTransaction(trans);
+
+            if (editResponse)
+            {
+                var user = GetUser(); //edit to get user here!
+
+                ar.ActionMgr.AddAction((int)statusId, user, (int)transId);
+
+                return true;
+            }
+
+            return false;
+
         }
 
         #endregion
@@ -131,11 +180,25 @@ namespace JobsV1.Areas.Receivables.Controllers
         public ActionResult Settlement()
         {
             //get ongoing transactions
-            var transactions = ar.TransactionMgr.GetActiveTransactions();
+            var transactions = ar.TransactionMgr.GetForSettlementTrans();
 
             return View(transactions);
         }
 
+
+
         #endregion
+
+        private string GetUser()
+        {
+            if (HttpContext.User.Identity.Name != "")
+            {
+                return HttpContext.User.Identity.Name;
+            }
+            else
+            {
+                return "User";
+            }
+        }
     }
 }

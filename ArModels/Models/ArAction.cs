@@ -19,6 +19,7 @@ namespace ArModels.Models
         public string PreformedBy { get; set; }
         public int ArTransactionId { get; set; }
         public int ArActionItemId { get; set; }
+        public string Remarks { get; set; }
     
         public virtual ArTransaction ArTransaction { get; set; }
         public virtual ArActionItem ArActionItem { get; set; }

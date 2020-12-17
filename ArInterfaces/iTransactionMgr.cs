@@ -16,6 +16,11 @@ namespace ArInterfaces
         List<ArTransaction> GetTransactions();
         List<ArTransaction> GetTransactions(string status);
         List<ArTransaction> GetActiveTransactions();
+        List<ArTransaction> GetApprovedTransactions();
+        List<ArTransaction> GetForApprovalTrans();
+        List<ArTransaction> GetForSettlementTrans();
+
+
         IEnumerable<ArTransStatus> GetTransactionStatus();
         bool UpdateTransAcc(int transactionId, int accountId);
         bool CloseTransactionStatus(int id);

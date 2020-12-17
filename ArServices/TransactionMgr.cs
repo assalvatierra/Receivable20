@@ -87,11 +87,47 @@ namespace ArServices
         {
             try
             {
-                return GetTransactions().Where(t => t.ArTransStatusId != 3).ToList();
+                return GetTransactions().Where(t => t.ArTransStatusId != 6).ToList();
             }
             catch
             {
                 throw new EntitySqlException("Services: Unable to Get Active Transaction");
+            }
+        }
+
+        public List<ArTransaction> GetApprovedTransactions()
+        {
+            try
+            {
+                return GetTransactions().Where(t => t.ArTransStatusId > 2 && t.ArTransStatusId < 6).ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Approved Transaction");
+            }
+        }
+
+        public List<ArTransaction> GetForApprovalTrans()
+        {
+            try
+            {
+                return GetTransactions().Where(t => t.ArTransStatusId == 2).ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get For Approval Transaction");
+            }
+        }
+
+        public List<ArTransaction> GetForSettlementTrans()
+        {
+            try
+            {
+                return GetTransactions().Where(t => t.ArTransStatusId == 5).ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get For Settlement Transaction");
             }
         }
 
