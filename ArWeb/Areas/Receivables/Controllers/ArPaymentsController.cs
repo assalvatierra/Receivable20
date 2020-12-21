@@ -110,6 +110,57 @@ namespace JobsV1.Areas.Receivables.Controllers
             return View(arPayment);
         }
 
+
+        // GET: ArPayments/Create
+        public ActionResult CreateSettlePayment(int? transId)
+        {
+            if (transId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ArPayment payment = new ArPayment();
+            payment.Amount = 0;
+            payment.ArAccountId = ar.TransactionMgr.GetTransAccountId((int)transId);
+
+            ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name", payment.ArAccountId);
+            ViewBag.ArPaymentTypeId = new SelectList(ar.PaymentMgr.GetPaymentTypes(), "Id", "Type");
+            ViewBag.TransId = transId;
+            ViewBag.AccountName = ar.TransactionMgr.GetTransactionById((int)transId).ArAccount.Name;
+            return View(payment);
+        }
+
+        // POST: ArPayments/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateSettlePayment([Bind(Include = "Id,DtPayment,Amount,Remarks,Reference,ArAccountId,ArPaymentTypeId")] ArPayment arPayment, int transId)
+        {
+            if (ModelState.IsValid && InputValidation(arPayment))
+            {
+                ar.PaymentMgr.AddPayment(arPayment);
+                var createResponse = ar.TransPaymentMgr.AddTransPayment(transId, arPayment.Id);
+
+
+                if (createResponse)
+                {
+                    //add activity based on statusId
+                    var user = "User"; //edit to get user here!
+
+                    ar.ActionMgr.AddAction(7, user, (int)transId);
+                }
+
+                return RedirectToAction("Settlement", "ArMgt");
+            }
+
+            ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name", arPayment.ArAccountId);
+            ViewBag.ArPaymentTypeId = new SelectList(ar.PaymentMgr.GetPaymentTypes(), "Id", "Type", arPayment.ArPaymentTypeId);
+            ViewBag.TransId = transId;
+            ViewBag.AccountName = ar.TransactionMgr.GetTransactionById((int)transId).ArAccount.Name;
+            return View(arPayment);
+        }
+
         // GET: ArPayments/Edit/5
         public ActionResult Edit(int? id)
         {

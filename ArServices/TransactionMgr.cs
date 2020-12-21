@@ -183,7 +183,68 @@ namespace ArServices
             catch (Exception ex)
             {
                 throw ex;
-                throw new EntitySqlException("Services: Unable to Get Transactions ");
+                throw new EntitySqlException("Services: Unable to Get Transactions with filter ");
+            }
+        }
+
+        public List<ArTransaction> GetTransactions(string status, string sortBy, string orderBy)
+        {
+            try
+            {
+                var transactions = GetTransactions();
+                if (!String.IsNullOrWhiteSpace(status))
+                {
+                    transactions = transactions.Where(t => t.ArTransStatu.Status == status).ToList();
+                }
+
+                if (!String.IsNullOrWhiteSpace(sortBy))
+                {
+
+                    if (!String.IsNullOrWhiteSpace(orderBy) && orderBy == "DESC")
+                    {
+                        switch (sortBy)
+                        {
+                            case "InvoiceDate":
+                                transactions = transactions.OrderByDescending(t => t.DtInvoice).ToList();
+                                break;
+                            case "Amount":
+                                transactions = transactions.OrderByDescending(t => t.Amount).ToList();
+                                break;
+                            case "DueDate":
+                                transactions = transactions.OrderByDescending(t => t.DtDue).ToList();
+                                break;
+                            default:
+                                transactions = transactions.OrderByDescending(t => t.DtDue).ToList();
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (sortBy)
+                        {
+                            case "InvoiceDate":
+                                transactions = transactions.OrderBy(t => t.DtInvoice).ToList();
+                                break;
+                            case "Amount":
+                                transactions = transactions.OrderBy(t => t.Amount).ToList();
+                                break;
+                            case "DueDate":
+                                transactions = transactions.OrderBy(t => t.DtDue).ToList();
+                                break;
+                            default:
+                                transactions = transactions.OrderBy(t => t.DtDue).ToList();
+                                break;
+                        }
+                    }
+                }
+
+
+                return transactions.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                throw new EntitySqlException("Services: Unable to Get Transactions with and filter sortBy");
             }
         }
 

@@ -87,11 +87,11 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" hidden>
         @Html.LabelFor(model => model.IsRepeating, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <div class="checkbox">
-                @Html.EditorFor(model => model.IsRepeating, new { htmlAttributes = new { @style = "margin-left:0px;" } })
+                @Html.EditorFor(model => model.IsRepeating, new { htmlAttributes = new { @style = "margin-left:0px;", id="chkbox-IsReapeating" } })
                 @Html.ValidationMessageFor(model => model.IsRepeating, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -210,6 +210,24 @@
               GetAccountCreditLimit();
             
            });
+            
+           $('input[name="Interval"]').on('input', async function () {
+
+               var interval = $(this).val();
+               console.log(interval);
+
+               if (interval > 0) {
+                   $("#chkbox-IsReapeating").prop('checked', true); 
+               } else {
+                   $("#chkbox-IsReapeating").prop('checked', false);
+               }
+
+               var bx = $("#chkbox-IsReapeating").prop('checked');
+               console.log(bx);
+
+               
+           });
+
 
 
 

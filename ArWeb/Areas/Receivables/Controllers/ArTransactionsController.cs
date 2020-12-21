@@ -17,11 +17,13 @@ namespace JobsV1.Areas.Receivables.Controllers
         private ReceivableFactory ar = new ReceivableFactory();
 
         // GET: ArTransactions
-        public ActionResult Index(string status)
+        public ActionResult Index(string status, string sortBy, string orderBy)
         {
-            var arTransactions = ar.TransactionMgr.GetTransactions(status);
+            var arTransactions = ar.TransactionMgr.GetTransactions(status, sortBy, orderBy);
 
             ViewBag.Status = status;
+            ViewBag.SortBy = sortBy;
+            ViewBag.OrderBy = orderBy;
             return View(arTransactions.ToList());
         }
 
@@ -327,6 +329,19 @@ namespace JobsV1.Areas.Receivables.Controllers
 
             return false;
 
+        }
+
+        public bool CheckTransaction_wInterval()
+        {
+            try
+            {
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private string GetUser()

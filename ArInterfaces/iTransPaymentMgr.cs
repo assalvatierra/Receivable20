@@ -18,5 +18,6 @@ namespace ArInterfaces
         List<ArTransPayment> GetTransPaymentsByTransId(int transId);
         ArTransPayment GetTransPaymentsByPaymentId(int paymentId);
         Decimal GetTotalTransPayment(int transId);
+
     } 
 }

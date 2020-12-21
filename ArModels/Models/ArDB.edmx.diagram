@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="54ce9716767e4fdbb0cbe03c62e6a539" Name="Diagram1" ZoomLevel="71" >
-        <EntityTypeShape EntityType="ArDB.ArTransaction" Width="1.5" PointX="18.375" PointY="4.625" />
+        <EntityTypeShape EntityType="ArDB.ArTransaction" Width="1.5" PointX="18.5" PointY="4.125" />
         <EntityTypeShape EntityType="ArDB.ArTransPost" Width="1.5" PointX="16.5" PointY="9.75" />
         <EntityTypeShape EntityType="ArDB.ArPayment" Width="1.5" PointX="11" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ArDB.ArTransStatus" Width="1.5" PointX="20.625" PointY="8.5" />

@@ -248,6 +248,8 @@
     <Content Include="Areas\Receivables\Views\ArMgt\Approval.cshtml" />
     <Content Include="Areas\Receivables\Views\ArMgt\_ModalContact.cshtml" />
     <Content Include="Areas\Receivables\Views\ArMgt\_ModalEmailReminder.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArPayments\CreateSettlePayment.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />
     <Content Include="Scripts\DateRangePicker\moment.js" />

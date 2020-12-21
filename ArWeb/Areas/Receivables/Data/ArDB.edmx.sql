@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/18/2020 10:42:40
--- Generated from EDMX file: C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
+-- Date Created: 12/17/2020 11:27:50
+-- Generated from EDMX file: C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -192,7 +192,8 @@ CREATE TABLE [dbo].[ArActions] (
     [DtPerformed] datetime  NOT NULL,
     [PreformedBy] nvarchar(80)  NOT NULL,
     [ArTransactionId] int  NOT NULL,
-    [ArActionItemId] int  NOT NULL
+    [ArActionItemId] int  NOT NULL,
+    [Remarks] nvarchar(80)  NULL
 );
 GO
 
