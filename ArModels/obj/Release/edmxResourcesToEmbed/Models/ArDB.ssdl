@@ -155,6 +155,7 @@
     <Property Name="PreformedBy" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="ArTransactionId" Type="int" Nullable="false" />
     <Property Name="ArActionItemId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
   </EntityType>
   <EntityType Name="ArActionItems">
     <Key>

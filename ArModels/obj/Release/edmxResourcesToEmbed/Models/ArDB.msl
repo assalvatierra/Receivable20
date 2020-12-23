@@ -84,6 +84,7 @@
           <ScalarProperty Name="PreformedBy" ColumnName="PreformedBy" />
           <ScalarProperty Name="ArTransactionId" ColumnName="ArTransactionId" />
           <ScalarProperty Name="ArActionItemId" ColumnName="ArActionItemId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

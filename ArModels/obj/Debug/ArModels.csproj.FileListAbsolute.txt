@@ -31,3 +31,14 @@ C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.C
 C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.CopyComplete
 C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.dll
 C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\ArModels.dll.config
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\ArModels.dll
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\ArModels.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\EntityFramework.dll
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\EntityFramework.xml
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.CoreCompileInputs.cache
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.CopyComplete
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.dll
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.pdb

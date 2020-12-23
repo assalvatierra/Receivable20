@@ -222,6 +222,7 @@
     <Property Name="ArTransactionId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ArActionItem" Relationship="ArDB.ArActionItemArAction" FromRole="ArAction" ToRole="ArActionItem" />
     <Property Name="ArActionItemId" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" Nullable="true" MaxLength="80" />
   </EntityType>
   <EntityType Name="ArActionItem">
     <Key>

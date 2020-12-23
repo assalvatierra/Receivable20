@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\temp\Receivables</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/ARDB-2020.mdf">
+      <publishTime>11/19/2020 13:48:07</publishTime>
+    </File>
+    <File Include="App_Data/ARDB-2020_log.ldf">
+      <publishTime>11/19/2020 13:48:07</publishTime>
+    </File>
+    <File Include="App_Data/aspnet-JobsV1-20160528101923.mdf">
+      <publishTime>12/17/2020 15:21:55</publishTime>
+    </File>
+    <File Include="App_Data/aspnet-JobsV1-20160528101923_log.ldf">
+      <publishTime>12/17/2020 15:21:55</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Data/ArDB.edmx.sql">
+      <publishTime>12/09/2020 14:54:03</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Data/Initial.sql">
+      <publishTime>12/17/2020 15:05:19</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Data/SampleData.sql">
+      <publishTime>12/17/2020 13:01:41</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/DateRangePicker/bower.json">
+      <publishTime>11/18/2020 11:21:12</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/DateRangePicker/daterangepicker.js">
+      <publishTime>11/18/2020 11:21:12</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/DateRangePicker/moment.js">
+      <publishTime>11/18/2020 11:21:12</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/DateRangePicker/moment.min.js">
+      <publishTime>11/18/2020 11:21:12</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/DateRangePicker/package.js">
+      <publishTime>11/18/2020 11:21:12</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/DateRangePicker/package.json">
+      <publishTime>11/18/2020 11:21:12</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/DefaultDatePicker.js">
+      <publishTime>11/19/2020 10:51:31</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/Mgt/Approval.js">
+      <publishTime>12/17/2020 14:16:51</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/Mgt/ArMgt.js">
+      <publishTime>12/17/2020 14:44:26</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/Mgt/DueDate.js">
+      <publishTime>12/10/2020 13:20:55</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/Mgt/Settlement.js">
+      <publishTime>12/17/2020 14:16:50</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/Payments/Payments.js">
+      <publishTime>11/18/2020 15:06:24</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/Transactions/Transaction.js">
+      <publishTime>12/10/2020 13:20:49</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntCredits/Create.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntCredits/CreateCredit.cshtml">
+      <publishTime>11/19/2020 11:25:22</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntCredits/Delete.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntCredits/Details.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntCredits/Edit.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntCredits/Index.cshtml">
+      <publishTime>11/19/2020 15:40:26</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntTerms/Create.cshtml">
+      <publishTime>11/19/2020 11:23:31</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntTerms/CreateTerms.cshtml">
+      <publishTime>11/19/2020 11:25:09</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntTerms/Delete.cshtml">
+      <publishTime>11/19/2020 11:23:32</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntTerms/Details.cshtml">
+      <publishTime>11/19/2020 11:23:34</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntTerms/Edit.cshtml">
+      <publishTime>11/19/2020 11:23:35</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccntTerms/Index.cshtml">
+      <publishTime>11/19/2020 11:23:37</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccounts/Create.cshtml">
+      <publishTime>11/17/2020 10:59:53</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccounts/Delete.cshtml">
+      <publishTime>11/17/2020 10:59:53</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccounts/Details.cshtml">
+      <publishTime>11/24/2020 11:47:30</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccounts/Edit.cshtml">
+      <publishTime>11/17/2020 10:59:53</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArAccounts/Index.cshtml">
+      <publishTime>12/09/2020 11:05:25</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArMgt/Approval.cshtml">
+      <publishTime>12/17/2020 14:39:42</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArMgt/Index.cshtml">
+      <publishTime>12/17/2020 14:44:52</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArMgt/Reminders.cshtml">
+      <publishTime>12/09/2020 10:35:49</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArMgt/Settlement.cshtml">
+      <publishTime>12/17/2020 14:39:41</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArMgt/_ModalChangeDueDate.cshtml">
+      <publishTime>12/12/2020 09:55:17</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArMgt/_ModalContact.cshtml">
+      <publishTime>12/14/2020 15:14:55</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArMgt/_ModalEmailReminder.cshtml">
+      <publishTime>12/17/2020 10:56:52</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArPayments/Create.cshtml">
+      <publishTime>11/18/2020 15:06:21</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArPayments/CreateTransPayment.cshtml">
+      <publishTime>11/18/2020 13:15:45</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArPayments/Delete.cshtml">
+      <publishTime>11/17/2020 10:59:53</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArPayments/DeleteTransPayment.cshtml">
+      <publishTime>11/20/2020 10:46:27</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArPayments/Details.cshtml">
+      <publishTime>11/17/2020 10:59:53</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArPayments/Edit.cshtml">
+      <publishTime>11/17/2020 10:59:53</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArPayments/EditTransPayment.cshtml">
+      <publishTime>11/24/2020 13:38:10</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArPayments/Index.cshtml">
+      <publishTime>11/19/2020 15:54:41</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransactions/Create.cshtml">
+      <publishTime>12/03/2020 11:41:20</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransactions/CreateAccTrans.cshtml">
+      <publishTime>12/01/2020 15:02:18</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransactions/Delete.cshtml">
+      <publishTime>11/17/2020 10:59:54</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransactions/Details.cshtml">
+      <publishTime>11/24/2020 13:40:07</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransactions/Edit.cshtml">
+      <publishTime>12/10/2020 11:07:39</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransactions/Index.cshtml">
+      <publishTime>12/11/2020 14:05:04</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransactions/TransactionHistory.cshtml">
+      <publishTime>11/21/2020 11:24:13</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransPosts/Create.cshtml">
+      <publishTime>11/19/2020 10:06:31</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransPosts/Delete.cshtml">
+      <publishTime>11/19/2020 10:06:33</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransPosts/Details.cshtml">
+      <publishTime>11/19/2020 10:06:35</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransPosts/Edit.cshtml">
+      <publishTime>11/19/2020 10:06:36</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArTransPosts/Index.cshtml">
+      <publishTime>11/19/2020 10:06:40</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/Shared/_Layout.cshtml">
+      <publishTime>12/17/2020 15:17:27</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/web.config">
+      <publishTime>11/17/2020 17:13:50</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/_ViewStart.cshtml">
+      <publishTime>11/17/2020 10:59:54</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="bin/ArDBLayer.dll">
+      <publishTime>12/17/2020 15:21:51</publishTime>
+    </File>
+    <File Include="bin/ArDBLayer.pdb">
+      <publishTime>12/17/2020 15:21:51</publishTime>
+    </File>
+    <File Include="bin/ArInterfaces.dll">
+      <publishTime>12/17/2020 15:21:51</publishTime>
+    </File>
+    <File Include="bin/ArInterfaces.pdb">
+      <publishTime>12/17/2020 15:21:51</publishTime>
+    </File>
+    <File Include="bin/ArModels.dll">
+      <publishTime>12/17/2020 15:21:51</publishTime>
+    </File>
+    <File Include="bin/ArModels.dll.config">
+      <publishTime>11/16/2020 16:59:04</publishTime>
+    </File>
+    <File Include="bin/ArModels.pdb">
+      <publishTime>12/17/2020 15:21:51</publishTime>
+    </File>
+    <File Include="bin/ArServices.dll">
+      <publishTime>12/17/2020 15:21:51</publishTime>
+    </File>
+    <File Include="bin/ArServices.dll.config">
+      <publishTime>11/14/2020 11:15:13</publishTime>
+    </File>
+    <File Include="bin/ArServices.pdb">
+      <publishTime>12/17/2020 15:21:51</publishTime>
+    </File>
+    <File Include="bin/ArWeb.dll">
+      <publishTime>12/17/2020 15:21:52</publishTime>
+    </File>
+    <File Include="bin/ArWeb.pdb">
+      <publishTime>12/17/2020 15:21:52</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/23/2017 13:15:18</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/23/2017 13:15:20</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Globalization.Calendars.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Http.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Sockets.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>10/20/2020 09:39:09</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css.map">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Content/daterangepicker.css">
+      <publishTime>10/22/2020 16:31:36</publishTime>
+    </File>
+    <File Include="Content/daterangepicker.scss">
+      <publishTime>10/22/2020 16:31:36</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>12/12/2020 10:35:25</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/DateRangePicker/bower.json">
+      <publishTime>10/22/2020 16:29:46</publishTime>
+    </File>
+    <File Include="Scripts/DateRangePicker/daterangepicker.js">
+      <publishTime>10/22/2020 16:29:46</publishTime>
+    </File>
+    <File Include="Scripts/DateRangePicker/moment.js">
+      <publishTime>10/22/2020 16:29:46</publishTime>
+    </File>
+    <File Include="Scripts/DateRangePicker/moment.min.js">
+      <publishTime>10/22/2020 16:29:46</publishTime>
+    </File>
+    <File Include="Scripts/DateRangePicker/package.js">
+      <publishTime>10/22/2020 16:29:46</publishTime>
+    </File>
+    <File Include="Scripts/DateRangePicker/package.json">
+      <publishTime>10/22/2020 16:29:46</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.map">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.map">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Scripts/Payments/Payments.js">
+      <publishTime>10/23/2020 13:11:03</publishTime>
+    </File>
+    <File Include="Scripts/Transactions/Transaction.js">
+      <publishTime>10/22/2020 16:58:56</publishTime>
+    </File>
+    <File Include="Views/ArAccntCredits/Create.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Views/ArAccntCredits/Delete.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Views/ArAccntCredits/Details.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Views/ArAccntCredits/Edit.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Views/ArAccntCredits/Index.cshtml">
+      <publishTime>11/17/2020 17:11:26</publishTime>
+    </File>
+    <File Include="Views/ArAccounts/Create.cshtml">
+      <publishTime>10/22/2020 14:52:36</publishTime>
+    </File>
+    <File Include="Views/ArAccounts/Delete.cshtml">
+      <publishTime>10/22/2020 13:46:33</publishTime>
+    </File>
+    <File Include="Views/ArAccounts/Details.cshtml">
+      <publishTime>10/22/2020 14:52:56</publishTime>
+    </File>
+    <File Include="Views/ArAccounts/Edit.cshtml">
+      <publishTime>10/22/2020 14:52:44</publishTime>
+    </File>
+    <File Include="Views/ArAccounts/Index.cshtml">
+      <publishTime>10/22/2020 14:52:32</publishTime>
+    </File>
+    <File Include="Views/ArActions/Create.cshtml">
+      <publishTime>10/23/2020 15:37:30</publishTime>
+    </File>
+    <File Include="Views/ArActions/Delete.cshtml">
+      <publishTime>10/23/2020 15:37:31</publishTime>
+    </File>
+    <File Include="Views/ArActions/Details.cshtml">
+      <publishTime>10/23/2020 15:37:32</publishTime>
+    </File>
+    <File Include="Views/ArActions/Edit.cshtml">
+      <publishTime>10/23/2020 15:37:34</publishTime>
+    </File>
+    <File Include="Views/ArActions/Index.cshtml">
+      <publishTime>10/23/2020 15:37:35</publishTime>
+    </File>
+    <File Include="Views/ArPayments/Create.cshtml">
+      <publishTime>10/23/2020 13:11:34</publishTime>
+    </File>
+    <File Include="Views/ArPayments/Delete.cshtml">
+      <publishTime>10/23/2020 11:13:46</publishTime>
+    </File>
+    <File Include="Views/ArPayments/Details.cshtml">
+      <publishTime>10/23/2020 11:13:47</publishTime>
+    </File>
+    <File Include="Views/ArPayments/Edit.cshtml">
+      <publishTime>10/23/2020 11:13:48</publishTime>
+    </File>
+    <File Include="Views/ArPayments/Index.cshtml">
+      <publishTime>10/23/2020 13:02:52</publishTime>
+    </File>
+    <File Include="Views/ArTransactions/Create.cshtml">
+      <publishTime>10/22/2020 17:17:18</publishTime>
+    </File>
+    <File Include="Views/ArTransactions/Delete.cshtml">
+      <publishTime>10/22/2020 16:11:08</publishTime>
+    </File>
+    <File Include="Views/ArTransactions/Details.cshtml">
+      <publishTime>10/22/2020 16:11:09</publishTime>
+    </File>
+    <File Include="Views/ArTransactions/Edit.cshtml">
+      <publishTime>10/22/2020 17:17:42</publishTime>
+    </File>
+    <File Include="Views/ArTransactions/Index.cshtml">
+      <publishTime>10/22/2020 17:20:19</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>12/11/2020 13:30:19</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>12/14/2020 14:07:09</publishTime>
+    </File>
+    <File Include="Views/Shared/_ModuleLayout.cshtml">
+      <publishTime>12/16/2020 10:44:41</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/20/2020 09:39:08</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/17/2020 15:21:56</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
