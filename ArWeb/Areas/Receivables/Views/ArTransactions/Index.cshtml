@@ -141,7 +141,7 @@
             @Html.DisplayNameFor(model => model.DtInvoice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InvoiceId)
+            @Html.DisplayNameFor(model => model.InvoiceRef)
         </th>
         <th>
             Account
@@ -180,16 +180,18 @@
                 @item.DtInvoice.ToString("MMM dd yyyy")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.InvoiceId)
+                @Html.DisplayFor(modelItem => item.InvoiceRef)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.ArAccount.Company) -
                 @Html.DisplayFor(modelItem => item.ArAccount.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @item.DtService.ToString("MMM dd yyyy")
+                @item.DtService.ToString("MMM dd yyyy") - 
+                @item.DtServiceTo.ToString("MMM dd yyyy")
             </td>
             <td>
                 @item.DtDue.ToString("MMM dd yyyy")

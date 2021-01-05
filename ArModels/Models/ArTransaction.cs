@@ -36,7 +36,7 @@ namespace ArModels.Models
         public int ArAccountId { get; set; }
         public int ArCategoryId { get; set; }
         public System.DateTime DtService { get; set; }
-        public string DtServiceTo { get; set; }
+        public System.DateTime DtServiceTo { get; set; }
         public int PrevRef { get; set; }
         public int NextRef { get; set; }
         public string InvoiceRef { get; set; }

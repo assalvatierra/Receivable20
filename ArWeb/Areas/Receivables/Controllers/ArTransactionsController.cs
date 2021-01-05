@@ -51,6 +51,9 @@ namespace JobsV1.Areas.Receivables.Controllers
             ArTransaction transaction = new ArTransaction();
             transaction.Amount = 0;
             transaction.Interval = 0;
+            transaction.PrevRef = 0;
+            transaction.NextRef = 0;
+            transaction.InvoiceId = 0;
 
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status");
             ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name");
@@ -63,8 +66,11 @@ namespace JobsV1.Areas.Receivables.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId,ArCategoryId,DtService")] ArTransaction arTransaction)
+        public ActionResult Create([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId,ArCategoryId,DtService,DtServiceTo,InvoiceRef,PrevRef,NextRef")] ArTransaction arTransaction)
         {
+            try
+            {
+
             if (ModelState.IsValid && InputValidation(arTransaction))
             {
                 var today = ar.DateClassMgr.GetCurrentDateTime();
@@ -87,6 +93,13 @@ namespace JobsV1.Areas.Receivables.Controllers
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status");
             ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Name");
             ViewBag.ArCategoryId = new SelectList(ar.CategoryMgr.GetCategories(), "Id", "Name");
+            //return View(arTransaction);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             return View(arTransaction);
         }
 
@@ -113,7 +126,7 @@ namespace JobsV1.Areas.Receivables.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId,ArCategoryId,DtService")] ArTransaction arTransaction)
+        public ActionResult Edit([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId,ArCategoryId,DtService,DtServiceTo,InvoiceRef,PrevRef,NextRef")] ArTransaction arTransaction)
         {
             if (ModelState.IsValid && InputValidation(arTransaction))
             {
@@ -222,7 +235,7 @@ namespace JobsV1.Areas.Receivables.Controllers
 
         // POST: ArAccounts/Create
         [HttpPost]
-        public ActionResult CreateAccTrans([Bind(Include = "Id,Name,Landline,Email,Mobile,Company,Address,Remarks,ArAccStatusId")] ArAccount account, int transId)
+        public ActionResult CreateAccTrans([Bind(Include = "Id,Name,Landline,Email,Mobile,Company,Address,Remarks,ArAccStatusId,Landline2,Mobile2")] ArAccount account, int transId)
         {
             if (ModelState.IsValid && InputAccValidation(account))
             {

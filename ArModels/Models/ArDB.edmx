@@ -100,7 +100,7 @@
     <Property Name="ArAccountId" Type="int" Nullable="false" />
     <Property Name="ArCategoryId" Type="int" Nullable="false" />
     <Property Name="DtService" Type="datetime" Nullable="false" />
-    <Property Name="DtServiceTo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DtServiceTo" Type="datetime" Nullable="false" />
     <Property Name="PrevRef" Type="int" Nullable="false" />
     <Property Name="NextRef" Type="int" Nullable="false" />
     <Property Name="InvoiceRef" Type="nvarchar" Nullable="true" MaxLength="20" />
@@ -526,7 +526,7 @@
           <NavigationProperty Name="ArCategory" Relationship="ArDB.ArCategoryArTransaction" FromRole="ArTransaction" ToRole="ArCategory" />
           <Property Name="ArCategoryId" Type="Int32" Nullable="false" />
           <Property Name="DtService" Type="DateTime" Nullable="false" />
-          <Property Name="DtServiceTo" Type="String" Nullable="false" />
+          <Property Name="DtServiceTo" Type="DateTime" Nullable="false" />
           <Property Name="PrevRef" Type="Int32" Nullable="false" />
           <Property Name="NextRef" Type="Int32" Nullable="false" />
           <Property Name="InvoiceRef" Type="String" Nullable="true" MaxLength="20" />
