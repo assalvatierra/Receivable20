@@ -100,8 +100,10 @@
     <Property Name="ArAccountId" Type="int" Nullable="false" />
     <Property Name="ArCategoryId" Type="int" Nullable="false" />
     <Property Name="DtService" Type="datetime" Nullable="false" />
+    <Property Name="DtServiceTo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PrevRef" Type="int" Nullable="false" />
     <Property Name="NextRef" Type="int" Nullable="false" />
+    <Property Name="InvoiceRef" Type="nvarchar" Nullable="true" MaxLength="20" />
   </EntityType>
   <EntityType Name="ArTransPosts">
     <Key>
@@ -145,6 +147,8 @@
     <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="120" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArAccStatusId" Type="int" Nullable="false" />
+    <Property Name="Landline2" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Mobile2" Type="nvarchar" Nullable="true" MaxLength="20" />
   </EntityType>
   <EntityType Name="ArAccStatus">
     <Key>
@@ -522,8 +526,10 @@
           <NavigationProperty Name="ArCategory" Relationship="ArDB.ArCategoryArTransaction" FromRole="ArTransaction" ToRole="ArCategory" />
           <Property Name="ArCategoryId" Type="Int32" Nullable="false" />
           <Property Name="DtService" Type="DateTime" Nullable="false" />
+          <Property Name="DtServiceTo" Type="String" Nullable="false" />
           <Property Name="PrevRef" Type="Int32" Nullable="false" />
           <Property Name="NextRef" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceRef" Type="String" Nullable="true" MaxLength="20" />
         </EntityType>
         <EntityType Name="ArTransPost">
           <Key>
@@ -601,6 +607,8 @@
           <Property Name="ArAccStatusId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ArAccntCredits" Relationship="ArDB.ArAccountArAccntCredit" FromRole="ArAccount" ToRole="ArAccntCredit" />
           <NavigationProperty Name="ArAccntPaymentTerms" Relationship="ArDB.ArAccountArAccntPaymentTerm" FromRole="ArAccount" ToRole="ArAccntPaymentTerm" />
+          <Property Name="Landline2" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="Mobile2" Type="String" Nullable="true" MaxLength="20" />
         </EntityType>
         <EntityType Name="ArAccStatus">
           <Key>
@@ -886,8 +894,10 @@
           <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
           <ScalarProperty Name="ArCategoryId" ColumnName="ArCategoryId" />
           <ScalarProperty Name="DtService" ColumnName="DtService" />
+          <ScalarProperty Name="DtServiceTo" ColumnName="DtServiceTo" />
           <ScalarProperty Name="PrevRef" ColumnName="PrevRef" />
           <ScalarProperty Name="NextRef" ColumnName="NextRef" />
+          <ScalarProperty Name="InvoiceRef" ColumnName="InvoiceRef" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -935,6 +945,8 @@
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="ArAccStatusId" ColumnName="ArAccStatusId" />
+          <ScalarProperty Name="Landline2" ColumnName="Landline2" />
+          <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

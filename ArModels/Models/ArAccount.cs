@@ -32,6 +32,8 @@ namespace ArModels.Models
         public string Address { get; set; }
         public string Remarks { get; set; }
         public int ArAccStatusId { get; set; }
+        public string Landline2 { get; set; }
+        public string Mobile2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArTransaction> ArTransactions { get; set; }

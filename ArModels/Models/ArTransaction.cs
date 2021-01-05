@@ -36,8 +36,10 @@ namespace ArModels.Models
         public int ArAccountId { get; set; }
         public int ArCategoryId { get; set; }
         public System.DateTime DtService { get; set; }
+        public string DtServiceTo { get; set; }
         public int PrevRef { get; set; }
         public int NextRef { get; set; }
+        public string InvoiceRef { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArTransPost> ArTransPosts { get; set; }
