@@ -26,5 +26,6 @@ namespace ArInterfaces
         bool UpdateAccntPaymentTerm(ArAccntTerm term);
         bool AddAccntPaymentTerm(ArAccntTerm term);
 
+        bool AddAccntCreditDefault(int AccntId);
     }
 }

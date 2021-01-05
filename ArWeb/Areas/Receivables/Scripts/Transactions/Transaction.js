@@ -49,7 +49,7 @@ function InitDatePicker() {
     );
 
     if (ddd2.trim() == "") {
-        $('input[name="DtEncoded"]').val(moment().format('MM/DD/YYYY'));
+        $('input[name="DtEncoded"]').val(moment().format('MM/DD/YYYY h:mm A'));
     }
 
     //Date 2

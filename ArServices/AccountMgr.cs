@@ -190,6 +190,31 @@ namespace ArServices
 
             return false;
         }
+
+
+        public bool AddAccntCreditDefault(int AccntId)
+        {
+            try
+            {
+                var today = new DateTime();
+
+                ArAccntCredit accntCredit = new ArAccntCredit();
+                accntCredit.ArAccountId = AccntId;
+                accntCredit.ApprovedBy = "Default";
+                accntCredit.ArCreditStatusId = 1;
+                accntCredit.CreditLimit = 50000;
+                accntCredit.CreditWarning = 40000;
+                accntCredit.OverLimitAllowed = 60000;
+                accntCredit.DtCredit = today;
+
+                return this.AddAccntCredit(accntCredit);
+                
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to add new credit details");
+            }
+        }
         #endregion
 
         #region Payment term
@@ -261,6 +286,7 @@ namespace ArServices
 
             return false;
         }
+
 
         #endregion
 

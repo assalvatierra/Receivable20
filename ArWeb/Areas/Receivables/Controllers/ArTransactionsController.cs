@@ -168,7 +168,7 @@ namespace JobsV1.Areas.Receivables.Controllers
         {
             bool isValid = true;
 
-            if (transaction.InvoiceId == 0)
+            if (transaction.InvoiceId < 0)
             {
                 ModelState.AddModelError("InvoiceId", "Invalid InvoiceId");
                 isValid = false;
@@ -243,6 +243,8 @@ namespace JobsV1.Areas.Receivables.Controllers
                 //update transaction account
                 ar.TransactionMgr.UpdateTransAcc(transId, account.Id);
 
+                ar.AccountMgr.AddAccntCreditDefault(account.Id);
+
                 return RedirectToAction("Index");
             }
 
@@ -250,6 +252,8 @@ namespace JobsV1.Areas.Receivables.Controllers
             ViewBag.ArAccStatusId = new SelectList(ar.AccountMgr.GetArAccStatus(), "Id", "Status", account.ArAccStatusId);
             return View(account);
         }
+
+
 
 
         public ActionResult TransactionHistory(int? id)
