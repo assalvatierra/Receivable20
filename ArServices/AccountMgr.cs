@@ -202,9 +202,9 @@ namespace ArServices
                 accntCredit.ArAccountId = AccntId;
                 accntCredit.ApprovedBy = "Default";
                 accntCredit.ArCreditStatusId = 1;
-                accntCredit.CreditLimit = 50000;
-                accntCredit.CreditWarning = 40000;
-                accntCredit.OverLimitAllowed = 60000;
+                accntCredit.CreditWarning    = 10000;
+                accntCredit.CreditLimit      = 20000;
+                accntCredit.OverLimitAllowed = 30000;
                 accntCredit.DtCredit = today;
 
                 return this.AddAccntCredit(accntCredit);

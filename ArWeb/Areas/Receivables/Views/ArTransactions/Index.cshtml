@@ -190,8 +190,15 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @item.DtService.ToString("MMM dd yyyy") - 
-                @item.DtServiceTo.ToString("MMM dd yyyy")
+                @item.DtService.ToString("MMM dd yyyy") -
+                @if (item.DtServiceTo != null)
+                {
+                    var serviceTo = (DateTime)item.DtServiceTo;
+
+                    <span>
+                        @serviceTo.ToString("MMM dd yyyy")
+                    </span>
+                }
             </td>
             <td>
                 @item.DtDue.ToString("MMM dd yyyy")

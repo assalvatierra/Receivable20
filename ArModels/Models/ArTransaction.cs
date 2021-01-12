@@ -36,9 +36,9 @@ namespace ArModels.Models
         public int ArAccountId { get; set; }
         public int ArCategoryId { get; set; }
         public System.DateTime DtService { get; set; }
-        public System.DateTime DtServiceTo { get; set; }
-        public int PrevRef { get; set; }
-        public int NextRef { get; set; }
+        public Nullable<System.DateTime> DtServiceTo { get; set; }
+        public Nullable<int> PrevRef { get; set; }
+        public Nullable<int> NextRef { get; set; }
         public string InvoiceRef { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

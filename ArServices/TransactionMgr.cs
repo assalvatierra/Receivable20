@@ -196,6 +196,10 @@ namespace ArServices
                 {
                     transactions = transactions.Where(t => t.ArTransStatu.Status == status).ToList();
                 }
+                else
+                {
+                    transactions = transactions.Where(t => t.ArTransStatu.Status != "Closed").ToList();
+                }
 
                 if (!String.IsNullOrWhiteSpace(sortBy))
                 {

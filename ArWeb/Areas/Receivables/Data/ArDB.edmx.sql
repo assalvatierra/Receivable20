@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/29/2020 16:53:52
+-- Date Created: 01/06/2021 10:44:31
 -- Generated from EDMX file: C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
@@ -133,7 +133,7 @@ CREATE TABLE [dbo].[ArTransactions] (
     [ArAccountId] int  NOT NULL,
     [ArCategoryId] int  NOT NULL,
     [DtService] datetime  NOT NULL,
-    [DtServiceTo] nvarchar(max)  NOT NULL,
+    [DtServiceTo] datetime  NOT NULL,
     [PrevRef] int  NOT NULL,
     [NextRef] int  NOT NULL,
     [InvoiceRef] nvarchar(20)  NULL

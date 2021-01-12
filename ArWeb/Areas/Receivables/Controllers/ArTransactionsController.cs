@@ -211,13 +211,17 @@ namespace JobsV1.Areas.Receivables.Controllers
                 isValid = false;
             }
 
+            if (account.Company.IsNullOrWhiteSpace())
+            {
+                ModelState.AddModelError("Company", "Invalid Company Name");
+                isValid = false;
+            }
 
             if (account.Mobile.IsNullOrWhiteSpace() || account.Mobile.Length < 11)
             {
                 ModelState.AddModelError("Mobile", "Invalid Mobile");
                 isValid = false;
             }
-
 
             return isValid;
         }
@@ -243,7 +247,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                 //update transaction account
                 ar.TransactionMgr.UpdateTransAcc(transId, account.Id);
 
-                ar.AccountMgr.AddAccntCreditDefault(account.Id);
+                //ar.AccountMgr.AddAccntCreditDefault(account.Id);
 
                 return RedirectToAction("Index");
             }
@@ -369,7 +373,7 @@ namespace JobsV1.Areas.Receivables.Controllers
             }
             else
             {
-                return "User";
+                return "Unknown User";
             }
         }
     }
