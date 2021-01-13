@@ -13,15 +13,18 @@ namespace ArServices
     public class TransactionMgr : iTransactionMgr
     {
         private ArDBContainer db;
+        private DateClassMgr dateClassMgr;
 
         public TransactionMgr()
         {
             db = new ArDBContainer();
+            this.dateClassMgr = new DateClassMgr();
         }
 
         public TransactionMgr(ArDBContainer arDB)
         {
             this.db = arDB;
+            this.dateClassMgr = new DateClassMgr();
         }
 
         public bool AddTransaction(ArTransaction transaction)
@@ -40,6 +43,57 @@ namespace ArServices
             {
                 throw new EntitySqlException("Services: Unable to Add Transaction");
             }
+        }
+
+        public bool CheckRepeatingTrans()
+        {
+            //try
+            //{
+                //get transactions with null next
+                var repeatingTransList = db.ArTransactions.Where(c => c.NextRef == null && c.IsRepeating == true ).ToList();
+
+                if (repeatingTransList == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    var today = dateClassMgr.GetCurrentDateTime();
+                    foreach (var trans in repeatingTransList)
+                    {
+                        //repeat after interval from invoice date
+                        var transDate = trans.DtInvoice;
+                        var intervalDate = transDate.AddDays(trans.Interval);
+
+                        //check if today is later then intervalDate
+                        if (DateTime.Compare(today, intervalDate) > 0)
+                        {
+                            //create new transaction
+                            //reset status
+                            ArTransaction newTrans = new ArTransaction();
+                            newTrans.NextRef = null;
+                            newTrans.ArTransStatusId = 1;
+                            newTrans.DtEncoded = today;
+                            newTrans.DtDue = intervalDate;
+                            newTrans.DtInvoice = intervalDate;
+                            this.AddTransaction(newTrans);
+
+                            //update existing transaction
+                            //attach new transaction as reference
+                            trans.NextRef = newTrans.Id;
+                            this.EditTransaction(trans);
+                        }
+                    }
+
+                    return true;
+                }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //    throw new EntitySqlException("Services: Check repeating transactions");
+            //}
         }
 
         public bool CloseTransactionStatus(int id)
@@ -94,6 +148,7 @@ namespace ArServices
                 throw new EntitySqlException("Services: Unable to Get Active Transaction");
             }
         }
+
 
         public List<ArTransaction> GetApprovedTransactions()
         {

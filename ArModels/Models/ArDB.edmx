@@ -104,6 +104,7 @@
     <Property Name="PrevRef" Type="int" Nullable="true" />
     <Property Name="NextRef" Type="int" Nullable="true" />
     <Property Name="InvoiceRef" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="RepeatCount" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="ArTransPosts">
     <Key>
@@ -530,6 +531,7 @@
           <Property Name="PrevRef" Type="Int32" Nullable="true" />
           <Property Name="NextRef" Type="Int32" Nullable="true" />
           <Property Name="InvoiceRef" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="RepeatCount" Type="Int32" Nullable="true" />
         </EntityType>
         <EntityType Name="ArTransPost">
           <Key>
@@ -898,6 +900,7 @@
           <ScalarProperty Name="PrevRef" ColumnName="PrevRef" />
           <ScalarProperty Name="NextRef" ColumnName="NextRef" />
           <ScalarProperty Name="InvoiceRef" ColumnName="InvoiceRef" />
+          <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

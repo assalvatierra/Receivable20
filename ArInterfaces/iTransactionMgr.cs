@@ -26,6 +26,7 @@ namespace ArInterfaces
 
         bool UpdateTransAcc(int transactionId, int accountId);
         bool CloseTransactionStatus(int id);
+        bool CheckRepeatingTrans();
 
         bool IsClosed(int id);
     }

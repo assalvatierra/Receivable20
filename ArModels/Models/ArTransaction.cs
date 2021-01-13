@@ -40,6 +40,7 @@ namespace ArModels.Models
         public Nullable<int> PrevRef { get; set; }
         public Nullable<int> NextRef { get; set; }
         public string InvoiceRef { get; set; }
+        public Nullable<int> RepeatCount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArTransPost> ArTransPosts { get; set; }

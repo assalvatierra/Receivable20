@@ -112,6 +112,7 @@
     <Compile Include="Models\ArPaymentType.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArRptModel.cs" />
     <Compile Include="Models\ArTransaction.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>

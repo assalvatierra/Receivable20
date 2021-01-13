@@ -95,6 +95,11 @@
     <Property Name="ArAccountId" Type="int" Nullable="false" />
     <Property Name="ArCategoryId" Type="int" Nullable="false" />
     <Property Name="DtService" Type="datetime" Nullable="false" />
+    <Property Name="DtServiceTo" Type="datetime" Nullable="true" />
+    <Property Name="PrevRef" Type="int" Nullable="true" />
+    <Property Name="NextRef" Type="int" Nullable="true" />
+    <Property Name="InvoiceRef" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="RepeatCount" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="ArTransPosts">
     <Key>
@@ -138,6 +143,8 @@
     <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="120" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArAccStatusId" Type="int" Nullable="false" />
+    <Property Name="Landline2" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Mobile2" Type="nvarchar" Nullable="true" MaxLength="20" />
   </EntityType>
   <EntityType Name="ArAccStatus">
     <Key>

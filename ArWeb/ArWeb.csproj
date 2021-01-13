@@ -146,6 +146,7 @@
     <Compile Include="Areas\Receivables\Controllers\ArActionsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArMgtController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArPaymentsController.cs" />
+    <Compile Include="Areas\Receivables\Controllers\ArReportsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArTransactionsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\ArTransPostsController.cs" />
     <Compile Include="Areas\Receivables\Controllers\HomeController.cs" />
@@ -255,6 +256,7 @@
     <Content Include="Areas\Receivables\Views\ArActions\Details.cshtml" />
     <Content Include="Areas\Receivables\Views\ArActions\Edit.cshtml" />
     <Content Include="Areas\Receivables\Views\ArActions\Index.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArReports\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />

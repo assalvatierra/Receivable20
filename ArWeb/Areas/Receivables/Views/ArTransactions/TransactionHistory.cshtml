@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<ArModels.Models.ArAction>
 
 @{
+    Layout = "~/Views/Shared/_ModuleLayout.cshtml";
     ViewBag.Title = "Action History";
 }
 
 <h2>Action History</h2>
 <p>
-    @Html.ActionLink("Back to List", "Index", null ) |
+    @Html.ActionLink("Back to List", "Index" ) |
     @Html.ActionLink("Back to Details", "Details", new { Id = ViewBag.TransId })
 </p>
 <p>
