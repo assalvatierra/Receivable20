@@ -49,6 +49,7 @@ namespace JobsV1.Areas.Receivables.Controllers
         // GET: ArAccounts/Create
         public ActionResult Create()
         {
+
             ViewBag.ArAccStatusId = new SelectList(ar.AccountMgr.GetArAccStatus(), "Id", "Status");
             return View();
         }

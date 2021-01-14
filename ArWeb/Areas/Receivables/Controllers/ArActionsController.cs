@@ -47,6 +47,7 @@ namespace JobsV1.Areas.Receivables.Controllers
             ArAction action = new ArAction();
             action.PreformedBy = GetUser();
 
+            ViewBag.TransactionId = id;
             ViewBag.ArTransactionId = new SelectList(db.ArTransactions, "Id", "Description", id);
             ViewBag.ArActionItemId = new SelectList(db.ArActionItems, "Id", "Action");
             return View(action);
@@ -68,6 +69,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                 return RedirectToAction("TransactionHistory", "ArTransactions", new { id = arAction.ArTransactionId });
             }
 
+            ViewBag.TransactionId = arAction.ArTransactionId;
             ViewBag.ArTransactionId = new SelectList(db.ArTransactions, "Id", "Description", arAction.ArTransactionId);
             ViewBag.ArActionItemId = new SelectList(db.ArActionItems, "Id", "Action", arAction.ArActionItemId);
             return View(arAction);

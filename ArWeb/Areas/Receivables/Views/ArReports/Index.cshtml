@@ -10,11 +10,11 @@
 <p>
     @Html.ActionLink("Back to Home", "Index", "Home", new { area = "" }, null)
 </p>
-<div class="col-md-12" style="margin-bottom:10px; padding-left:0px;"> 
+<div class="col-md-12" style="margin-bottom:10px; padding-left:0px;">
     <div class="btn-group" role="group" aria-label="Filter Group">
         <button class="btn btn-default disabled">Sort By:</button>
         <button type="button" class="btn btn-default" id="sort-Account" onclick="UpdateFilter('Account', '@orderBy')"> Account </button>
-        <button type="button" class="btn btn-default" id="sort-Amount"  onclick="UpdateFilter('Amount' , '@orderBy')"> Amount </button>
+        <button type="button" class="btn btn-default" id="sort-Amount" onclick="UpdateFilter('Amount' , '@orderBy')"> Amount </button>
         <button type="button" class="btn btn-default" id="sort-Payment" onclick="UpdateFilter('Payment', '@orderBy')">Payment </button>
         <button type="button" class="btn btn-default" id="sort-Balance" onclick="UpdateFilter('Balance', '@orderBy')">Balance </button>
     </div>
@@ -32,9 +32,6 @@
             Account
         </th>
         <th>
-            Status
-        </th>
-        <th>
             Amount
         </th>
         <th>
@@ -42,6 +39,9 @@
         </th>
         <th>
             Balance
+        </th>
+        <th>
+
         </th>
     </tr>
 
@@ -52,9 +52,6 @@
                 @item.Account
             </td>
             <td>
-                @item.Status
-            </td>
-            <td>
                 @item.Amount.ToString("#,#00.00")
             </td>
             <td>
@@ -63,12 +60,13 @@
             <td>
                 @item.Balance.ToString("#,#00.00")
             </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "ArAccounts", new { id = item.AccountId }, null)
+            </td>
         </tr>
     }
 
 </table>
-
-
 
 @section Scripts{
     <script>
@@ -85,4 +83,4 @@
         }
 
     </script>
-    }
+}

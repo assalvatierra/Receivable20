@@ -22,9 +22,6 @@
             @Html.DisplayNameFor(model => model.PreformedBy)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ArTransaction.Description)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ArActionItem.Action)
         </th>
         <th>
@@ -37,13 +34,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DtPerformed)
+                @item.DtPerformed.ToString("MMM dd yyyy HH:mm A")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PreformedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArTransaction.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ArActionItem.Action)

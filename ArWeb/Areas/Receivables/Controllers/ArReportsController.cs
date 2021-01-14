@@ -35,13 +35,33 @@ namespace JobsV1.Areas.Receivables.Controllers
                     accountName = trans.ArAccount.Name;
                 }
 
-                arRptTrans.Add(new ArRptTransPending() {
-                     Account = accountName,
-                     Status  = trans.ArTransStatu.Status,
-                     Amount  = totalAmount,
-                     Payment = totalPayment,
-                     Balance = totalBalance
-                });
+                ArRptTransPending transPending = new ArRptTransPending();
+
+                if (arRptTrans.Where(c=>c.AccountId == trans.ArAccountId).Count() > 0)
+                {
+
+                    var existingTransPending = arRptTrans.Where(c => c.AccountId == trans.ArAccountId).FirstOrDefault();
+
+                    //if account exist, add to total Amount
+                    existingTransPending.Amount += totalAmount;
+                    existingTransPending.Payment += totalPayment;
+                    existingTransPending.Balance += totalBalance;
+                }
+                else
+                {
+                    transPending = new ArRptTransPending()
+                    {
+                        Id = trans.Id,
+                        AccountId = trans.ArAccountId,
+                        Account = accountName,
+                        Amount = totalAmount,
+                        Payment = totalPayment,
+                        Balance = totalBalance
+                    };
+                }
+
+                arRptTrans.Add(transPending);
+
             }
 
             //filter and order
