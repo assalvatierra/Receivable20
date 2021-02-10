@@ -296,6 +296,10 @@ namespace ArServices
                         }
                     }
                 }
+                else
+                {
+                    transactions = transactions.OrderBy(t => t.DtDue).ToList();
+                }
 
 
                 return transactions.ToList();
