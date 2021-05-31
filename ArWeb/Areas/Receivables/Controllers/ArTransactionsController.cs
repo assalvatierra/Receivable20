@@ -146,7 +146,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                       Text = s.Company + " - " + s.Name.ToString()
                   });
 
-            ViewBag.ArAccountId = new SelectList(accounts, "Value", "Text");
+            ViewBag.ArAccountId = new SelectList(accounts, "Value", "Text", arTransaction.ArAccountId);
 
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status", arTransaction.ArTransStatusId);
             //ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Company" , arTransaction.ArAccountId);

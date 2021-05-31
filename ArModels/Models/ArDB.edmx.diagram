@@ -15,8 +15,8 @@
         <EntityTypeShape EntityType="ArDB.ArAccStatus" Width="1.5" PointX="3.125" PointY="5" />
         <AssociationConnector Association="ArDB.ArAccountArTransaction" />
         <AssociationConnector Association="ArDB.ArAccStatusArAccount" />
-        <EntityTypeShape EntityType="ArDB.ArAction" Width="1.5" PointX="18.5" PointY="10.25" />
-        <EntityTypeShape EntityType="ArDB.ArActionItem" Width="1.5" PointX="20.625" PointY="10.5" />
+        <EntityTypeShape EntityType="ArDB.ArAction" Width="1.5" PointX="18.5" PointY="10.75" />
+        <EntityTypeShape EntityType="ArDB.ArActionItem" Width="1.5" PointX="20.625" PointY="10.75" />
         <AssociationConnector Association="ArDB.ArTransactionArAction" />
         <AssociationConnector Association="ArDB.ArActionItemArAction" />
         <AssociationConnector Association="ArDB.ArAccountArPayment" />

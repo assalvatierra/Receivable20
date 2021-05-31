@@ -164,7 +164,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                 isValid = false;
             }
 
-            if (account.Mobile.IsNullOrWhiteSpace() || account.Mobile.Length < 11)
+            if (account.Mobile.IsNullOrWhiteSpace() || account.Mobile.Length < 2)
             {
                 ModelState.AddModelError("Mobile", "Invalid Mobile");
                 isValid = false;
