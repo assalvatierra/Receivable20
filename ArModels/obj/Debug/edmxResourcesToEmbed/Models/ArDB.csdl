@@ -106,6 +106,7 @@
     <Property Name="NextRef" Type="Int32" Nullable="true" />
     <Property Name="InvoiceRef" Type="String" Nullable="true" MaxLength="20" />
     <Property Name="RepeatCount" Type="Int32" Nullable="true" />
+    <Property Name="RepeatNo" Type="Int32" Nullable="true" />
   </EntityType>
   <EntityType Name="ArTransPost">
     <Key>

@@ -22,22 +22,20 @@ insert into ArAccntTerms([ArAccountId],[dtTerm],[NoOfDays],[Remarks],[ApprovedBy
 (4, '11/21/2020', 15, null, 'admin', 1),
 (5, '11/21/2020', 15, null, 'admin', 1);
 
-
-
 --transactions
-insert into ArTransactions([ArAccountId],[InvoiceId],[DtInvoice],[Description],[DtEncoded],[DtDue],[Amount],[Interval],[IsRepeating],[Remarks],[ArTransStatusId],[ArCategoryId],[DtService] ) values
-(2, '101', '11/21/2020', 'Invoice 101', '11/21/2020', '12/15/2020', 50000, 0, 0, null, 2, 1, '11/18/2020'),
-(3, '102', '11/18/2020', 'Invoice 102', '11/20/2020', '12/19/2020', 70000, 0, 0, null, 2, 1, '11/10/2020'),
-(4, '103', '11/15/2020', 'Invoice 103', '11/19/2020', '12/25/2020', 80000, 0, 0, null, 1, 1, '11/15/2020'),
-(5, '104', '11/10/2020', 'Invoice 104', '11/20/2020', '12/12/2020', 50000, 30, 1, null, 1, 1, '11/10/2020'),
-(6, '106', '11/12/2020', 'Invoice 105', '11/19/2020', '12/24/2020', 45000, 15, 1, null, 3, 1, '11/12/2020');
+insert into ArTransactions([ArAccountId],[InvoiceId],[DtInvoice],[Description],[DtEncoded],[DtDue],[Amount],[Interval],[IsRepeating],[Remarks],[ArTransStatusId],[ArCategoryId],[DtService], [DtServiceTo], [PrevRef], [NextRef], [InvoiceRef], [RepeatNo] ) values
+(2, '101', '02/21/2021', 'Invoice 101', '02/21/2021', '03/15/2021', 50000,  0, 0, null, 2, 1, '02/18/2021', '02/25/2021',0,0, 'INV001', null),
+(3, '102', '02/18/2021', 'Invoice 102', '02/20/2021', '03/19/2021', 70000,  0, 0, null, 2, 1, '02/10/2021', '02/14/2021',0,0, 'INV002', null),
+(4, '103', '02/15/2021', 'Invoice 103', '02/19/2021', '02/25/2021', 80000,  0, 0, null, 1, 1, '02/15/2021', '02/16/2021',0,0, NULL, null),
+(5, '104', '02/10/2021', 'Invoice 104', '02/20/2021', '03/12/2021', 50000, 30, 1, null, 1, 1, '02/10/2021', '02/12/2021',0,0, NULL, null),
+(6, '106', '02/12/2021', 'Invoice 105', '02/19/2021', '02/24/2021', 45000, 15, 1, null, 3, 1, '02/12/2021', '02/15/2021',0,0, NULL, null);
 
 -- payments
 insert into ArPayments([DtPayment],[Amount],[Remarks],[Reference],[ArAccountId],[ArPaymentTypeId]) values
-('11/21/2020', 5000, null, null, 2, 1),
-('11/22/2020', 5000, null, null, 2, 1),
-('11/21/2020', 15000, null, null, 3, 1),
-('11/21/2020', 12000, null, null, 4, 1);
+('02/21/2021',  5000, null, null, 2, 1),
+('02/22/2021',  5000, null, null, 2, 1),
+('02/21/2021', 15000, null, null, 3, 1),
+('02/21/2021', 12000, null, null, 4, 1);
 
 -- transaction payments
 insert into ArTransPayments([ArTransactionId],[ArPaymentId]) values 
@@ -45,3 +43,4 @@ insert into ArTransPayments([ArTransactionId],[ArPaymentId]) values
 (1,2),
 (2,3),
 (3,4);
+

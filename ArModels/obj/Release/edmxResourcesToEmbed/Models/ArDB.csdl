@@ -101,6 +101,12 @@
     <NavigationProperty Name="ArCategory" Relationship="ArDB.ArCategoryArTransaction" FromRole="ArTransaction" ToRole="ArCategory" />
     <Property Name="ArCategoryId" Type="Int32" Nullable="false" />
     <Property Name="DtService" Type="DateTime" Nullable="false" />
+    <Property Name="DtServiceTo" Type="DateTime" Nullable="true" />
+    <Property Name="PrevRef" Type="Int32" Nullable="true" />
+    <Property Name="NextRef" Type="Int32" Nullable="true" />
+    <Property Name="InvoiceRef" Type="String" Nullable="true" MaxLength="20" />
+    <Property Name="RepeatCount" Type="Int32" Nullable="true" />
+    <Property Name="RepeatNo" Type="Int32" Nullable="true" />
   </EntityType>
   <EntityType Name="ArTransPost">
     <Key>
@@ -178,6 +184,8 @@
     <Property Name="ArAccStatusId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ArAccntCredits" Relationship="ArDB.ArAccountArAccntCredit" FromRole="ArAccount" ToRole="ArAccntCredit" />
     <NavigationProperty Name="ArAccntPaymentTerms" Relationship="ArDB.ArAccountArAccntPaymentTerm" FromRole="ArAccount" ToRole="ArAccntPaymentTerm" />
+    <Property Name="Landline2" Type="String" Nullable="true" MaxLength="20" />
+    <Property Name="Mobile2" Type="String" Nullable="true" MaxLength="20" />
   </EntityType>
   <EntityType Name="ArAccStatus">
     <Key>

@@ -10,25 +10,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/ARDB-2020.mdf">
-      <publishTime>11/19/2020 13:48:07</publishTime>
+      <publishTime>01/13/2021 10:06:11</publishTime>
     </File>
     <File Include="App_Data/ARDB-2020_log.ldf">
-      <publishTime>11/19/2020 13:48:07</publishTime>
+      <publishTime>01/13/2021 10:06:11</publishTime>
     </File>
     <File Include="App_Data/aspnet-JobsV1-20160528101923.mdf">
-      <publishTime>12/17/2020 15:21:55</publishTime>
+      <publishTime>03/24/2021 12:00:45</publishTime>
     </File>
     <File Include="App_Data/aspnet-JobsV1-20160528101923_log.ldf">
-      <publishTime>12/17/2020 15:21:55</publishTime>
+      <publishTime>03/24/2021 12:00:45</publishTime>
     </File>
     <File Include="Areas/Receivables/Data/ArDB.edmx.sql">
-      <publishTime>12/09/2020 14:54:03</publishTime>
+      <publishTime>03/02/2021 11:42:55</publishTime>
     </File>
     <File Include="Areas/Receivables/Data/Initial.sql">
-      <publishTime>12/17/2020 15:05:19</publishTime>
+      <publishTime>03/24/2021 11:14:34</publishTime>
     </File>
     <File Include="Areas/Receivables/Data/SampleData.sql">
-      <publishTime>12/17/2020 13:01:41</publishTime>
+      <publishTime>03/02/2021 11:43:45</publishTime>
     </File>
     <File Include="Areas/Receivables/Scripts/DateRangePicker/bower.json">
       <publishTime>11/18/2020 11:21:12</publishTime>
@@ -67,7 +67,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/18/2020 15:06:24</publishTime>
     </File>
     <File Include="Areas/Receivables/Scripts/Transactions/Transaction.js">
-      <publishTime>12/10/2020 13:20:49</publishTime>
+      <publishTime>01/06/2021 09:06:14</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Scripts/Transactions/TransactionCreate.js">
+      <publishTime>03/02/2021 11:47:00</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArAccntCredits/Create.cshtml">
       <publishTime>11/17/2020 17:11:26</publishTime>
@@ -106,31 +109,46 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/19/2020 11:23:37</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArAccounts/Create.cshtml">
-      <publishTime>11/17/2020 10:59:53</publishTime>
+      <publishTime>01/11/2021 13:28:49</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArAccounts/Delete.cshtml">
       <publishTime>11/17/2020 10:59:53</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArAccounts/Details.cshtml">
-      <publishTime>11/24/2020 11:47:30</publishTime>
+      <publishTime>01/13/2021 11:26:13</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArAccounts/Edit.cshtml">
-      <publishTime>11/17/2020 10:59:53</publishTime>
+      <publishTime>01/11/2021 13:30:15</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArAccounts/Index.cshtml">
-      <publishTime>12/09/2020 11:05:25</publishTime>
+      <publishTime>01/06/2021 09:06:14</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArActions/Create.cshtml">
+      <publishTime>01/13/2021 11:02:15</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArActions/Delete.cshtml">
+      <publishTime>01/13/2021 11:02:35</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArActions/Details.cshtml">
+      <publishTime>01/13/2021 11:02:30</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArActions/Edit.cshtml">
+      <publishTime>01/13/2021 11:02:24</publishTime>
+    </File>
+    <File Include="Areas/Receivables/Views/ArActions/Index.cshtml">
+      <publishTime>01/13/2021 13:24:44</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArMgt/Approval.cshtml">
-      <publishTime>12/17/2020 14:39:42</publishTime>
+      <publishTime>01/13/2021 11:24:52</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArMgt/Index.cshtml">
-      <publishTime>12/17/2020 14:44:52</publishTime>
+      <publishTime>01/13/2021 11:24:54</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArMgt/Reminders.cshtml">
       <publishTime>12/09/2020 10:35:49</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArMgt/Settlement.cshtml">
-      <publishTime>12/17/2020 14:39:41</publishTime>
+      <publishTime>03/24/2021 11:33:33</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArMgt/_ModalChangeDueDate.cshtml">
       <publishTime>12/12/2020 09:55:17</publishTime>
@@ -144,8 +162,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Receivables/Views/ArPayments/Create.cshtml">
       <publishTime>11/18/2020 15:06:21</publishTime>
     </File>
+    <File Include="Areas/Receivables/Views/ArPayments/CreateSettlePayment.cshtml">
+      <publishTime>12/18/2020 11:55:02</publishTime>
+    </File>
     <File Include="Areas/Receivables/Views/ArPayments/CreateTransPayment.cshtml">
-      <publishTime>11/18/2020 13:15:45</publishTime>
+      <publishTime>03/24/2021 11:16:44</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArPayments/Delete.cshtml">
       <publishTime>11/17/2020 10:59:53</publishTime>
@@ -160,31 +181,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/17/2020 10:59:53</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArPayments/EditTransPayment.cshtml">
-      <publishTime>11/24/2020 13:38:10</publishTime>
+      <publishTime>03/24/2021 11:16:57</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArPayments/Index.cshtml">
       <publishTime>11/19/2020 15:54:41</publishTime>
     </File>
+    <File Include="Areas/Receivables/Views/ArReports/Index.cshtml">
+      <publishTime>01/13/2021 11:23:07</publishTime>
+    </File>
     <File Include="Areas/Receivables/Views/ArTransactions/Create.cshtml">
-      <publishTime>12/03/2020 11:41:20</publishTime>
+      <publishTime>03/02/2021 11:47:22</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArTransactions/CreateAccTrans.cshtml">
-      <publishTime>12/01/2020 15:02:18</publishTime>
+      <publishTime>01/06/2021 09:06:14</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArTransactions/Delete.cshtml">
       <publishTime>11/17/2020 10:59:54</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArTransactions/Details.cshtml">
-      <publishTime>11/24/2020 13:40:07</publishTime>
+      <publishTime>03/24/2021 11:24:53</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArTransactions/Edit.cshtml">
-      <publishTime>12/10/2020 11:07:39</publishTime>
+      <publishTime>03/02/2021 11:47:35</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArTransactions/Index.cshtml">
-      <publishTime>12/11/2020 14:05:04</publishTime>
+      <publishTime>03/24/2021 10:48:02</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArTransactions/TransactionHistory.cshtml">
-      <publishTime>11/21/2020 11:24:13</publishTime>
+      <publishTime>01/13/2021 13:26:06</publishTime>
     </File>
     <File Include="Areas/Receivables/Views/ArTransPosts/Create.cshtml">
       <publishTime>11/19/2020 10:06:31</publishTime>
@@ -217,40 +241,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/20/2020 09:39:08</publishTime>
     </File>
     <File Include="bin/ArDBLayer.dll">
-      <publishTime>12/17/2020 15:21:51</publishTime>
+      <publishTime>03/24/2021 12:00:40</publishTime>
     </File>
     <File Include="bin/ArDBLayer.pdb">
-      <publishTime>12/17/2020 15:21:51</publishTime>
+      <publishTime>03/24/2021 12:00:40</publishTime>
     </File>
     <File Include="bin/ArInterfaces.dll">
-      <publishTime>12/17/2020 15:21:51</publishTime>
+      <publishTime>03/24/2021 12:00:40</publishTime>
     </File>
     <File Include="bin/ArInterfaces.pdb">
-      <publishTime>12/17/2020 15:21:51</publishTime>
+      <publishTime>03/24/2021 12:00:40</publishTime>
     </File>
     <File Include="bin/ArModels.dll">
-      <publishTime>12/17/2020 15:21:51</publishTime>
+      <publishTime>03/24/2021 12:00:40</publishTime>
     </File>
     <File Include="bin/ArModels.dll.config">
       <publishTime>11/16/2020 16:59:04</publishTime>
     </File>
     <File Include="bin/ArModels.pdb">
-      <publishTime>12/17/2020 15:21:51</publishTime>
+      <publishTime>03/24/2021 12:00:40</publishTime>
     </File>
     <File Include="bin/ArServices.dll">
-      <publishTime>12/17/2020 15:21:51</publishTime>
+      <publishTime>03/24/2021 12:00:40</publishTime>
     </File>
     <File Include="bin/ArServices.dll.config">
       <publishTime>11/14/2020 11:15:13</publishTime>
     </File>
     <File Include="bin/ArServices.pdb">
-      <publishTime>12/17/2020 15:21:51</publishTime>
+      <publishTime>03/24/2021 12:00:40</publishTime>
     </File>
     <File Include="bin/ArWeb.dll">
-      <publishTime>12/17/2020 15:21:52</publishTime>
+      <publishTime>03/24/2021 12:00:41</publishTime>
     </File>
     <File Include="bin/ArWeb.pdb">
-      <publishTime>12/17/2020 15:21:52</publishTime>
+      <publishTime>03/24/2021 12:00:41</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>

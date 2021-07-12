@@ -100,6 +100,7 @@
     <Property Name="NextRef" Type="int" Nullable="true" />
     <Property Name="InvoiceRef" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="RepeatCount" Type="int" Nullable="true" />
+    <Property Name="RepeatNo" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="ArTransPosts">
     <Key>

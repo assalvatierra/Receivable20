@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/18/2020 10:42:40
--- Generated from EDMX file: C:\Users\ACER\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
+-- Date Created: 03/02/2021 11:42:24
+-- Generated from EDMX file: C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -132,7 +132,13 @@ CREATE TABLE [dbo].[ArTransactions] (
     [ArTransStatusId] int  NOT NULL,
     [ArAccountId] int  NOT NULL,
     [ArCategoryId] int  NOT NULL,
-    [DtService] datetime  NOT NULL
+    [DtService] datetime  NOT NULL,
+    [DtServiceTo] datetime  NULL,
+    [PrevRef] int  NULL,
+    [NextRef] int  NULL,
+    [InvoiceRef] nvarchar(20)  NULL,
+    [RepeatCount] int  NULL,
+    [RepeatNo] int  NULL
 );
 GO
 
@@ -175,7 +181,9 @@ CREATE TABLE [dbo].[ArAccounts] (
     [Company] nvarchar(80)  NULL,
     [Address] nvarchar(120)  NULL,
     [Remarks] nvarchar(80)  NULL,
-    [ArAccStatusId] int  NOT NULL
+    [ArAccStatusId] int  NOT NULL,
+    [Landline2] nvarchar(20)  NULL,
+    [Mobile2] nvarchar(20)  NULL
 );
 GO
 
@@ -192,7 +200,8 @@ CREATE TABLE [dbo].[ArActions] (
     [DtPerformed] datetime  NOT NULL,
     [PreformedBy] nvarchar(80)  NOT NULL,
     [ArTransactionId] int  NOT NULL,
-    [ArActionItemId] int  NOT NULL
+    [ArActionItemId] int  NOT NULL,
+    [Remarks] nvarchar(80)  NULL
 );
 GO
 

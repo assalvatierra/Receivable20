@@ -18,6 +18,12 @@
           <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
           <ScalarProperty Name="ArCategoryId" ColumnName="ArCategoryId" />
           <ScalarProperty Name="DtService" ColumnName="DtService" />
+          <ScalarProperty Name="DtServiceTo" ColumnName="DtServiceTo" />
+          <ScalarProperty Name="PrevRef" ColumnName="PrevRef" />
+          <ScalarProperty Name="NextRef" ColumnName="NextRef" />
+          <ScalarProperty Name="InvoiceRef" ColumnName="InvoiceRef" />
+          <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
+          <ScalarProperty Name="RepeatNo" ColumnName="RepeatNo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -65,6 +71,8 @@
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="ArAccStatusId" ColumnName="ArAccStatusId" />
+          <ScalarProperty Name="Landline2" ColumnName="Landline2" />
+          <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

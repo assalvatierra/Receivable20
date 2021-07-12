@@ -23,6 +23,7 @@
           <ScalarProperty Name="NextRef" ColumnName="NextRef" />
           <ScalarProperty Name="InvoiceRef" ColumnName="InvoiceRef" />
           <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
+          <ScalarProperty Name="RepeatNo" ColumnName="RepeatNo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
