@@ -5,7 +5,7 @@ insert into ArAccStatus([Status]) values
 ('Active'),('Inactive'),('OnHold');
 
 insert into ArPaymentTypes([Type]) values
-('Cash'),('Check'),('Bank'),('PO'),('Others'),('Tax');
+('Cash'),('Check'),('Bank'),('PO'),('Others');
 
 insert into ArActionItems([Action],[Remarks],[SortNo]) values
 ('New Bill','',1),('Bill For Approval','',2),('Bill Approved','',3),('Bill Sent','',4),('Bill For Settlement','',5),('Bill Closed','',6),('Bill Payment','',7),

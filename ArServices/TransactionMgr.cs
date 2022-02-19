@@ -39,16 +39,15 @@ namespace ArServices
                 }
                 return false;
             }
-            catch 
+            catch (Exception ex)
             {
+                throw ex;
                 throw new EntitySqlException("Services: Unable to Add Transaction");
             }
         }
 
         public bool CheckRepeatingTrans()
         {
-            //try
-            //{
                 //get transactions with null next
                 var repeatingTransList = db.ArTransactions.Where(c => c.NextRef == null && c.IsRepeating == true ).ToList();
 
@@ -88,12 +87,6 @@ namespace ArServices
                     return true;
                 }
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //    throw new EntitySqlException("Services: Check repeating transactions");
-            //}
         }
 
         public bool CloseTransactionStatus(int id)
@@ -246,6 +239,16 @@ namespace ArServices
         {
             try
             {
+                if (String.IsNullOrWhiteSpace(sortBy))
+                {
+                    sortBy = "DueDate";
+                }
+
+                if (String.IsNullOrWhiteSpace(orderBy))
+                {
+                    sortBy = "DESC";
+                }
+
                 var transactions = GetTransactions();
                 if (!String.IsNullOrWhiteSpace(status))
                 {
@@ -259,7 +262,7 @@ namespace ArServices
                 if (!String.IsNullOrWhiteSpace(sortBy))
                 {
 
-                    if (!String.IsNullOrWhiteSpace(orderBy) && orderBy == "DESC")
+                    if (orderBy == "DESC")
                     {
                         switch (sortBy)
                         {
@@ -298,7 +301,7 @@ namespace ArServices
                 }
                 else
                 {
-                    transactions = transactions.OrderBy(t => t.DtDue).ToList();
+                    transactions = transactions.OrderByDescending(t => t.DtDue).ToList();
                 }
 
 
@@ -308,6 +311,62 @@ namespace ArServices
             {
                 throw ex;
                 throw new EntitySqlException("Services: Unable to Get Transactions with and filter sortBy");
+            }
+        }
+
+
+        public List<ArTransaction> GetTransactionsByDate(DateTime filterDate)
+        {
+            try
+            {
+                var arPaymentsIds = db.ArPayments.Where(p => DbFunctions.TruncateTime(p.DtPayment) == filterDate)
+                    .Select(p => p.ArTransPayments.FirstOrDefault().ArTransactionId).ToList();
+
+                return db.ArTransactions
+                    .Where(r => arPaymentsIds.Contains(r.Id))
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                throw new EntitySqlException("Services: Unable to Get Transactions ");
+            }
+        }
+
+
+        public List<ArTransaction> GetTransactionsByDateRange(DateTime filterStartDate, DateTime filterEndDate)
+        {
+            try
+            {
+                var arPaymentsIds = db.ArPayments.Where(p => DbFunctions.TruncateTime(p.DtPayment) >= filterStartDate
+                    && DbFunctions.TruncateTime(p.DtPayment) <= filterEndDate)
+                    .Select(p => p.ArTransPayments.FirstOrDefault().ArTransactionId).ToList();
+
+                return db.ArTransactions
+                    .Where(r => arPaymentsIds.Contains(r.Id))
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                throw new EntitySqlException("Services: Unable to Get Transactions ");
+            }
+        }
+
+
+
+        public List<ArTransaction> GetTransactionsByMonth(int month)
+        {
+            try
+            {
+                return db.ArTransactions
+                    .Where(r => r.DtInvoice.Month == month)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                throw new EntitySqlException("Services: Unable to Get Transactions ");
             }
         }
 
@@ -351,6 +410,11 @@ namespace ArServices
                 if (transaction == null)
                 {
                     return false;
+                }
+
+                if (transaction.ArActions != null)
+                {
+                    transaction.ArActions.Clear();
                 }
 
                 db.ArTransactions.Remove(transaction);

@@ -41,8 +41,8 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\EntityFram
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\ArModels.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\ArModels.dll.config
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\bin\Debug\EntityFramework.xml
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csprojAssemblyReference.cache
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CoreCompileInputs.cache
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.AssemblyReference.cache
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CopyComplete

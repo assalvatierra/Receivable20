@@ -17,6 +17,9 @@ namespace ArInterfaces
         List<ArTransaction> GetTransactions();
         List<ArTransaction> GetTransactions(string status);
         List<ArTransaction> GetTransactions(string status, string sortBy, string orderBy);
+        List<ArTransaction> GetTransactionsByDate(DateTime filterDate);
+        List<ArTransaction> GetTransactionsByDateRange(DateTime filterStartDate, DateTime filterEndDate);
+        List<ArTransaction> GetTransactionsByMonth(int month);
         List<ArTransaction> GetActiveTransactions();
         List<ArTransaction> GetApprovedTransactions();
         List<ArTransaction> GetForApprovalTrans();

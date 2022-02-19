@@ -388,8 +388,8 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\bin\System.Net.Http.Formatt
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.Http.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\bin\System.Web.Http.WebHost.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csprojAssemblyReference.cache
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CoreCompileInputs.cache
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.AssemblyReference.cache
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb\obj\Debug\ArWeb.csproj.CopyComplete

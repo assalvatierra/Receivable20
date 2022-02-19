@@ -43,7 +43,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw new Exception(string.Format("Unable to Create new Recievable Account", "0", ex.Message));
-                return false;
+                //return false;
             }
         }
 
@@ -63,7 +63,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw new Exception(string.Format("Unable to Edit Recievable Account", "0", ex.Message));
-                return false;
+                //return false;
             }
         }
 
@@ -76,7 +76,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw new Exception(string.Format("Unable to retrieve Accounts", "0", ex.Message));
-                return null;
+                //return null;
             }
         }
 
@@ -94,7 +94,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw new Exception(string.Format("Unable to Remove Recievable Account", "0", ex.Message));
-                return false;
+                //return false;
             }
         }
 
@@ -107,7 +107,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw new Exception(string.Format("Unable to Retrieve Recievable Account by Id", "0", ex.Message));
-                return null;
+                //return null;
             }
         }
 
@@ -120,9 +120,110 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw new Exception(string.Format("Unable to Get Recievable Account Status", "0", ex.Message));
-                return null;
+                //return null;
             }
         }
 
+        #region Account Contacts
+
+        public IQueryable<ArAccContact> GetAccContacts()
+        {
+            try
+            {
+                return db.ArAccContacts;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Unable to Retrieve Recievable Account Contact by Id", "0", ex.Message));
+          
+            }
+        }
+
+        public bool AddAccContact(ArAccContact accContact)
+        {
+            try
+            {
+                if (accContact != null)
+                {
+                    db.ArAccContacts.Add(accContact);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Unable to Retrieve Recievable Account by Id", "0", ex.Message));
+                //return false;
+            }
+        }
+
+        public bool EditAccContact(ArAccContact accContact)
+        {
+            try
+            {
+                if (accContact != null)
+                {
+                    db.Entry(accContact).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Unable to Retrieve Recievable Account by Id", "0", ex.Message));
+                //return false;
+
+            }
+        }
+
+        public bool RemoveAcc(ArAccContact accContact)
+        {
+            try
+            {
+                if (accContact != null)
+                {
+                    db.ArAccContacts.Remove(accContact);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Unable to Retrieve Recievable Account by Id", "0", ex.Message));
+                //return false;
+
+            }
+        }
+
+        public ArAccContact GetAccContactById(int id)
+        {
+            try
+            {
+                return db.ArAccContacts.Find(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Unable to Retrieve Recievable Account by Id", "0", ex.Message));
+                //return null;
+            }
+        }
+
+        public List<ArAccContact> GetAccContactsByAccountId(int AccountId)
+        {
+            try
+            {
+                return db.ArAccContacts.Where(c=>c.ArAccountId == AccountId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Unable to Retrieve Recievable Account by Id", "0", ex.Message));
+                //return null;
+            }
+        }
+
+        #endregion
     }
 }

@@ -288,8 +288,103 @@ namespace ArServices
         }
 
 
+
         #endregion
 
+
+        #region Contacts 
+
+        public bool AddAccContact(ArAccContact contact)
+        {
+            try
+            {
+                if (contact != null)
+                {
+                    db.ArAccContacts.Add(contact);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Add Recievable Account Contact");
+            }
+        }
+
+        public bool EditAccContact(ArAccContact contact)
+        {
+            try
+            {
+                if (contact != null)
+                {
+                    db.Entry(contact).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Edit Recievable Account Contact");
+            }
+        }
+
+        public bool RemoveAccContact(ArAccContact contact)
+        {
+            try
+            {
+                if (contact != null)
+                {
+                    db.ArAccContacts.Remove(contact);
+                    db.SaveChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Remove Recievable Account Contact");
+            }
+        }
+
+        public ArAccContact GetAccContactById(int id)
+        {
+            try
+            {
+                return db.ArAccContacts.Find(id);
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Recievable Account by Id");
+            }
+        }
+
+        public List<ArAccContact> GetAccContactsByAccId(int accountId)
+        {
+            try
+            {
+                return db.ArAccContacts.Where(c=>c.ArAccountId == accountId).ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Recievable Account Contacts by AccountId");
+            }
+        }
+
+        public List<ArAccContact> GetAccContacts()
+        {
+            try
+            {
+                return db.ArAccContacts.ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Recievable Account Contacts by AccountId");
+            }
+        }
+
+        #endregion
 
     }
 }

@@ -42,6 +42,7 @@ namespace ArModels.Models
         public string InvoiceRef { get; set; }
         public Nullable<int> RepeatCount { get; set; }
         public Nullable<int> RepeatNo { get; set; }
+        public int ArAccContactId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArTransPost> ArTransPosts { get; set; }
@@ -52,5 +53,6 @@ namespace ArModels.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArTransPayment> ArTransPayments { get; set; }
         public virtual ArCategory ArCategory { get; set; }
+        public virtual ArAccContact ArAccContact { get; set; }
     }
 }

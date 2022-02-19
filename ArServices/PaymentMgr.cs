@@ -140,5 +140,71 @@ namespace ArServices
                 throw new EntitySqlException("Services: Unable to Remove Payment");
             }
         }
+
+        public bool UpdateDeposit(int id, bool status)
+        {
+            try
+            {
+                var payment = GetPaymentById(id);
+
+                if (payment == null)
+                {
+                    return false;
+                }
+
+                if (payment.ArPaymentTypeId != 3)
+                {
+                    payment.IsDeposited = true;
+                    payment.DtDeposit = GetCurrentDate();
+                }
+
+                return EditPayment(payment);
+
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
+
+        }
+
+
+        public bool UpdateTransDeposit(int id, bool status)
+        {
+            try
+            {
+                var arTrans = db.ArTransactions.Find(id);
+
+                if (arTrans == null)
+                {
+                    return false;
+                }
+
+                if (arTrans.ArTransPayments.Count == 0)
+                {
+                    return false;
+                }
+
+                foreach (var payment in arTrans.ArTransPayments.ToList())
+                {
+                    UpdateDeposit(payment.ArPaymentId, status);
+                }
+
+                return true;
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
+
+        }
+
+        private DateTime GetCurrentDate()
+        {
+            DateTime _localTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("Singapore Standard Time"));
+            _localTime = _localTime.Date;
+
+            return _localTime;
+        }
     }
 }

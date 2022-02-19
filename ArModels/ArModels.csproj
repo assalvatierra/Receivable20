@@ -64,6 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ArAccContact.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ArAccntCredit.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>

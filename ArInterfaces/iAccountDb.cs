@@ -18,5 +18,13 @@ namespace ArInterfaces
         bool RemoveAccount(ArAccount account);
         ArAccount GetAccountById(int id);
         IQueryable<ArAccStatus> GetAccStatus();
+
+        //Account Contacts
+        IQueryable<ArAccContact> GetAccContacts();
+        bool AddAccContact(ArAccContact accContact);
+        bool EditAccContact(ArAccContact accContact);
+        bool RemoveAcc(ArAccContact accContact);
+        ArAccContact GetAccContactById(int id);
+        List<ArAccContact> GetAccContactsByAccountId(int AccountId);
     }
 }

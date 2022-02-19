@@ -21,6 +21,7 @@
     <EntitySet Name="ArCreditStatus" EntityType="ArDB.Store.ArCreditStatus" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArAccntTerms" EntityType="ArDB.Store.ArAccntTerms" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArAccntTermStatus" EntityType="ArDB.Store.ArAccntTermStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArAccContacts" EntityType="ArDB.Store.ArAccContacts" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ArTransactionArTransPost" Association="ArDB.Store.ArTransactionArTransPost">
       <End Role="ArTransaction" EntitySet="ArTransactions" />
       <End Role="ArTransPost" EntitySet="ArTransPosts" />
@@ -81,6 +82,14 @@
       <End Role="ArAccntTermStatus" EntitySet="ArAccntTermStatus" />
       <End Role="ArAccntPaymentTerm" EntitySet="ArAccntTerms" />
     </AssociationSet>
+    <AssociationSet Name="ArAccountArAccContact" Association="ArDB.Store.ArAccountArAccContact">
+      <End Role="ArAccount" EntitySet="ArAccounts" />
+      <End Role="ArAccContact" EntitySet="ArAccContacts" />
+    </AssociationSet>
+    <AssociationSet Name="ArAccContactArTransaction" Association="ArDB.Store.ArAccContactArTransaction">
+      <End Role="ArAccContact" EntitySet="ArAccContacts" />
+      <End Role="ArTransaction" EntitySet="ArTransactions" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ArTransactions">
     <Key>
@@ -106,6 +115,7 @@
     <Property Name="InvoiceRef" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="RepeatCount" Type="int" Nullable="true" />
     <Property Name="RepeatNo" Type="int" Nullable="true" />
+    <Property Name="ArAccContactId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ArTransPosts">
     <Key>
@@ -128,6 +138,8 @@
     <Property Name="Reference" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArAccountId" Type="int" Nullable="false" />
     <Property Name="ArPaymentTypeId" Type="int" Nullable="false" />
+    <Property Name="IsDeposited" Type="bit" Nullable="true" />
+    <Property Name="DtDeposit" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="ArTransStatus">
     <Key>
@@ -242,6 +254,17 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ArAccContacts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Mobile" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="Position" Type="nvarchar" Nullable="true" MaxLength="80" />
+    <Property Name="ArAccountId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ArTransactionArTransPost">
     <End Role="ArTransaction" Type="ArDB.Store.ArTransactions" Multiplicity="1" />
@@ -423,6 +446,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ArAccountArAccContact">
+    <End Role="ArAccount" Type="ArDB.Store.ArAccounts" Multiplicity="1" />
+    <End Role="ArAccContact" Type="ArDB.Store.ArAccContacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArAccount">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArAccContact">
+        <PropertyRef Name="ArAccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArAccContactArTransaction">
+    <End Role="ArAccContact" Type="ArDB.Store.ArAccContacts" Multiplicity="1" />
+    <End Role="ArTransaction" Type="ArDB.Store.ArTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArAccContact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArTransaction">
+        <PropertyRef Name="ArAccContactId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -503,6 +550,15 @@
             <End Role="ArAccntTermStatus" EntitySet="ArAccntTermStatus" />
             <End Role="ArAccntPaymentTerm" EntitySet="ArAccntTerms" />
           </AssociationSet>
+          <EntitySet Name="ArAccContacts" EntityType="ArDB.ArAccContact" />
+          <AssociationSet Name="ArAccountArAccContact" Association="ArDB.ArAccountArAccContact">
+            <End Role="ArAccount" EntitySet="ArAccounts" />
+            <End Role="ArAccContact" EntitySet="ArAccContacts" />
+          </AssociationSet>
+          <AssociationSet Name="ArAccContactArTransaction" Association="ArDB.ArAccContactArTransaction">
+            <End Role="ArAccContact" EntitySet="ArAccContacts" />
+            <End Role="ArTransaction" EntitySet="ArTransactions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ArTransaction">
           <Key>
@@ -534,6 +590,8 @@
           <Property Name="InvoiceRef" Type="String" Nullable="true" MaxLength="20" />
           <Property Name="RepeatCount" Type="Int32" Nullable="true" />
           <Property Name="RepeatNo" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="ArAccContact" Relationship="ArDB.ArAccContactArTransaction" FromRole="ArTransaction" ToRole="ArAccContact" />
+          <Property Name="ArAccContactId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ArTransPost">
           <Key>
@@ -560,6 +618,8 @@
           <NavigationProperty Name="ArTransPayments" Relationship="ArDB.ArPaymentArTransPayment" FromRole="ArPayment" ToRole="ArTransPayment" />
           <NavigationProperty Name="ArPaymentType" Relationship="ArDB.ArPaymentTypeArPayment" FromRole="ArPayment" ToRole="ArPaymentType" />
           <Property Name="ArPaymentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeposited" Type="Boolean" Nullable="true" />
+          <Property Name="DtDeposit" Type="DateTime" Nullable="true" />
         </EntityType>
         <EntityType Name="ArTransStatus">
           <Key>
@@ -613,6 +673,7 @@
           <NavigationProperty Name="ArAccntPaymentTerms" Relationship="ArDB.ArAccountArAccntPaymentTerm" FromRole="ArAccount" ToRole="ArAccntPaymentTerm" />
           <Property Name="Landline2" Type="String" Nullable="true" MaxLength="20" />
           <Property Name="Mobile2" Type="String" Nullable="true" MaxLength="20" />
+          <NavigationProperty Name="ArAccContacts" Relationship="ArDB.ArAccountArAccContact" FromRole="ArAccount" ToRole="ArAccContact" />
         </EntityType>
         <EntityType Name="ArAccStatus">
           <Key>
@@ -875,6 +936,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ArAccContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="80" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="80" />
+          <Property Name="Position" Type="String" Nullable="true" MaxLength="80" />
+          <NavigationProperty Name="ArAccount" Relationship="ArDB.ArAccountArAccContact" FromRole="ArAccContact" ToRole="ArAccount" />
+          <Property Name="ArAccountId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArTransactions" Relationship="ArDB.ArAccContactArTransaction" FromRole="ArAccContact" ToRole="ArTransaction" />
+        </EntityType>
+        <Association Name="ArAccountArAccContact">
+          <End Type="ArDB.ArAccount" Role="ArAccount" Multiplicity="1" />
+          <End Type="ArDB.ArAccContact" Role="ArAccContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArAccContact">
+              <PropertyRef Name="ArAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ArAccContactArTransaction">
+          <End Type="ArDB.ArAccContact" Role="ArAccContact" Multiplicity="1" />
+          <End Type="ArDB.ArTransaction" Role="ArTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArAccContact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArTransaction">
+              <PropertyRef Name="ArAccContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -904,6 +1002,7 @@
           <ScalarProperty Name="InvoiceRef" ColumnName="InvoiceRef" />
           <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
           <ScalarProperty Name="RepeatNo" ColumnName="RepeatNo" />
+          <ScalarProperty Name="ArAccContactId" ColumnName="ArAccContactId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -928,6 +1027,8 @@
           <ScalarProperty Name="Reference" ColumnName="Reference" />
           <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
           <ScalarProperty Name="ArPaymentTypeId" ColumnName="ArPaymentTypeId" />
+          <ScalarProperty Name="IsDeposited" ColumnName="IsDeposited" />
+          <ScalarProperty Name="DtDeposit" ColumnName="DtDeposit" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1054,6 +1155,18 @@
         <MappingFragment StoreEntitySet="ArAccntTermStatus">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArAccContacts">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArAccContact)">
+        <MappingFragment StoreEntitySet="ArAccContacts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

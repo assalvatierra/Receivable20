@@ -42,3 +42,4 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.cspro
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.AssemblyReference.cache

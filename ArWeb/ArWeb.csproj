@@ -186,6 +186,7 @@
     <Content Include="Areas\Receivables\Scripts\Mgt\DueDate.js" />
     <Content Include="Areas\Receivables\Scripts\Mgt\Settlement.js" />
     <Content Include="Areas\Receivables\Scripts\Payments\Payments.js" />
+    <Content Include="Areas\Receivables\Scripts\Transactions\TransactionEdit.js" />
     <Content Include="Areas\Receivables\Scripts\Transactions\TransactionCreate.js" />
     <Content Include="Areas\Receivables\Scripts\Transactions\Transaction.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -258,6 +259,11 @@
     <Content Include="Areas\Receivables\Views\ArActions\Edit.cshtml" />
     <Content Include="Areas\Receivables\Views\ArActions\Index.cshtml" />
     <Content Include="Areas\Receivables\Views\ArReports\Index.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArMgt\SettlementPrint.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArTransactions\SettlementPrint.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccounts\CreateContact.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccounts\EditContact.cshtml" />
+    <Content Include="Areas\Receivables\Views\ArAccounts\DeleteContact.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DateRangePicker\daterangepicker.js" />

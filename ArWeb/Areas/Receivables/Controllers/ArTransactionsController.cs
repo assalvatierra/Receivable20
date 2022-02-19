@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using ArModels.Models;
@@ -15,20 +16,19 @@ namespace JobsV1.Areas.Receivables.Controllers
     public class ArTransactionsController : Controller
     {
         private ReceivableFactory ar = new ReceivableFactory();
+        private ArDBContainer ardb = new ArDBContainer();
 
         // GET: ArTransactions
         public ActionResult Index(string status, string sortBy, string orderBy)
         {
             var arTransactions = ar.TransactionMgr.GetTransactions(status, sortBy, orderBy);
 
-            //TODO: check repeating receivables 
-            //not priority - 1/12/2021
-            //ar.TransactionMgr.CheckRepeatingTrans();             
-
             ViewBag.Status = status;
             ViewBag.SortBy = sortBy;
             ViewBag.OrderBy = orderBy;
             ViewBag.Today = ar.DateClassMgr.GetCurrentDate();
+            ViewBag.IsAdmin = true;
+
             return View(arTransactions.ToList());
         }
 
@@ -67,9 +67,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                       Text = s.Company + " - " + s.Name.ToString()
                   });
 
-
             ViewBag.ArAccountId = new SelectList(accounts, "Value", "Text");
-
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status");
             //ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Company");
             ViewBag.ArCategoryId = new SelectList(ar.CategoryMgr.GetCategories(), "Id", "Name");
@@ -147,10 +145,10 @@ namespace JobsV1.Areas.Receivables.Controllers
                   });
 
             ViewBag.ArAccountId = new SelectList(accounts, "Value", "Text", arTransaction.ArAccountId);
-
             ViewBag.ArTransStatusId = new SelectList(ar.TransactionMgr.GetTransactionStatus(), "Id", "Status", arTransaction.ArTransStatusId);
-            //ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Company" , arTransaction.ArAccountId);
+            //ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Company", arTransaction.ArAccountId);
             ViewBag.ArCategoryId = new SelectList(ar.CategoryMgr.GetCategories(), "Id", "Name", arTransaction.ArCategoryId);
+
             return View(arTransaction);
         }
 
@@ -333,7 +331,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                 ar.TransactionMgr.CloseTransactionStatus(id);
 
                 //post
-               var postResponse = ar.TransPostMgr.CreateTransPost(transaction, today, TotalBalance);
+                var postResponse = ar.TransPostMgr.CreateTransPost(transaction, today, TotalBalance);
 
                 if (postResponse)
                 {
@@ -394,16 +392,244 @@ namespace JobsV1.Areas.Receivables.Controllers
 
         }
 
-        public bool CheckTransaction_wInterval()
+        //Post: \Receivables\ArTransactions\PostJobReceivables
+        [HttpPost]
+        public bool PostJobReceivables([Bind(Include = "Id,InvoiceId,DtInvoice,Description,DtEncoded,DtDue,Amount,Interval,IsRepeating,Remarks,ArTransStatusId,ArAccountId,ArCategoryId,DtService,DtServiceTo,InvoiceRef,PrevRef,NextRef,RepeatCount")] ArTransaction arTransaction,
+            string Name, string Company, string Email, string Mobile)
         {
             try
             {
+                arTransaction.ArAccountId = 1;
+                arTransaction.ArCategoryId = 1;
+                arTransaction.ArTransStatusId = 2;
+                arTransaction.DtEncoded = ar.DateClassMgr.GetCurrentDateTime();
+                arTransaction.IsRepeating = false;
+                arTransaction.Interval = 0;
+                arTransaction.InvoiceRef = arTransaction.InvoiceId.ToString();
+                arTransaction.NextRef = 0;
+                arTransaction.PrevRef = 0;
+                arTransaction.RepeatCount = 0;
+                arTransaction.Remarks = "";
+
+                //validate
+                if (ModelState.IsValid && InputValidation(arTransaction))
+                {
+                    var today = ar.DateClassMgr.GetCurrentDateTime();
+                    var currentUser = HttpContext.User.Identity.Name;
+
+                    if (!IsUserExist(Name) && !IsCompanyExist(Company))
+                    {
+                        //new account, new user
+                        var acctId = CreateUser(Company, Name, Email, Mobile);
+                        arTransaction.ArAccountId = acctId;
+                    }
+                    else if(!IsUserExist(Name) && IsCompanyExist(Company))
+                    {
+                        //existing company new user
+                        var acctId = CreateAccountContact(Company, Name, Email, Mobile);
+                        arTransaction.ArAccountId = acctId;
+                    }
+                    else
+                    {
+                        //existing account
+                        arTransaction.ArAccountId = GetUserAccountId(Name);
+                    }
+
+                    ar.TransactionMgr.AddTransaction(arTransaction);
+
+                    //new transaction action history (new bill)
+                    ar.ActionMgr.AddAction(1, currentUser, arTransaction.Id);
+                }
+
                 return true;
+            }
+            catch (Exception ex)
+            {
+               // throw ex;
+                return false;
+            }
+
+        }
+
+        public ActionResult Settlement()
+        {
+            //get ongoing transactions
+            var transactions = ar.TransactionMgr.GetForSettlementTrans();
+
+            ViewBag.DateToday = ar.DateClassMgr.GetCurrentDateTime();
+            return View(transactions);
+        }
+
+        #region Accounts
+        //Check if the user exist on the current list
+        public bool IsUserExist(string name)
+        {
+            var userExists = ardb.ArAccounts.Where(a => a.Name.Contains(name)).ToList();
+
+            if (userExists.Count() > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        //Check if the user exist on the current list
+        public bool IsCompanyExist(string company)
+        {
+            var userExists = ardb.ArAccounts.Where(a => a.Company.Contains(company)).ToList();
+
+            if (userExists.Count() > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+
+        public int GetUserAccountId(string name)
+        {
+            var userExists = ardb.ArAccounts.Where(a => a.Name.Contains(name)).ToList();
+
+            if (userExists.Count() > 0)
+            {
+                return userExists.FirstOrDefault().Id;
+            }
+
+            return 0;
+        }
+
+        // GET: ArTransactions/CreateUser
+        // Create New User Account
+        public int CreateUser(string company, string name, string email, string mobile)
+        {
+            try
+            {
+
+                ArAccount account = new ArAccount();
+                account.Company = company;
+                account.Name = name;
+                account.Email = email;
+                account.Mobile = mobile;
+                account.ArAccStatusId = 1;
+
+                ar.AccountMgr.AddAccount(account);
+
+                return account.Id;
             }
             catch
             {
-                return false;
+                return 0;
             }
+        }
+
+
+        // GET: ArTransactions/CreateUser
+        // Create New User Account
+        public int CreateAccountContact(string company, string name, string email, string mobile)
+        {
+            try
+            {
+
+                //find company by name
+                if (IsCompanyExist(company))
+                {
+
+                    var accountId = ardb.ArAccounts.Where(a => a.Name.Contains(name))
+                                        .FirstOrDefault().Id;
+
+                    ArAccContact contact = new ArAccContact();
+                    contact.Name = name;
+                    contact.Email = email;
+                    contact.Mobile = mobile;
+                    contact.ArAccountId = accountId;
+
+                    ar.AccountMgr.AddAccContact(contact);
+
+                    return accountId;
+                }
+
+                return 0;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        [HttpPost]
+        public bool CloseTransctions(int[] TransIds)
+        {
+            var arTransIds = new List<int>(TransIds);
+
+            foreach (var artransId in arTransIds)
+            {
+                UpdateTransStatus(artransId, 6); //close transaction
+            }
+
+            return true;
+        }
+
+        #endregion
+
+        public ActionResult StatementPrint(int accountId)
+        {
+            decimal accBalance = 0;
+            var account = ar.AccountMgr.GetAccountById(accountId);
+
+            //get ongoing transactions
+            var transactions = ar.TransactionMgr.GetApprovedTransactions()
+                .Where(a => a.ArAccountId == accountId).ToList();
+
+
+            List<ArRptModel.ArAccountStatement> accStatements = new List<ArRptModel.ArAccountStatement>();
+
+            foreach (var statement in transactions)
+            {
+                accStatements.Add(new ArRptModel.ArAccountStatement
+                {
+                    ArTransId = statement.Id,
+                    InvoiceId = statement.InvoiceId,
+                    InvoiceRef = statement.InvoiceRef,
+                    InvoiceDate = statement.DtInvoice,
+                    Description = statement.Description ,
+                    Amount = statement.Amount,
+                    Payment = 0
+
+                });
+
+                //Statement Amount 
+                accBalance += statement.Amount;
+
+                statement.ArTransPayments.ToList().ForEach(payment => {
+                    //Statement Payments 
+                    accBalance -= payment.ArPayment.Amount;
+
+                    accStatements.Add(new ArRptModel.ArAccountStatement
+                    {
+                        ArTransId = payment.Id,
+                        InvoiceId = payment.ArTransaction.InvoiceId,
+                        InvoiceRef = payment.ArTransaction.InvoiceRef,
+                        InvoiceDate = payment.ArPayment.DtPayment,
+                        Description = payment.ArPayment.ArPaymentType.Type + " Payment for " + payment.ArTransaction.InvoiceRef,
+                        Amount = 0,
+                        Payment = payment.ArPayment.Amount
+                    });
+                });
+            }
+
+            var user = HttpContext.User.Identity.Name;
+
+            ViewBag.Company = account.Company;
+            ViewBag.CompanyAddress = account.Address;
+            ViewBag.DateToday = ar.DateClassMgr.GetCurrentDateTime();
+            ViewBag.AccBalance = accBalance;
+            ViewBag.PreparedBy = GetStaffName(user);
+            ViewBag.PreparedSign = GetStaffSign(user);
+
+            return View(accStatements.OrderBy(c=>c.InvoiceDate));
         }
 
         private string GetUser()
@@ -416,6 +642,61 @@ namespace JobsV1.Areas.Receivables.Controllers
             {
                 return "Unknown User";
             }
+        }
+
+
+        public string GetStaffName(string staffLogin)
+        {
+            switch (staffLogin)
+            {
+                case "josette.realbreeze@gmail.com":
+                    return "Josette Valleser";
+                case "mae.realbreeze@gmail.com":
+                    return "Cristel Mae Verano";
+                case "ramil.realbreeze@gmail.com":
+                    return "Ramil Villahermosa";
+                case "grace.realbreeze@gmail.com":
+                    return "Grace-chell V. Capandac";
+                case "assalvatierra@gmail.com":
+                    return "Elvie S. Salvatierra ";
+                case "jecca.realbreeze@gmail.com":
+                    return "Jecca Bilason";
+                case "kimberly.realbreeze@gmail.com":
+                    return "Kimberly Pangubatan";
+                default:
+                    return "Elvie S. Salvatierra ";
+            }
+        }
+
+        public string GetStaffSign(string staffLogin)
+        {
+            switch (staffLogin)
+            {
+                case "josette.realbreeze@gmail.com":
+                    return "/Images/Signature/JoSign.jpg";
+                case "mae.realbreeze@gmail.com":
+                    return "/Images/Signature/MaeSign.jpg";
+                case "ramil.realbreeze@gmail.com":
+                    return "/Images/Signature/RamSign.jpg";
+                case "grace.realbreeze@gmail.com":
+                    return "/Images/Signature/GraceSign.jpg";
+                case "assalvatierra@gmail.com":
+                    return "/Images/Signature-1.png";
+                case "jecca.realbreeze@gmail.com":
+                    return "/Images/Signature/JeccaSign.jpg";
+                case "kimberly.realbreeze@gmail.com":
+                    return "/Images/Signature/KimSign.jpg";
+                default:
+                    return "/Images/Signature-1.png";
+            }
+        }
+
+        public class ArStatement
+        {
+            public DateTime InvoiceDate { get; set; }
+            public String Description { get; set; }
+            public Decimal Amount { get; set; }
+            public Decimal Payment { get; set; }
         }
     }
 }

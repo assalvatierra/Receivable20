@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/02/2021 11:42:24
+-- Date Created: 02/03/2022 11:33:58
 -- Generated from EDMX file: C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\Models\ArDB.edmx
 -- --------------------------------------------------
 
@@ -62,6 +62,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ArAccntTermStatusArAccntPaymentTerm]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ArAccntTerms] DROP CONSTRAINT [FK_ArAccntTermStatusArAccntPaymentTerm];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ArAccountArAccContact]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArAccContacts] DROP CONSTRAINT [FK_ArAccountArAccContact];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ArAccContactArTransaction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArTransactions] DROP CONSTRAINT [FK_ArAccContactArTransaction];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -112,6 +118,9 @@ GO
 IF OBJECT_ID(N'[dbo].[ArAccntTermStatus]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ArAccntTermStatus];
 GO
+IF OBJECT_ID(N'[dbo].[ArAccContacts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArAccContacts];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -138,7 +147,8 @@ CREATE TABLE [dbo].[ArTransactions] (
     [NextRef] int  NULL,
     [InvoiceRef] nvarchar(20)  NULL,
     [RepeatCount] int  NULL,
-    [RepeatNo] int  NULL
+    [RepeatNo] int  NULL,
+    [ArAccContactId] int  NOT NULL
 );
 GO
 
@@ -160,7 +170,9 @@ CREATE TABLE [dbo].[ArPayments] (
     [Remarks] nvarchar(80)  NULL,
     [Reference] nvarchar(80)  NULL,
     [ArAccountId] int  NOT NULL,
-    [ArPaymentTypeId] int  NOT NULL
+    [ArPaymentTypeId] int  NOT NULL,
+    [IsDeposited] bit  NULL,
+    [DtDeposit] datetime  NULL
 );
 GO
 
@@ -278,6 +290,17 @@ CREATE TABLE [dbo].[ArAccntTermStatus] (
 );
 GO
 
+-- Creating table 'ArAccContacts'
+CREATE TABLE [dbo].[ArAccContacts] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(80)  NOT NULL,
+    [Mobile] nvarchar(20)  NOT NULL,
+    [Email] nvarchar(80)  NOT NULL,
+    [Position] nvarchar(80)  NULL,
+    [ArAccountId] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -369,6 +392,12 @@ GO
 -- Creating primary key on [Id] in table 'ArAccntTermStatus'
 ALTER TABLE [dbo].[ArAccntTermStatus]
 ADD CONSTRAINT [PK_ArAccntTermStatus]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ArAccContacts'
+ALTER TABLE [dbo].[ArAccContacts]
+ADD CONSTRAINT [PK_ArAccContacts]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -599,6 +628,36 @@ GO
 CREATE INDEX [IX_FK_ArAccntTermStatusArAccntPaymentTerm]
 ON [dbo].[ArAccntTerms]
     ([ArAccntTermStatusId]);
+GO
+
+-- Creating foreign key on [ArAccountId] in table 'ArAccContacts'
+ALTER TABLE [dbo].[ArAccContacts]
+ADD CONSTRAINT [FK_ArAccountArAccContact]
+    FOREIGN KEY ([ArAccountId])
+    REFERENCES [dbo].[ArAccounts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArAccountArAccContact'
+CREATE INDEX [IX_FK_ArAccountArAccContact]
+ON [dbo].[ArAccContacts]
+    ([ArAccountId]);
+GO
+
+-- Creating foreign key on [ArAccContactId] in table 'ArTransactions'
+ALTER TABLE [dbo].[ArTransactions]
+ADD CONSTRAINT [FK_ArAccContactArTransaction]
+    FOREIGN KEY ([ArAccContactId])
+    REFERENCES [dbo].[ArAccContacts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArAccContactArTransaction'
+CREATE INDEX [IX_FK_ArAccContactArTransaction]
+ON [dbo].[ArTransactions]
+    ([ArAccContactId]);
 GO
 
 -- --------------------------------------------------

@@ -8,6 +8,7 @@
 
     decimal totalReceivableAmount = 0;
     decimal totalBalance = 0;
+    decimal runninBalance = 0;
     decimal totalPaid = 0;
 }
 <h2>Details</h2>
@@ -210,6 +211,45 @@
 
     </div>
 </div>
+
+
+<div class="col-md-12">
+    <h4>Account Contacts</h4>
+    @Html.ActionLink("Add Contact", "CreateContact", new { id = Model.Id }, null)
+    <table class="table">
+        <tr>
+            <th> Name </th>
+            <th> Contact </th>
+            <th> Mobile </th>
+            <th> Position </th>
+            <th></th>
+        </tr>
+        @foreach (var contact in Model.ArAccContacts)
+        {
+            <tr>
+                <td>
+                    @contact.Name
+                </td>
+                <td>
+                    @contact.Mobile
+                </td>
+                <td>
+                    @contact.Email
+                </td>
+                <td>
+                    @contact.Position
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditContact", new { id = contact.Id }, null) |
+
+                    @Html.ActionLink("Delete",  "DeleteContact", new { id = contact.Id }, null)
+                </td>
+            </tr>
+        }
+    </table>
+<hr />
+</div>
+
 <h4>
     Transactions List
 </h4>
@@ -224,11 +264,13 @@
         <th> Status </th>
         <th> Amount </th>
         <th> Paid </th>
+        <th> Balance </th>
         <th> </th>
     </tr>
 
     @foreach (var transaction in Model.ArTransactions)
     {
+        decimal transPayment = 0;
         <tr>
             <td>
                 @transaction.Description
@@ -261,10 +303,20 @@
                 @foreach (var payment in transaction.ArTransPayments)
                 {
                     totalPaid = totalPaid + payment.ArPayment.Amount;
+                    transPayment = transPayment + payment.ArPayment.Amount;
                 }
                 <span>
-                    @totalPaid.ToString("#,##0.00")
+                    @if (transPayment > 0)
+                    {
+                        @transPayment.ToString("#,##0.00")
+                    }
                 </span>
+            </td>
+            <td>
+                @{
+                    runninBalance = runninBalance + (transaction.Amount - transPayment);
+                }
+                @runninBalance.ToString("#,##0.00")
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", "ArTransactions", new { id = transaction.Id }, null)

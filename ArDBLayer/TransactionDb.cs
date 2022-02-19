@@ -38,7 +38,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw ex;
-                return false;
+                //return false;
             }
         }
 
@@ -52,7 +52,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw ex;
-                return false;
+                //return false;
             }
         }
 
@@ -73,7 +73,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw ex;
-                return false;
+                //return false;
             }
         }
 
@@ -94,7 +94,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw ex;
-                return false;
+                //return false;
             }
         }
 
@@ -107,7 +107,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw ex;
-                return null;
+                //return null;
             }
         }
 
@@ -120,7 +120,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw ex;
-                return null;
+                //return null;
             }
         }
 
@@ -133,7 +133,7 @@ namespace ArDBLayer
             catch (Exception ex)
             {
                 throw ex;
-                return null;
+                //return null;
             }
         }
     }

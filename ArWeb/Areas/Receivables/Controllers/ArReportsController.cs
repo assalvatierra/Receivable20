@@ -1,5 +1,5 @@
 ﻿using ArServices;
-using ArModels;
+using ArModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +35,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                     accountName = trans.ArAccount.Name;
                 }
 
-                ArRptTransPending transPending = new ArRptTransPending();
+                ArRptTransPending transPending;
 
                 if (arRptTrans.Where(c=>c.AccountId == trans.ArAccountId).Count() > 0)
                 {
@@ -58,10 +58,9 @@ namespace JobsV1.Areas.Receivables.Controllers
                         Payment = totalPayment,
                         Balance = totalBalance
                     };
+
+                    arRptTrans.Add(transPending);
                 }
-
-                arRptTrans.Add(transPending);
-
             }
 
             //filter and order
@@ -118,7 +117,52 @@ namespace JobsV1.Areas.Receivables.Controllers
             return View(arRptTrans);
         }
 
-       
+
+        // GET: ArReports/Daily
+        public ActionResult Daily(DateTime? dateSrch)
+        {
+
+            if (dateSrch == null)
+            {
+                dateSrch = ar.DateClassMgr.GetCurrentDate();
+            }
+
+            var arTransactions = ar.TransactionMgr.GetTransactionsByDate((DateTime)dateSrch);
+
+            ViewBag.Today = ar.DateClassMgr.GetCurrentDate();
+            ViewBag.DateSrch = dateSrch;
+            ViewBag.IsAdmin = true;
+
+            return View(arTransactions.ToList());
+        }
+
+
+        // GET: ArReports/Monthly
+        public ActionResult Monthly(DateTime? dateStart, DateTime? dateEnd)
+        {
+            DateTime thisMonth = ar.DateClassMgr.GetCurrentDate();
+            var startMonthDate = new DateTime(thisMonth.Year, thisMonth.Month, 1);
+            var endMonthDate = startMonthDate.AddMonths(1).AddDays(-1);
+
+            if (dateStart == null)
+            {
+                dateStart = startMonthDate;
+            }
+
+            if (dateEnd == null)
+            {
+                dateEnd = endMonthDate;
+            }
+
+            var arTransactions = ar.TransactionMgr.GetTransactionsByDateRange((DateTime)dateStart, (DateTime)dateEnd);
+
+            ViewBag.Today = ar.DateClassMgr.GetCurrentDate();
+            ViewBag.DateStart = dateStart;
+            ViewBag.DateEnd = dateEnd;
+            ViewBag.IsAdmin = true;
+
+            return View(arTransactions.ToList());
+        }
 
     }
 }

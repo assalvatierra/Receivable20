@@ -40,7 +40,7 @@ namespace ArDBLayer
             catch (Exception ex )
             {
                 throw ex;
-                return false;
+                //return false;
             }
         }
 

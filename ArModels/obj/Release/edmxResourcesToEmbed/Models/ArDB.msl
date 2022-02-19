@@ -24,6 +24,7 @@
           <ScalarProperty Name="InvoiceRef" ColumnName="InvoiceRef" />
           <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
           <ScalarProperty Name="RepeatNo" ColumnName="RepeatNo" />
+          <ScalarProperty Name="ArAccContactId" ColumnName="ArAccContactId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -48,6 +49,8 @@
           <ScalarProperty Name="Reference" ColumnName="Reference" />
           <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
           <ScalarProperty Name="ArPaymentTypeId" ColumnName="ArPaymentTypeId" />
+          <ScalarProperty Name="IsDeposited" ColumnName="IsDeposited" />
+          <ScalarProperty Name="DtDeposit" ColumnName="DtDeposit" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -174,6 +177,18 @@
         <MappingFragment StoreEntitySet="ArAccntTermStatus">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArAccContacts">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArAccContact)">
+        <MappingFragment StoreEntitySet="ArAccContacts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="ArAccountId" ColumnName="ArAccountId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

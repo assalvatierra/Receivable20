@@ -70,6 +70,43 @@ namespace JobsV1.Areas.Receivables.Controllers
         }
 
 
+        // GET: ArAccounts/CreateFromJobs
+        public ActionResult CreateFromJobs(string company, string name, string email, string mobile)
+        {
+            ArAccount account = new ArAccount();
+            account.Company = company;
+            account.Name = name;
+            account.Email = email;
+            account.Mobile = mobile;
+
+            ViewBag.ArAccStatusId = new SelectList(ar.AccountMgr.GetArAccStatus(), "Id", "Status");
+            return View(account);
+        }
+
+        // POST: ArAccounts/CreateFromJobs
+        [HttpPost]
+        public ActionResult CreateFromJobs([Bind(Include = "Id,Name,Landline,Email,Mobile,Company,Address,Remarks,ArAccStatusId,Landline2,Mobile2")] ArAccount account)
+        {
+            if (ModelState.IsValid && InputValidation(account))
+            {
+                ar.AccountMgr.AddAccount(account);
+
+                ArAccContact contact = new ArAccContact();
+                contact.Name = account.Name;
+                contact.Mobile = account.Mobile;
+                contact.Email = account.Email;
+                contact.ArAccountId = account.Id;
+
+                ar.AccountMgr.AddAccContact(contact);
+
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.ArAccStatusId = new SelectList(ar.AccountMgr.GetArAccStatus(), "Id", "Status", account.ArAccStatusId);
+            return View(account);
+        }
+
+
 
         // GET: ArAccounts/Edit/5
         public ActionResult Edit(int? id)
@@ -164,7 +201,7 @@ namespace JobsV1.Areas.Receivables.Controllers
                 isValid = false;
             }
 
-            if (account.Mobile.IsNullOrWhiteSpace() || account.Mobile.Length < 2)
+            if (account.Mobile.IsNullOrWhiteSpace())
             {
                 ModelState.AddModelError("Mobile", "Invalid Mobile");
                 isValid = false;
@@ -173,6 +210,99 @@ namespace JobsV1.Areas.Receivables.Controllers
 
             return isValid;
         }
+
+        #region Account Contact
+
+
+        // GET: ArAccounts/Create
+        public ActionResult CreateContact(int id)
+        {
+
+            ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts() , "Id", "Company", id);
+            return View();
+        }
+
+        // POST: ArAccounts/CreateContact
+        [HttpPost]
+        public ActionResult CreateContact([Bind(Include = "Id,Name,Mobile,Email,Position,ArAccountId")] ArAccContact arAccContact)
+        {
+            if (ModelState.IsValid)
+            {
+                ar.AccountMgr.AddAccContact(arAccContact);
+
+                return RedirectToAction("Details", new { id = arAccContact.ArAccountId });
+            }
+
+            ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Company", arAccContact.ArAccountId);
+            return View(arAccContact);
+        }
+
+
+        // GET: ArAccounts/EditContact/{id}
+        public ActionResult EditContact(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var account = ar.AccountMgr.GetAccContactById((int)id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Company", account.ArAccountId);
+            return View(account);
+        }
+
+        // POST: ArAccounts/EditContact/{id}
+        [HttpPost]
+        public ActionResult EditContact([Bind(Include = "Id,Name,Mobile,Email,Position,ArAccountId")] ArAccContact arAccContact)
+        {
+            if (ModelState.IsValid)
+            {
+                ar.AccountMgr.EditAccContact(arAccContact);
+
+                return RedirectToAction("Details", new { id = arAccContact.ArAccountId });
+            }
+            ViewBag.ArAccountId = new SelectList(ar.AccountMgr.GetArAccounts(), "Id", "Company", arAccContact.ArAccountId);
+            return View(arAccContact);
+        }
+
+
+        // GET: ArAccounts/Delete/5
+        public ActionResult DeleteContact(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var account = ar.AccountMgr.GetAccContactById((int)id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            return View(account);
+        }
+
+        // POST: ArAccounts/DeleteContact/5
+        [HttpPost]
+        public ActionResult DeleteContact(int id)
+        {
+            try
+            {
+                var account = ar.AccountMgr.GetAccContactById((int)id);
+                ar.AccountMgr.RemoveAccContact(account);
+
+                return RedirectToAction("Details", new { id = id });
+            }
+            catch
+            {
+                return RedirectToAction("Details", new { id = id });
+            }
+        }
+
+        #endregion
 
     }
 }

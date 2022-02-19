@@ -27,6 +27,8 @@ namespace ArModels.Models
         public string Reference { get; set; }
         public int ArAccountId { get; set; }
         public int ArPaymentTypeId { get; set; }
+        public Nullable<bool> IsDeposited { get; set; }
+        public Nullable<System.DateTime> DtDeposit { get; set; }
     
         public virtual ArAccount ArAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

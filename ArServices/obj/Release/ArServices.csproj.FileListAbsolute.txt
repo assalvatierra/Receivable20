@@ -29,8 +29,13 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\ArModels.p
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\ArModels.dll.config
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\EntityFramework.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.csprojAssemblyReference.cache
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.csproj.CoreCompileInputs.cache
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\ApInterfaces.dll
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\ApModels.dll
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\ApInterfaces.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\ApModels.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Release\ApModels.dll.config
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Release\ArServices.csproj.AssemblyReference.cache

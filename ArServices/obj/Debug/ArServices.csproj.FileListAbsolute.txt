@@ -62,8 +62,13 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArModels.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ArModels.dll.config
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\EntityFramework.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csprojAssemblyReference.cache
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.CoreCompileInputs.cache
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.AssemblyReference.cache
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.CopyComplete
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApInterfaces.dll
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApModels.dll
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApInterfaces.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApModels.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApModels.dll.config

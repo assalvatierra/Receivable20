@@ -272,8 +272,8 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\bin\System.Web.WebPages.Ra
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\bin\Newtonsoft.Json.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\bin\Antlr3.Runtime.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\obj\Debug\ArWeb3.csprojAssemblyReference.cache
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\obj\Debug\ArWeb3.csproj.CoreCompileInputs.cache
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\obj\Debug\ArWeb3.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\obj\Debug\ArWeb3.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\obj\Debug\ArWeb3.pdb
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArWeb3\obj\Debug\ArWeb3.csproj.AssemblyReference.cache

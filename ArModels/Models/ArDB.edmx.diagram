@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="54ce9716767e4fdbb0cbe03c62e6a539" Name="Diagram1" ZoomLevel="71" >
-        <EntityTypeShape EntityType="ArDB.ArTransaction" Width="1.5" PointX="18.5" PointY="4.125" />
-        <EntityTypeShape EntityType="ArDB.ArTransPost" Width="1.5" PointX="16.5" PointY="9.75" />
-        <EntityTypeShape EntityType="ArDB.ArPayment" Width="1.5" PointX="11" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArDB.ArTransaction" Width="1.5" PointX="18.25" PointY="0.5" />
+        <EntityTypeShape EntityType="ArDB.ArTransPost" Width="1.5" PointX="15.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ArDB.ArPayment" Width="1.5" PointX="10.875" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ArDB.ArTransStatus" Width="1.5" PointX="20.625" PointY="8.5" />
         <AssociationConnector Association="ArDB.ArTransactionArTransPost" />
         <AssociationConnector Association="ArDB.ArTransStatusArTransaction" />
-        <EntityTypeShape EntityType="ArDB.ArAccount" Width="1.5" PointX="5.125" PointY="5" />
+        <EntityTypeShape EntityType="ArDB.ArAccount" Width="1.5" PointX="5.125" PointY="4.375" />
         <EntityTypeShape EntityType="ArDB.ArAccStatus" Width="1.5" PointX="3.125" PointY="5" />
         <AssociationConnector Association="ArDB.ArAccountArTransaction" />
         <AssociationConnector Association="ArDB.ArAccStatusArAccount" />
@@ -35,6 +35,10 @@
         <AssociationConnector Association="ArDB.ArAccountArAccntPaymentTerm" />
         <EntityTypeShape EntityType="ArDB.ArAccntTermStatus" Width="1.5" PointX="8.25" PointY="9.5" />
         <AssociationConnector Association="ArDB.ArAccntTermStatusArAccntPaymentTerm" />
+        <EntityTypeShape EntityType="ArDB.ArAccContact" Width="1.5" PointX="5.125" PointY="1.25" />
+        <AssociationConnector Association="ArDB.ArAccountArAccContact" />
+        <AssociationConnector Association="ArDB.ArAccContactArTransaction" ManuallyRouted="false" >
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

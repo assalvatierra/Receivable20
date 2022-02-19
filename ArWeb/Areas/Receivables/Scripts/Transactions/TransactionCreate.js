@@ -2,7 +2,7 @@
 /*
  *  Transaction Create
  * 
- */ 
+ */
 
 async function GetAccountCreditLimit() {
     var accountId = $('#ArAccountId :selected').val();
