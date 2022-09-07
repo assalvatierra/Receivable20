@@ -17,6 +17,10 @@
     <EntitySet Name="ArAccntTerms" EntityType="ArDB.Store.ArAccntTerms" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArAccntTermStatus" EntityType="ArDB.Store.ArAccntTermStatus" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArAccContacts" EntityType="ArDB.Store.ArAccContacts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArDeposits" EntityType="ArDB.Store.ArDeposits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArTransRepeats" EntityType="ArDB.Store.ArTransRepeats" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArTransDeposits" EntityType="ArDB.Store.ArTransDeposits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArDepositBanks" EntityType="ArDB.Store.ArDepositBanks" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ArTransactionArTransPost" Association="ArDB.Store.ArTransactionArTransPost">
       <End Role="ArTransaction" EntitySet="ArTransactions" />
       <End Role="ArTransPost" EntitySet="ArTransPosts" />
@@ -85,6 +89,22 @@
       <End Role="ArAccContact" EntitySet="ArAccContacts" />
       <End Role="ArTransaction" EntitySet="ArTransactions" />
     </AssociationSet>
+    <AssociationSet Name="ArTransactionArTransRepeat" Association="ArDB.Store.ArTransactionArTransRepeat">
+      <End Role="ArTransaction" EntitySet="ArTransactions" />
+      <End Role="ArTransRepeat" EntitySet="ArTransRepeats" />
+    </AssociationSet>
+    <AssociationSet Name="ArTransactionArTransDeposit" Association="ArDB.Store.ArTransactionArTransDeposit">
+      <End Role="ArTransaction" EntitySet="ArTransactions" />
+      <End Role="ArTransDeposit" EntitySet="ArTransDeposits" />
+    </AssociationSet>
+    <AssociationSet Name="ArDepositArTransDeposit" Association="ArDB.Store.ArDepositArTransDeposit">
+      <End Role="ArDeposit" EntitySet="ArDeposits" />
+      <End Role="ArTransDeposit" EntitySet="ArTransDeposits" />
+    </AssociationSet>
+    <AssociationSet Name="ArDepositBankArDeposit" Association="ArDB.Store.ArDepositBankArDeposit">
+      <End Role="ArDepositBank" EntitySet="ArDepositBanks" />
+      <End Role="ArDeposit" EntitySet="ArDeposits" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ArTransactions">
     <Key>
@@ -97,7 +117,6 @@
     <Property Name="DtEncoded" Type="datetime" Nullable="false" />
     <Property Name="DtDue" Type="datetime" Nullable="false" />
     <Property Name="Amount" Type="decimal" Nullable="false" Precision="20" Scale="2" />
-    <Property Name="Interval" Type="int" Nullable="false" />
     <Property Name="IsRepeating" Type="bit" Nullable="false" />
     <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArTransStatusId" Type="int" Nullable="false" />
@@ -105,11 +124,7 @@
     <Property Name="ArCategoryId" Type="int" Nullable="false" />
     <Property Name="DtService" Type="datetime" Nullable="false" />
     <Property Name="DtServiceTo" Type="datetime" Nullable="true" />
-    <Property Name="PrevRef" Type="int" Nullable="true" />
-    <Property Name="NextRef" Type="int" Nullable="true" />
     <Property Name="InvoiceRef" Type="nvarchar" Nullable="true" MaxLength="20" />
-    <Property Name="RepeatCount" Type="int" Nullable="true" />
-    <Property Name="RepeatNo" Type="int" Nullable="true" />
     <Property Name="ArAccContactId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ArTransPosts">
@@ -260,6 +275,44 @@
     <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="80" />
     <Property Name="Position" Type="nvarchar" Nullable="true" MaxLength="80" />
     <Property Name="ArAccountId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArDeposits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DtDeposit" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" Nullable="true" MaxLength="80" />
+    <Property Name="Reference" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="ArDepositBankId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArTransRepeats">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrevRef" Type="int" Nullable="false" />
+    <Property Name="NextRef" Type="int" Nullable="false" />
+    <Property Name="RepeatCount" Type="int" Nullable="false" />
+    <Property Name="RpeatNo" Type="int" Nullable="false" />
+    <Property Name="Interval" Type="int" Nullable="false" />
+    <Property Name="ArTransaction_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArTransDeposits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArTransactionId" Type="int" Nullable="false" />
+    <Property Name="ArDepositId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArDepositBanks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="ArTransactionArTransPost">
     <End Role="ArTransaction" Type="ArDB.Store.ArTransactions" Multiplicity="1" />
@@ -462,6 +515,54 @@
       </Principal>
       <Dependent Role="ArTransaction">
         <PropertyRef Name="ArAccContactId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArTransactionArTransRepeat">
+    <End Role="ArTransaction" Type="ArDB.Store.ArTransactions" Multiplicity="1" />
+    <End Role="ArTransRepeat" Type="ArDB.Store.ArTransRepeats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArTransaction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArTransRepeat">
+        <PropertyRef Name="ArTransaction_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArTransactionArTransDeposit">
+    <End Role="ArTransaction" Type="ArDB.Store.ArTransactions" Multiplicity="1" />
+    <End Role="ArTransDeposit" Type="ArDB.Store.ArTransDeposits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArTransaction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArTransDeposit">
+        <PropertyRef Name="ArTransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArDepositArTransDeposit">
+    <End Role="ArDeposit" Type="ArDB.Store.ArDeposits" Multiplicity="1" />
+    <End Role="ArTransDeposit" Type="ArDB.Store.ArTransDeposits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArDeposit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArTransDeposit">
+        <PropertyRef Name="ArDepositId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArDepositBankArDeposit">
+    <End Role="ArDepositBank" Type="ArDB.Store.ArDepositBanks" Multiplicity="1" />
+    <End Role="ArDeposit" Type="ArDB.Store.ArDeposits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArDepositBank">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArDeposit">
+        <PropertyRef Name="ArDepositBankId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

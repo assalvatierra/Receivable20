@@ -24,4 +24,4 @@ insert into ArCreditStatus([Status]) values ('Active'),('Pending'),('Expired');
 insert into ArAccntTermStatus([Status]) values ('Active'),('Pending'),('Expired');
 
 
-
+insert into ArDepositBanks([AccountName]) values ('BDO-AJ88'),('BPI-Realbreeze'),('BPI-VIA');

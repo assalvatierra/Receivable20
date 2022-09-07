@@ -49,7 +49,7 @@ namespace ArServices
         public bool CheckRepeatingTrans()
         {
                 //get transactions with null next
-                var repeatingTransList = db.ArTransactions.Where(c => c.NextRef == null && c.IsRepeating == true ).ToList();
+                var repeatingTransList = db.ArTransactions.Where(c => c.IsRepeating == true ).ToList();
 
                 if (repeatingTransList == null)
                 {
@@ -62,7 +62,7 @@ namespace ArServices
                     {
                         //repeat after interval from invoice date
                         var transDate = trans.DtInvoice;
-                        var intervalDate = transDate.AddDays(trans.Interval);
+                        var intervalDate = transDate.AddDays(30);
 
                         //check if today is later then intervalDate
                         if (DateTime.Compare(today, intervalDate) > 0)
@@ -70,7 +70,6 @@ namespace ArServices
                             //create new transaction
                             //reset status
                             ArTransaction newTrans = new ArTransaction();
-                            newTrans.NextRef = null;
                             newTrans.ArTransStatusId = 1;
                             newTrans.DtEncoded = today;
                             newTrans.DtDue = intervalDate;
@@ -79,7 +78,7 @@ namespace ArServices
 
                             //update existing transaction
                             //attach new transaction as reference
-                            trans.NextRef = newTrans.Id;
+                            //trans.NextRef = newTrans.Id;
                             this.EditTransaction(trans);
                         }
                     }
@@ -250,13 +249,14 @@ namespace ArServices
                 }
 
                 var transactions = GetTransactions();
+
                 if (!String.IsNullOrWhiteSpace(status))
                 {
                     transactions = transactions.Where(t => t.ArTransStatu.Status == status).ToList();
                 }
                 else
                 {
-                    transactions = transactions.Where(t => t.ArTransStatu.Status != "Closed").ToList();
+                    transactions = transactions.Where(t => t.ArTransStatu.Status != "Closed" && t.ArTransStatu.Status != "Cancelled").ToList();
                 }
 
                 if (!String.IsNullOrWhiteSpace(sortBy))

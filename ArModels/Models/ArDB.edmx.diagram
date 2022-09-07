@@ -39,6 +39,14 @@
         <AssociationConnector Association="ArDB.ArAccountArAccContact" />
         <AssociationConnector Association="ArDB.ArAccContactArTransaction" ManuallyRouted="false" >
         </AssociationConnector>
+        <EntityTypeShape EntityType="ArDB.ArDeposit" Width="1.5" PointX="22.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ArDB.ArTransRepeat" Width="1.5" PointX="20.625" PointY="0.5" />
+        <EntityTypeShape EntityType="ArDB.ArTransDeposit" Width="1.5" PointX="20.625" PointY="3.875" />
+        <AssociationConnector Association="ArDB.ArTransactionArTransRepeat" />
+        <AssociationConnector Association="ArDB.ArTransactionArTransDeposit" />
+        <AssociationConnector Association="ArDB.ArDepositArTransDeposit" />
+        <EntityTypeShape EntityType="ArDB.ArDepositBank" Width="1.5" PointX="22.75" PointY="7.125" />
+        <AssociationConnector Association="ArDB.ArDepositBankArDeposit" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

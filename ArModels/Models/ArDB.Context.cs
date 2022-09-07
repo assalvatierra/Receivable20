@@ -41,5 +41,10 @@ namespace ArModels.Models
         public virtual DbSet<ArAccntTerm> ArAccntTerms { get; set; }
         public virtual DbSet<ArAccntTermStatus> ArAccntTermStatus { get; set; }
         public virtual DbSet<ArAccContact> ArAccContacts { get; set; }
+        public virtual DbSet<ArDeposit> ArDeposits { get; set; }
+        public virtual DbSet<ArTransRepeat> ArTransRepeats { get; set; }
+        public virtual DbSet<ArTransDeposit> ArTransDeposits { get; set; }
+        public virtual DbSet<ArDepositBank> ArDepositBanks { get; set; }
+
     }
 }

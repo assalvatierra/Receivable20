@@ -109,6 +109,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\ArDeposit.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArDepositBank.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ArPayment.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
@@ -119,10 +125,16 @@
     <Compile Include="Models\ArTransaction.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArTransDeposit.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ArTransPayment.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArTransPost.cs">
+      <DependentUpon>ArDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArTransRepeat.cs">
       <DependentUpon>ArDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArTransStatus.cs">

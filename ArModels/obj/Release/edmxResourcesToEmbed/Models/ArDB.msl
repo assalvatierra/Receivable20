@@ -11,7 +11,6 @@
           <ScalarProperty Name="DtEncoded" ColumnName="DtEncoded" />
           <ScalarProperty Name="DtDue" ColumnName="DtDue" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="Interval" ColumnName="Interval" />
           <ScalarProperty Name="IsRepeating" ColumnName="IsRepeating" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="ArTransStatusId" ColumnName="ArTransStatusId" />
@@ -19,11 +18,7 @@
           <ScalarProperty Name="ArCategoryId" ColumnName="ArCategoryId" />
           <ScalarProperty Name="DtService" ColumnName="DtService" />
           <ScalarProperty Name="DtServiceTo" ColumnName="DtServiceTo" />
-          <ScalarProperty Name="PrevRef" ColumnName="PrevRef" />
-          <ScalarProperty Name="NextRef" ColumnName="NextRef" />
           <ScalarProperty Name="InvoiceRef" ColumnName="InvoiceRef" />
-          <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
-          <ScalarProperty Name="RepeatNo" ColumnName="RepeatNo" />
           <ScalarProperty Name="ArAccContactId" ColumnName="ArAccContactId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -192,5 +187,54 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ArDeposits">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArDeposit)">
+        <MappingFragment StoreEntitySet="ArDeposits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DtDeposit" ColumnName="DtDeposit" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="ArDepositBankId" ColumnName="ArDepositBankId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArTransRepeats">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArTransRepeat)">
+        <MappingFragment StoreEntitySet="ArTransRepeats">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PrevRef" ColumnName="PrevRef" />
+          <ScalarProperty Name="NextRef" ColumnName="NextRef" />
+          <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
+          <ScalarProperty Name="RpeatNo" ColumnName="RpeatNo" />
+          <ScalarProperty Name="Interval" ColumnName="Interval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArTransDeposits">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArTransDeposit)">
+        <MappingFragment StoreEntitySet="ArTransDeposits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArTransactionId" ColumnName="ArTransactionId" />
+          <ScalarProperty Name="ArDepositId" ColumnName="ArDepositId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArDepositBanks">
+      <EntityTypeMapping TypeName="IsTypeOf(ArDB.ArDepositBank)">
+        <MappingFragment StoreEntitySet="ArDepositBanks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ArTransactionArTransRepeat" TypeName="ArDB.ArTransactionArTransRepeat" StoreEntitySet="ArTransRepeats">
+      <EndProperty Name="ArTransaction">
+        <ScalarProperty Name="Id" ColumnName="ArTransaction_Id" />
+      </EndProperty>
+      <EndProperty Name="ArTransRepeat">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

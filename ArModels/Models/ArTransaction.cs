@@ -20,6 +20,7 @@ namespace ArModels.Models
             this.ArTransPosts = new HashSet<ArTransPost>();
             this.ArActions = new HashSet<ArAction>();
             this.ArTransPayments = new HashSet<ArTransPayment>();
+            this.ArTransDeposits = new HashSet<ArTransDeposit>();
         }
     
         public int Id { get; set; }
@@ -29,7 +30,6 @@ namespace ArModels.Models
         public System.DateTime DtEncoded { get; set; }
         public System.DateTime DtDue { get; set; }
         public decimal Amount { get; set; }
-        public int Interval { get; set; }
         public bool IsRepeating { get; set; }
         public string Remarks { get; set; }
         public int ArTransStatusId { get; set; }
@@ -37,11 +37,7 @@ namespace ArModels.Models
         public int ArCategoryId { get; set; }
         public System.DateTime DtService { get; set; }
         public Nullable<System.DateTime> DtServiceTo { get; set; }
-        public Nullable<int> PrevRef { get; set; }
-        public Nullable<int> NextRef { get; set; }
         public string InvoiceRef { get; set; }
-        public Nullable<int> RepeatCount { get; set; }
-        public Nullable<int> RepeatNo { get; set; }
         public int ArAccContactId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -54,5 +50,8 @@ namespace ArModels.Models
         public virtual ICollection<ArTransPayment> ArTransPayments { get; set; }
         public virtual ArCategory ArCategory { get; set; }
         public virtual ArAccContact ArAccContact { get; set; }
+        public virtual ArTransRepeat ArTransRepeat { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ArTransDeposit> ArTransDeposits { get; set; }
     }
 }
