@@ -158,11 +158,11 @@ namespace ArWeb.Controllers
                 ModelState.AddModelError("Amount", "Invalid Amount");
                 isValid = false;
             }
-            if (transaction.Interval < 0)
-            {
-                ModelState.AddModelError("Interval", "Invalid Interval");
-                isValid = false;
-            }
+            //if (transaction.Interval < 0)
+            //{
+            //    ModelState.AddModelError("Interval", "Invalid Interval");
+            //    isValid = false;
+            //}
 
 
             return isValid;

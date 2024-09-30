@@ -45,4 +45,4 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfac
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.AssemblyReference.cache
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterfaces.csproj.CopyComplete
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArInterfaces\obj\Debug\ArInterf.91078927.Up2Date

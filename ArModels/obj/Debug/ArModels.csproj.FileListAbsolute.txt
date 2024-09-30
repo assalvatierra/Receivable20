@@ -39,7 +39,7 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\EntityFramewor
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\EntityFramework.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.CoreCompileInputs.cache
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.AssemblyReference.cache
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArModels\obj\Debug\ArModels.csproj.Up2Date

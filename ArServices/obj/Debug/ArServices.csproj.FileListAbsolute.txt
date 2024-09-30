@@ -66,9 +66,9 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.c
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.AssemblyReference.cache
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApInterfaces.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApModels.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApInterfaces.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApModels.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\bin\Debug\ApModels.dll.config
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArServices\obj\Debug\ArServices.csproj.Up2Date

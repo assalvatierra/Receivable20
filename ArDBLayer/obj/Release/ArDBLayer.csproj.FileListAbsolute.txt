@@ -26,7 +26,7 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\ArModels.dl
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\EntityFramework.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.csproj.CoreCompileInputs.cache
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.csproj.CopyComplete
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.csproj.AssemblyReference.cache
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Release\ArDBLayer.csproj.Up2Date

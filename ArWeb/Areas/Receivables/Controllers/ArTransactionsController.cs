@@ -55,9 +55,9 @@ namespace JobsV1.Areas.Receivables.Controllers
         {
             ArTransaction transaction = new ArTransaction();
             transaction.Amount = 0;
-            transaction.Interval = 0;
-            transaction.PrevRef = 0;
-            transaction.NextRef = 0;
+            //transaction.Interval = 0;
+            //transaction.PrevRef = 0;
+            //transaction.NextRef = 0;
             transaction.InvoiceId = 0;
 
             var accounts = ar.AccountMgr.GetArAccounts()
@@ -226,11 +226,11 @@ namespace JobsV1.Areas.Receivables.Controllers
                 ModelState.AddModelError("Amount", "Invalid Amount");
                 isValid = false;
             }
-            if (transaction.Interval < 0)
-            {
-                ModelState.AddModelError("Interval", "Invalid Interval");
-                isValid = false;
-            }
+            //if (transaction.Interval < 0)
+            //{
+            //    ModelState.AddModelError("Interval", "Invalid Interval");
+            //    isValid = false;
+            //}
 
 
             return isValid;
@@ -404,11 +404,11 @@ namespace JobsV1.Areas.Receivables.Controllers
                 arTransaction.ArTransStatusId = 2;
                 arTransaction.DtEncoded = ar.DateClassMgr.GetCurrentDateTime();
                 arTransaction.IsRepeating = false;
-                arTransaction.Interval = 0;
                 arTransaction.InvoiceRef = arTransaction.InvoiceId.ToString();
-                arTransaction.NextRef = 0;
-                arTransaction.PrevRef = 0;
-                arTransaction.RepeatCount = 0;
+                //arTransaction.NextRef = 0;
+                //arTransaction.PrevRef = 0;
+                //arTransaction.RepeatCount = 0;
+                //arTransaction.Interval = 0;
                 arTransaction.Remarks = "";
 
                 //validate

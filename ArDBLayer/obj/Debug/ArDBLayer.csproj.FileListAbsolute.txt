@@ -61,4 +61,4 @@ C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.csp
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.dll
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.pdb
 C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.csproj.AssemblyReference.cache
-C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.csproj.CopyComplete
+C:\Users\Acer-PC\Documents\GitHub\Receivable20\ArDBLayer\obj\Debug\ArDBLayer.csproj.Up2Date
