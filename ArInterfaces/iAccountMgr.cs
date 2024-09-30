@@ -15,6 +15,7 @@ namespace ArInterfaces
         bool RemoveAccount(ArAccount account);
         ArAccount GetAccountById(int id);
         List<ArAccount> GetArAccounts();
+        List<ArAccount> GetArAccountsWithStatus(int id);
         IEnumerable<ArAccStatus> GetArAccStatus();
 
         //Account Credit Limit

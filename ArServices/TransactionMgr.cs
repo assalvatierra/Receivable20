@@ -338,12 +338,18 @@ namespace ArServices
         {
             try
             {
-                var arPaymentsIds = db.ArPayments.Where(p => DbFunctions.TruncateTime(p.DtPayment) >= filterStartDate
-                    && DbFunctions.TruncateTime(p.DtPayment) <= filterEndDate)
-                    .Select(p => p.ArTransPayments.FirstOrDefault().ArTransactionId).ToList();
+                //var arPaymentsIds = db.ArPayments
+                //    .Where(p => DbFunctions.TruncateTime(p.DtPayment) >= filterStartDate
+                //             && DbFunctions.TruncateTime(p.DtPayment) <= filterEndDate)
+                //    .Select(p => p.ArTransPayments.FirstOrDefault().ArTransactionId).ToList();
+
+                //return db.ArTransactions
+                //    .Where(r => arPaymentsIds.Contains(r.Id))
+                //    .ToList();
 
                 return db.ArTransactions
-                    .Where(r => arPaymentsIds.Contains(r.Id))
+                   .Where(p => DbFunctions.TruncateTime(p.DtService) >= filterStartDate
+                            && DbFunctions.TruncateTime(p.DtService) <= filterEndDate)
                     .ToList();
             }
             catch (Exception ex)

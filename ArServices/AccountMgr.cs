@@ -80,7 +80,19 @@ namespace ArServices
         {
             try
             {
-                return db.ArAccounts.ToList();
+                return db.ArAccounts.Where(a=> a.ArAccStatusId == 1).OrderBy(c=>c.Company).ToList();
+            }
+            catch
+            {
+                throw new EntitySqlException("Services: Unable to Get Recievable Accounts");
+            }
+        }
+
+        public List<ArAccount> GetArAccountsWithStatus(int id)
+        {
+            try
+            {
+                return db.ArAccounts.Where(a => a.ArAccStatusId == id).OrderBy(c => c.Company).ToList();
             }
             catch
             {
